@@ -1,16 +1,28 @@
 {
   "name": "michaelhost",
   "version": "0.1.0",
-  "private": true,
+  "license": "MIT",
+  "scripts": {
+    "prepack": "react-scripts build",
+    "dev": "concurrently --names \"react-scripts,node\" \"react-scripts start\" \"nodemon -w bin/cli.js -w lib bin/cli.js -- --port 4444\"",
+    "lint": "eslint .",
+    "format": "prettier --write './lib/**/*.js' './scripts/**/*.js' './src/**/*.js'",
+    "test": "react-scripts test --env=jsdom"
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://localhost:4444",
+      "changeOrigin": true
+    }
+  },
   "dependencies": {
+    "commander": "^2.15.1",
+    "concurrently": "^3.6.0",
+    "lodash": "^4.17.10",
+    "nodemon": "^1.17.5",
+    "prettier": "^1.13.7",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
     "react-scripts": "1.1.4"
-  },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
   }
 }
