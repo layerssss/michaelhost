@@ -1,1 +1,6 @@
-src
+/node_modules
+/src
+/public
+
+.git
+*.log

@@ -1,29 +1,66 @@
+#!/usr/bin/env node
+
 const commander = require("commander");
+const homedir = require("homedir");
+const path = require("path");
 
-const Server = require("../lib/Server.js");
+if (!process.env.NODE_ENV) process.env.NODE_ENV = "production";
 
-Promise.resolve()
-  .then(async () => {
-    const { port, email, bind } = commander
-      .version(require("../package.json").version)
-      .option(
-        "-p --port [integer]",
-        "admin interface http port on localhost",
-        (i, d) => parseInt(i || d, 10),
-        3000
-      )
-      .option("-e --email [string]", "email", process.env["EMAIL"])
-      .parse(process.argv);
+const createLogger = require("../lib/createLogger.js");
+const Service = require("../lib/Service.js");
+const State = require("../lib/State.js");
+const waitForDeath = require("../lib/waitForDeath.js");
 
-    const server = new Server();
+const logger = createLogger("cli");
 
-    process.on("SIGINT", () => server.stop());
+commander
+  .version(require("../package.json").version)
+  .option(
+    "-s --state-file-path [path]",
+    "file path to store application config and state",
+    path.join(homedir(), ".michaelhost-state.json")
+  );
 
-    await server.start({ port, email, bind });
+const runAsync = func =>
+  Promise.resolve()
+    .then(func)
+    .then(() => process.exit(0))
+    .catch(error => {
+      logger.error(error);
+      process.exit(1);
+    });
+
+commander
+  .command("service")
+  .option(
+    "-p --admin-port [integer]",
+    "admin interface http port on localhost",
+    (i, d) => parseInt(i || d, 10),
+    3000
+  )
+  .option("-e --email [string]", "admin email address", process.env["EMAIL"])
+  .action(({ adminPort, email }) =>
+    runAsync(async () => {
+      logger.info({ command: "service", adminPort, email });
+
+      const service = await Service.init({ adminPort, email, stateFilePath });
+      await service.start();
+
+      await waitForDeath();
+
+      await service.stop();
+    })
+  );
+
+commander.command("init").action(() =>
+  runAsync(async () => {
+    logger.info({ command: "init" });
+
+    const state = await State.init({ filePath: stateFilePath });
+    await state.save();
   })
-  .then(() => process.exit(0))
-  .catch(ex => {
-    console.error("Critical error.");
-    console.error(ex.stack || ex.message);
-    process.exit(1);
-  });
+);
+
+const { stateFilePath } = commander.parse(process.argv);
+
+logger.info({ stateFilePath });
