@@ -17,6 +17,7 @@ export default compose(
         id
         hostname
         upstream
+        origin
         ssl
       }
     }
@@ -80,6 +81,13 @@ export default compose(
                         }}
                       >
                         Edit
+                      </Button>
+                      <Button
+                        bsSize="xs"
+                        bsStyle="info"
+                        href={host.origin}
+                      >
+                        Open
                       </Button>
                       <Button
                         bsSize="xs"
