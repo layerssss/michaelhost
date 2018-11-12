@@ -8,7 +8,7 @@ import {
   FormControl,
   ControlLabel,
   Checkbox,
-  Button
+  Button,
 } from "react-bootstrap";
 import { compose } from "recompose";
 
@@ -38,12 +38,12 @@ export default compose(
                   id
                 }
               }
-            `
-          }
-        ]
-      }
-    }
-  )
+            `,
+          },
+        ],
+      },
+    },
+  ),
 )(
   class NewHostDialog extends React.Component {
     render() {
@@ -56,15 +56,15 @@ export default compose(
               event.preventDefault();
               const formData = serialize(event.target, {
                 hash: true,
-                empty: true
+                empty: true,
               });
 
               await createHost({
                 variables: {
                   hostname: formData.hostname,
                   upstream: formData.upstream,
-                  ssl: Boolean(formData.ssl)
-                }
+                  ssl: Boolean(formData.ssl),
+                },
               });
 
               history.goBack();
@@ -93,5 +93,5 @@ export default compose(
         </Modal>
       );
     }
-  }
+  },
 );

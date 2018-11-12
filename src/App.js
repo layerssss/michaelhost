@@ -1,44 +1,40 @@
 import React from "react";
 import { compose } from "recompose";
-import { Route } from "react-router";
-import { Navbar, Nav, NavItem, Grid } from "react-bootstrap";
+import { Route, Switch, Redirect } from "react-router";
+import { Grid } from "react-bootstrap";
 
+import AppNavbar from "./AppNavbar.js";
 import withRouter from "./withRouter.js";
-import Host from "./Hosts.js";
+import Hosts from "./Hosts.js";
+import Terminals from "./Terminals.js";
 import paths from "./paths.js";
 import "./App.css";
 
 export default compose(
   // wrap
-  withRouter
+  withRouter,
 )(
   class App extends React.Component {
     render() {
-      const { params, history, rootTabPath, rootPath, hostsPath } = this.props;
+      const { rootPath } = this.props;
 
       return (
         <>
-          <Navbar>
-            <Nav
-              activeKey={params.rootTab || ""}
-              onSelect={(value, event) => {
-                event.preventDefault();
-                history.push(rootTabPath({ rootTab: value }));
-              }}
-            >
-              <NavItem eventKey="" href={rootPath()}>
-                Dashboard
-              </NavItem>
-              <NavItem eventKey="hosts" href={hostsPath()}>
-                Hosts
-              </NavItem>
-            </Nav>
-          </Navbar>
+          <AppNavbar />
           <Grid>
-            <Route path={paths.hostsPath.matcher} component={Host} />
+            <Switch>
+              <Route
+                path={paths.rootPath.matcher}
+                exact
+                render={() => "TODO: Dashboard"}
+              />
+              <Route path={paths.hostsPath.matcher} component={Hosts} />
+              <Route path={paths.terminalsPath.matcher} component={Terminals} />
+              <Redirect to={rootPath()} />
+            </Switch>
           </Grid>
         </>
       );
     }
-  }
+  },
 );

@@ -22,7 +22,7 @@ export default compose(
       }
     }
   `),
-  branch(({ data }) => data.loading, renderNothing),
+  branch(({ data }) => data.loading || data.error, renderNothing),
   withRouter,
   graphql(
     gql`
@@ -43,19 +43,19 @@ export default compose(
                   id
                 }
               }
-            `
-          }
-        ]
-      }
-    }
-  )
+            `,
+          },
+        ],
+      },
+    },
+  ),
 )(
   class Hosts extends React.Component {
     render() {
       const { data, hostPath, newHostPath, history, deleteHost } = this.props;
       return (
         <>
-          <Table>
+          <Table responsive>
             <thead>
               <tr>
                 <th>Hostname</th>
@@ -82,11 +82,7 @@ export default compose(
                       >
                         Edit
                       </Button>
-                      <Button
-                        bsSize="xs"
-                        bsStyle="info"
-                        href={host.origin}
-                      >
+                      <Button bsSize="xs" bsStyle="info" href={host.origin}>
                         Open
                       </Button>
                       <Button
@@ -95,8 +91,8 @@ export default compose(
                         onClick={async () => {
                           await deleteHost({
                             variables: {
-                              id: host.id
-                            }
+                              id: host.id,
+                            },
                           });
                         }}
                       >
@@ -116,7 +112,7 @@ export default compose(
                 history.push(newHostPath());
               }}
             >
-              New Host
+              Run Command
             </Button>
           </ButtonToolbar>
           <Route path={paths.hostPath.matcher} component={HostDialog} />
@@ -124,5 +120,5 @@ export default compose(
         </>
       );
     }
-  }
+  },
 );

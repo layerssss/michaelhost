@@ -7,7 +7,7 @@ import {
   FormControl,
   ControlLabel,
   Checkbox,
-  Button
+  Button,
 } from "react-bootstrap";
 import { compose, branch, renderNothing } from "recompose";
 import serialize from "form-serialize";
@@ -37,12 +37,12 @@ export default compose(
     {
       options: ({ params }) => ({
         variables: {
-          hostId: params.hostId
-        }
-      })
-    }
+          hostId: params.hostId,
+        },
+      }),
+    },
   ),
-  branch(({ data }) => data.loading, renderNothing),
+  branch(({ data }) => data.loading || data.error, renderNothing),
   graphql(
     gql`
       mutation(
@@ -74,13 +74,13 @@ export default compose(
       }
     `,
     {
-      name: "updateHost"
-    }
-  )
+      name: "updateHost",
+    },
+  ),
 )(
   class HostDialog extends React.Component {
     state = {
-      oidcEnabled: !!this.props.data.host.oidcConfig
+      oidcEnabled: !!this.props.data.host.oidcConfig,
     };
 
     render() {
@@ -93,7 +93,7 @@ export default compose(
               event.preventDefault();
               const formData = serialize(event.target, {
                 hash: true,
-                empty: true
+                empty: true,
               });
 
               await updateHost({
@@ -110,9 +110,9 @@ export default compose(
                         clientSecret: formData.clientSecret,
                         allowEmails: formData.allowEmailsString
                           .split(",")
-                          .map(s => s.trim())
-                      }
-                }
+                          .map(s => s.trim()),
+                      },
+                },
               });
 
               history.goBack();
@@ -200,5 +200,5 @@ export default compose(
         </Modal>
       );
     }
-  }
+  },
 );

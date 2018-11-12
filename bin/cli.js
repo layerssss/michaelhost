@@ -18,7 +18,7 @@ commander
   .option(
     "-s --state-file-path [path]",
     "file path to store application config and state",
-    path.join(homedir(), ".michaelhost-state.json")
+    path.join(homedir(), ".michaelhost-state.json"),
   );
 
 const runAsync = func =>
@@ -36,7 +36,7 @@ commander
     "-p --admin-port [integer]",
     "admin interface http port on localhost",
     (i, d) => parseInt(i || d, 10),
-    3000
+    3000,
   )
   .option("-e --email [string]", "admin email address", process.env["EMAIL"])
   .action(({ adminPort, email }) =>
@@ -49,7 +49,7 @@ commander
       await waitForDeath();
 
       await service.stop();
-    })
+    }),
   );
 
 commander.command("init").action(() =>
@@ -58,7 +58,7 @@ commander.command("init").action(() =>
 
     const state = await State.init({ filePath: stateFilePath });
     await state.save();
-  })
+  }),
 );
 
 const { stateFilePath } = commander.parse(process.argv);

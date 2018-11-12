@@ -16,12 +16,12 @@ const withRouter = compose(
       if (match)
         newProps.params = {
           ...newProps.params,
-          ...match.params
+          ...match.params,
         };
     }
 
     return newProps;
-  })
+  }),
 );
 
 export default withRouter;
