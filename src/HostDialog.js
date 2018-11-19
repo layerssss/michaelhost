@@ -1,6 +1,7 @@
 import React from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   Modal,
   FormGroup,
@@ -193,6 +194,7 @@ export default compose(
             </Modal.Body>
             <Modal.Footer>
               <Button bsStyle="primary" type="submit">
+                <FontAwesomeIcon icon="save" />
                 Update Host
               </Button>
             </Modal.Footer>

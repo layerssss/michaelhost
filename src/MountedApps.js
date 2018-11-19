@@ -1,10 +1,12 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { compose, branch, renderNothing } from "recompose";
-import { Route } from "react-router";
+import { Route, Switch } from "react-router";
 
+import MountedApp from "./MountedApp.js";
 import NewMountedAppDialog from "./NewMountedAppDialog.js";
 import withRouter from "./withRouter.js";
 import paths from "./paths.js";
@@ -78,6 +80,7 @@ export default compose(
                           });
                         }}
                       >
+                        <FontAwesomeIcon icon="trash" />
                         Delete
                       </Button>
                     </ButtonToolbar>
@@ -94,13 +97,17 @@ export default compose(
                 history.push(newMountedAppPath());
               }}
             >
+              <FontAwesomeIcon icon="plus" />
               New Mounted App
             </Button>
           </ButtonToolbar>
-          <Route
-            path={paths.newMountedAppPath.matcher}
-            component={NewMountedAppDialog}
-          />
+          <Switch>
+            <Route
+              path={paths.newMountedAppPath.matcher}
+              component={NewMountedAppDialog}
+            />
+            <Route path={paths.mountedAppPath.matcher} component={MountedApp} />
+          </Switch>
         </>
       );
     }

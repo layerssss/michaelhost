@@ -1,5 +1,6 @@
 import React from "react";
 import gql from "graphql-tag";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql } from "react-apollo";
 import serialize from "form-serialize";
 import {
@@ -86,6 +87,7 @@ export default compose(
             </Modal.Body>
             <Modal.Footer>
               <Button bsStyle="primary" type="submit">
+                <FontAwesomeIcon icon="save" />
                 Create Host
               </Button>
             </Modal.Footer>

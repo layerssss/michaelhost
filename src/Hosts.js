@@ -4,6 +4,7 @@ import gql from "graphql-tag";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { compose, branch, renderNothing } from "recompose";
 import { Route } from "react-router";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import HostDialog from "./HostDialog.js";
 import NewHostDialog from "./NewHostDialog.js";
@@ -80,9 +81,11 @@ export default compose(
                           history.push(hostPath({ hostId: host.id }));
                         }}
                       >
+                        <FontAwesomeIcon icon="pen" />
                         Edit
                       </Button>
                       <Button bsSize="xs" bsStyle="info" href={host.origin}>
+                        <FontAwesomeIcon icon="external-link-alt" />
                         Open
                       </Button>
                       <Button
@@ -96,6 +99,7 @@ export default compose(
                           });
                         }}
                       >
+                        <FontAwesomeIcon icon="trash" />
                         Delete
                       </Button>
                     </ButtonToolbar>
@@ -112,6 +116,7 @@ export default compose(
                 history.push(newHostPath());
               }}
             >
+              <FontAwesomeIcon icon="plus" />
               New Host
             </Button>
           </ButtonToolbar>

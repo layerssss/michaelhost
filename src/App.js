@@ -8,7 +8,6 @@ import withRouter from "./withRouter.js";
 import Hosts from "./Hosts.js";
 import Terminals from "./Terminals.js";
 import MountedApps from "./MountedApps.js";
-import MountedApp from "./MountedApp.js";
 import paths from "./paths.js";
 import "./App.css";
 
@@ -32,10 +31,6 @@ export default compose(
               />
               <Route path={paths.hostsPath.matcher} component={Hosts} />
               <Route path={paths.terminalsPath.matcher} component={Terminals} />
-              <Route
-                path={paths.mountedAppPath.matcher}
-                component={MountedApp}
-              />
               <Route
                 path={paths.mountedAppsPath.matcher}
                 component={MountedApps}

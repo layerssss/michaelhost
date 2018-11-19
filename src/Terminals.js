@@ -1,5 +1,6 @@
 import React from "react";
 import gql from "graphql-tag";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql } from "react-apollo";
 import serialize from "form-serialize";
 import { Route, Switch, Redirect } from "react-router";
@@ -82,6 +83,7 @@ export default compose(
                 <FormControl name="cwd" />
               </FormGroup>
               <Button bsStyle="primary" type="submit">
+                <FontAwesomeIcon icon="save" />
                 Create Terminal
               </Button>
             </form>

@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 import { compose, branch, renderNothing } from "recompose";
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
 import { graphql } from "react-apollo";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import withRouter from "./withRouter.js";
 import "./App.css";
@@ -59,6 +60,7 @@ export default compose(
                 })}
                 onClick={this.handleNavClick}
               >
+                <FontAwesomeIcon icon="archive" />
                 {mountedApp.name}
               </NavItem>
             ))}
@@ -68,22 +70,31 @@ export default compose(
                 href={terminalPath({ terminalId: terminal.id })}
                 onClick={this.handleNavClick}
               >
+                <FontAwesomeIcon icon="terminal" />
                 {terminal.name}
               </NavItem>
             ))}
           </Nav>
           <Nav pullRight>
             <NavItem href={terminalsPath()} onClick={this.handleNavClick}>
+              <FontAwesomeIcon icon="plus" />
               Create Terminal
             </NavItem>
             <NavDropdown
-              title="Configuration"
+              title={
+                <>
+                  <FontAwesomeIcon icon="cogs" />
+                  Configuration
+                </>
+              }
               id="navbar-configuration-dropdown"
             >
               <MenuItem href={hostsPath()} onClick={this.handleNavClick}>
+                <FontAwesomeIcon icon="globe-asia" />
                 Hosts
               </MenuItem>
               <MenuItem href={mountedAppsPath()} onClick={this.handleNavClick}>
+                <FontAwesomeIcon icon="archive" />
                 Mounted Apps
               </MenuItem>
             </NavDropdown>

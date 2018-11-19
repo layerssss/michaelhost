@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 import serialize from "form-serialize";
@@ -82,6 +83,7 @@ export default compose(
             </Modal.Body>
             <Modal.Footer>
               <Button bsStyle="primary" type="submit">
+                <FontAwesomeIcon icon="plus" />
                 Create Mounted App
               </Button>
             </Modal.Footer>

@@ -1,4 +1,5 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import gql from "graphql-tag";
 import EventListener from "react-event-listener";
 import { graphql } from "react-apollo";
@@ -125,6 +126,7 @@ export default compose(
               <ButtonToolbar>
                 <Button
                   disabled={!this.state.alive}
+                  bsStyle="danger"
                   onClick={() =>
                     webSocket.send(
                       JSON.stringify({
@@ -133,11 +135,12 @@ export default compose(
                     )
                   }
                 >
-                  {" "}
+                  <FontAwesomeIcon icon="power-off" />
                   Kill
                 </Button>
                 <Button
                   disabled={this.state.alive}
+                  bsStyle="info"
                   onClick={async () => {
                     await deleteTerminal({
                       variables: { id: data.terminal.id },
@@ -145,6 +148,7 @@ export default compose(
                     history.push(terminalsPath());
                   }}
                 >
+                  <FontAwesomeIcon icon="trash" />
                   Delete
                 </Button>
               </ButtonToolbar>

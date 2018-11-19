@@ -1,4 +1,5 @@
 import { Panel, ButtonToolbar, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { compose, withState } from "recompose";
 import React from "react";
 import _ from "lodash";
@@ -42,6 +43,7 @@ export default compose(
             _.defer(() => window.dispatchEvent(new Event("resize")));
           }}
         >
+          <FontAwesomeIcon icon="expand" />
           Toggle Full Screen
         </Button>
       </ButtonToolbar>

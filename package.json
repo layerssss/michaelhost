@@ -38,6 +38,9 @@
     "ws": "^6.1.0"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.8",
+    "@fortawesome/free-solid-svg-icons": "^5.5.0",
+    "@fortawesome/react-fontawesome": "^0.1.3",
     "bootswatch": "3",
     "concurrently": "^4.0.1",
     "form-serialize": "^0.7.2",
