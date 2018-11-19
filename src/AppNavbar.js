@@ -21,6 +21,7 @@ export default compose(
         id
         name
       }
+      hostname
     }
   `),
   branch(({ data }) => data.loading || data.error, renderNothing),
@@ -48,7 +49,7 @@ export default compose(
         <Navbar staticTop>
           <Nav activeHref={location.pathname}>
             <NavItem href={rootPath()} onClick={this.handleNavClick}>
-              Dashboard
+              {data.hostname}
             </NavItem>
             {data.mountedApps.map(mountedApp => (
               <NavItem
