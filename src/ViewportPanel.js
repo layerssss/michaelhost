@@ -5,7 +5,7 @@ import _ from "lodash";
 
 export default compose(
   // wrap
-  withState("fullscreen", "setFullscreen", false),
+  withState("fullscreen", "setFullscreen", true),
 )(({ title, children, fullscreen, setFullscreen }) => (
   <Panel
     style={{
@@ -16,10 +16,11 @@ export default compose(
         ? {
             position: "fixed",
             left: 0,
-            top: 0,
+            top: 50,
             right: 0,
             bottom: 0,
             margin: 0,
+            zIndex: 1,
           }
         : {
             height: 640,

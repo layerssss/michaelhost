@@ -113,10 +113,6 @@ export default compose(
           <Panel>
             <Panel.Body>
               <FormGroup>
-                <ControlLabel>name:</ControlLabel>
-                <FormControl.Static>{data.terminal.name}</FormControl.Static>
-              </FormGroup>
-              <FormGroup>
                 <ControlLabel>file:</ControlLabel>
                 <FormControl.Static>{data.terminal.file}</FormControl.Static>
               </FormGroup>

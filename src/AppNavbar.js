@@ -16,6 +16,10 @@ export default compose(
         id
         name
       }
+      mountedApps {
+        id
+        name
+      }
     }
   `),
   branch(({ data }) => data.loading || data.error, renderNothing),
@@ -35,33 +39,52 @@ export default compose(
         hostsPath,
         terminalPath,
         terminalsPath,
+        mountedAppsPath,
+        mountedAppPath,
       } = this.props;
 
       return (
-        <Navbar>
+        <Navbar staticTop>
           <Nav activeHref={location.pathname}>
             <NavItem href={rootPath()} onClick={this.handleNavClick}>
               Dashboard
             </NavItem>
-            <NavItem href={hostsPath()} onClick={this.handleNavClick}>
-              Hosts
+            {data.mountedApps.map(mountedApp => (
+              <NavItem
+                key={mountedApp.id}
+                href={mountedAppPath({
+                  mountedAppName: encodeURIComponent(
+                    mountedApp.name.toLowerCase(),
+                  ),
+                })}
+                onClick={this.handleNavClick}
+              >
+                {mountedApp.name}
+              </NavItem>
+            ))}
+            {data.terminals.map(terminal => (
+              <NavItem
+                key={terminal.id}
+                href={terminalPath({ terminalId: terminal.id })}
+                onClick={this.handleNavClick}
+              >
+                {terminal.name}
+              </NavItem>
+            ))}
+          </Nav>
+          <Nav pullRight>
+            <NavItem href={terminalsPath()} onClick={this.handleNavClick}>
+              Create Terminal
             </NavItem>
-            <NavDropdown title="Terminals" id="navbar-terminals-dropdown">
-              {!data.terminals.length && (
-                <MenuItem disabled>No terminals</MenuItem>
-              )}
-              {data.terminals.map(terminal => (
-                <MenuItem
-                  key={terminal.id}
-                  href={terminalPath({ terminalId: terminal.id })}
-                  onClick={this.handleNavClick}
-                >
-                  {terminal.name}
-                </MenuItem>
-              ))}
-              <MenuItem divider />
-              <MenuItem href={terminalsPath()} onClick={this.handleNavClick}>
-                Run Command
+            <NavDropdown
+              title="Configuration"
+              id="navbar-configuration-dropdown"
+            >
+              <MenuItem href={hostsPath()} onClick={this.handleNavClick}>
+                Hosts
+              </MenuItem>
+              <MenuItem href={mountedAppsPath()} onClick={this.handleNavClick}>
+                Mounted Apps
               </MenuItem>
             </NavDropdown>
           </Nav>

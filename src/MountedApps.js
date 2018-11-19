@@ -5,20 +5,17 @@ import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { compose, branch, renderNothing } from "recompose";
 import { Route } from "react-router";
 
-import HostDialog from "./HostDialog.js";
-import NewHostDialog from "./NewHostDialog.js";
+import NewMountedAppDialog from "./NewMountedAppDialog.js";
 import withRouter from "./withRouter.js";
 import paths from "./paths.js";
 
 export default compose(
   graphql(gql`
     query {
-      hosts {
+      mountedApps {
         id
-        hostname
+        name
         upstream
-        origin
-        ssl
       }
     }
   `),
@@ -27,19 +24,19 @@ export default compose(
   graphql(
     gql`
       mutation($id: ID!) {
-        deleteHost(id: $id) {
+        deleteMountedApp(id: $id) {
           id
         }
       }
     `,
     {
-      name: "deleteHost",
+      name: "deleteMountedApp",
       options: {
         refetchQueries: [
           {
             query: gql`
               {
-                hosts {
+                mountedApps {
                   id
                 }
               }
@@ -50,48 +47,33 @@ export default compose(
     },
   ),
 )(
-  class Hosts extends React.Component {
+  class MountedApps extends React.Component {
     render() {
-      const { data, hostPath, newHostPath, history, deleteHost } = this.props;
+      const { data, newMountedAppPath, history, deleteMountedApp } = this.props;
       return (
         <>
           <Table responsive>
             <thead>
               <tr>
-                <th>Hostname</th>
-                <th>SSL</th>
+                <th>Name</th>
                 <th>Upstearm</th>
                 <th />
               </tr>
             </thead>
             <tbody>
-              {data.hosts.map(host => (
-                <tr key={host.id}>
-                  <td>{host.hostname}</td>
-                  <td>{String(host.ssl)}</td>
-                  <td>{host.upstream}</td>
+              {data.mountedApps.map(mountedApp => (
+                <tr key={mountedApp.id}>
+                  <td>{mountedApp.name}</td>
+                  <td>{mountedApp.upstream}</td>
                   <td>
                     <ButtonToolbar>
                       <Button
                         bsSize="xs"
-                        href={hostPath({ hostId: host.id })}
-                        onClick={event => {
-                          event.preventDefault();
-                          history.push(hostPath({ hostId: host.id }));
-                        }}
-                      >
-                        Edit
-                      </Button>
-                      <Button bsSize="xs" bsStyle="info" href={host.origin}>
-                        Open
-                      </Button>
-                      <Button
-                        bsSize="xs"
                         bsStyle="danger"
                         onClick={async () => {
-                          await deleteHost({
+                          await deleteMountedApp({
                             variables: {
-                              id: host.id,
+                              id: mountedApp.id,
                             },
                           });
                         }}
@@ -106,17 +88,19 @@ export default compose(
           </Table>
           <ButtonToolbar>
             <Button
-              href={newHostPath()}
+              href={newMountedAppPath()}
               onClick={event => {
                 event.preventDefault();
-                history.push(newHostPath());
+                history.push(newMountedAppPath());
               }}
             >
-              New Host
+              New Mounted App
             </Button>
           </ButtonToolbar>
-          <Route path={paths.hostPath.matcher} component={HostDialog} />
-          <Route path={paths.newHostPath.matcher} component={NewHostDialog} />
+          <Route
+            path={paths.newMountedAppPath.matcher}
+            component={NewMountedAppDialog}
+          />
         </>
       );
     }

@@ -82,7 +82,7 @@ export default compose(
                 <FormControl name="cwd" />
               </FormGroup>
               <Button bsStyle="primary" type="submit">
-                Create Host
+                Create Terminal
               </Button>
             </form>
           </Route>

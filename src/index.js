@@ -5,7 +5,7 @@ import { ApolloProvider } from "react-apollo";
 import { BrowserRouter } from "react-router-dom";
 
 import "typeface-roboto";
-import "bootswatch/paper/bootstrap.css";
+import "bootswatch/cerulean/bootstrap.css";
 import "./index.css";
 import App from "./App.js";
 import apolloClient from "./apolloClient.js";

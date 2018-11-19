@@ -3,14 +3,9 @@ const rootPath = {
   generate: () => `/`,
 };
 
-const rootTabPath = {
-  matcher: `${rootPath.matcher}:rootTab(hosts|terminals)`,
-  generate: p => `${rootPath.generate(p)}${p.rootTab}`,
-};
-
 const hostsPath = {
-  matcher: `${rootPath.matcher}hosts`,
-  generate: p => `${rootPath.generate(p)}hosts`,
+  matcher: `${rootPath.matcher}h`,
+  generate: p => `${rootPath.generate(p)}h`,
 };
 
 const hostPath = {
@@ -24,8 +19,8 @@ const newHostPath = {
 };
 
 const terminalsPath = {
-  matcher: `${rootPath.matcher}terminals`,
-  generate: p => `${rootPath.generate(p)}terminals`,
+  matcher: `${rootPath.matcher}t`,
+  generate: p => `${rootPath.generate(p)}t`,
 };
 
 const terminalPath = {
@@ -33,14 +28,37 @@ const terminalPath = {
   generate: p => `${terminalsPath.generate(p)}/${p.terminalId}`,
 };
 
+const mountedAppsPath = {
+  matcher: `${rootPath.matcher}a`,
+  generate: p => `${rootPath.generate(p)}a`,
+};
+
+const newMountedAppPath = {
+  matcher: `${mountedAppsPath.matcher}/new`,
+  generate: p => `${mountedAppsPath.generate(p)}/new`,
+};
+
+const mountedAppPath = {
+  matcher: `${mountedAppsPath.matcher}/:mountedAppName`,
+  generate: p => `${mountedAppsPath.generate(p)}/${p.mountedAppName}`,
+};
+
+const mountedAppProxyPath = {
+  matcher: `${rootPath.matcher}api/mounted_apps/:mountedAppId(\\w{8})/`,
+  generate: p => `${rootPath.generate(p)}api/mounted_apps/${p.mountedAppId}/`,
+};
+
 const paths = {
   rootPath,
-  rootTabPath,
   hostsPath,
   newHostPath,
   hostPath,
   terminalsPath,
   terminalPath,
+  mountedAppsPath,
+  newMountedAppPath,
+  mountedAppPath,
+  mountedAppProxyPath,
 };
 
 export default paths;
