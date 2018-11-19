@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
@@ -54,6 +55,7 @@ export default compose(
       const { data, newMountedAppPath, history, deleteMountedApp } = this.props;
       return (
         <>
+          <Helmet title="Mounted Apps" />
           <Table responsive>
             <thead>
               <tr>

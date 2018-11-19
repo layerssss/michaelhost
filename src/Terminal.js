@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import gql from "graphql-tag";
 import EventListener from "react-event-listener";
@@ -110,6 +111,7 @@ export default compose(
 
       return (
         <>
+          <Helmet title={data.terminal.name} />
           <EventListener target="window" onResize={() => this.xterm.fit()} />
           <Panel>
             <Panel.Body>

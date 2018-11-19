@@ -9,6 +9,7 @@ import Hosts from "./Hosts.js";
 import Terminals from "./Terminals.js";
 import MountedApps from "./MountedApps.js";
 import paths from "./paths.js";
+import Dashboard from "./Dashboard.js";
 import "./App.css";
 
 export default compose(
@@ -27,7 +28,7 @@ export default compose(
               <Route
                 path={paths.rootPath.matcher}
                 exact
-                render={() => "TODO: Dashboard"}
+                component={Dashboard}
               />
               <Route path={paths.hostsPath.matcher} component={Hosts} />
               <Route path={paths.terminalsPath.matcher} component={Terminals} />

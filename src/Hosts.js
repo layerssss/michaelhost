@@ -1,4 +1,5 @@
 import React from "react";
+import { Helmet } from "react-helmet";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
@@ -56,6 +57,7 @@ export default compose(
       const { data, hostPath, newHostPath, history, deleteHost } = this.props;
       return (
         <>
+          <Helmet title="Hosts" />
           <Table responsive>
             <thead>
               <tr>

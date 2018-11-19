@@ -2,6 +2,7 @@ import React from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 import { compose, branch, renderNothing } from "recompose";
+import { Helmet } from "react-helmet";
 
 import withRouter from "./withRouter.js";
 import ViewportPanel from "./ViewportPanel.js";
@@ -33,6 +34,7 @@ export default compose(
 
       return (
         <>
+          <Helmet title={data.mountedApp.name} />
           <ViewportPanel title={data.mountedApp.name}>
             <iframe
               title={data.mountedApp.name}
