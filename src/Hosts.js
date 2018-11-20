@@ -3,28 +3,31 @@ import { Helmet } from "react-helmet";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
-import { compose, branch, renderNothing } from "recompose";
+import { compose } from "recompose";
 import { Route } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import withData from "./withData.js";
 import HostDialog from "./HostDialog.js";
 import NewHostDialog from "./NewHostDialog.js";
 import withRouter from "./withRouter.js";
 import paths from "./paths.js";
 
 export default compose(
-  graphql(gql`
-    query {
-      hosts {
-        id
-        hostname
-        upstream
-        origin
-        ssl
+  withData(
+    gql`
+      query {
+        hosts {
+          id
+          hostname
+          upstream
+          origin
+          ssl
+        }
       }
-    }
-  `),
-  branch(({ data }) => data.loading || data.error, renderNothing),
+    `,
+    { options: { partialRefetch: true } },
+  ),
   withRouter,
   graphql(
     gql`

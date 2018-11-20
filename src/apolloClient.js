@@ -1,6 +1,7 @@
 import ApolloClient from "apollo-boost";
 
 const apolloClient = new ApolloClient({
+  fetchPolicy: "cache-and-network",
   onError: ({ graphQLErrors, networkError }) => {
     if (graphQLErrors)
       alert(

@@ -1,13 +1,14 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import gql from "graphql-tag";
-import { compose, branch, renderNothing } from "recompose";
-import { graphql } from "react-apollo";
+import { compose } from "recompose";
 import { Panel, ListGroup, ListGroupItem } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
+import withData from "./withData.js";
+
 export default compose(
-  graphql(gql`
+  withData(gql`
     query {
       hostname
       hosts {
@@ -24,7 +25,6 @@ export default compose(
       }
     }
   `),
-  branch(({ data }) => data.loading || data.error, renderNothing),
 )(
   class Dashboard extends React.Component {
     getSections = () => {

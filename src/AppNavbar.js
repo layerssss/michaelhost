@@ -1,30 +1,33 @@
 import React from "react";
 import gql from "graphql-tag";
-import { compose, branch, renderNothing } from "recompose";
+import { compose } from "recompose";
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
-import { graphql } from "react-apollo";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import withRouter from "./withRouter.js";
+import withData from "./withData.js";
+
 import "./App.css";
 
 export default compose(
   // wrap
   withRouter,
-  graphql(gql`
-    query {
-      terminals {
-        id
-        name
+  withData(
+    gql`
+      query {
+        terminals {
+          id
+          name
+        }
+        mountedApps {
+          id
+          name
+        }
+        hostname
       }
-      mountedApps {
-        id
-        name
-      }
-      hostname
-    }
-  `),
-  branch(({ data }) => data.loading || data.error, renderNothing),
+    `,
+    { options: { partialRefetch: true } },
+  ),
 )(
   class App extends React.Component {
     handleNavClick = event => {

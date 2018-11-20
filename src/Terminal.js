@@ -7,7 +7,7 @@ import { graphql } from "react-apollo";
 import { Terminal as XTerm } from "xterm";
 import * as fit from "xterm/lib/addons/fit/fit";
 import "xterm/lib/xterm.css";
-import { compose, branch, renderNothing, withProps } from "recompose";
+import { compose, withProps } from "recompose";
 import ShellQuote from "shell-quote";
 import {
   Panel,
@@ -18,6 +18,7 @@ import {
   ControlLabel,
 } from "react-bootstrap";
 
+import withData from "./withData.js";
 import withWebSocket from "./withWebSocket.js";
 import withRouter from "./withRouter.js";
 import ViewportPanel from "./ViewportPanel.js";
@@ -26,7 +27,7 @@ XTerm.applyAddon(fit);
 
 export default compose(
   withRouter,
-  graphql(
+  withData(
     gql`
       query($terminalId: ID!) {
         terminal(id: $terminalId) {
@@ -45,7 +46,6 @@ export default compose(
       }),
     },
   ),
-  branch(({ data }) => data.loading || data.error, renderNothing),
   graphql(
     gql`
       mutation($id: ID!) {

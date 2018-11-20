@@ -1,15 +1,15 @@
 import React from "react";
 import gql from "graphql-tag";
-import { graphql } from "react-apollo";
-import { compose, branch, renderNothing } from "recompose";
+import { compose } from "recompose";
 import { Helmet } from "react-helmet";
 
 import withRouter from "./withRouter.js";
 import ViewportPanel from "./ViewportPanel.js";
+import withData from "./withData.js";
 
 export default compose(
   withRouter,
-  graphql(
+  withData(
     gql`
       query($mountedAppName: String!) {
         mountedApp(name: $mountedAppName) {
@@ -26,7 +26,6 @@ export default compose(
       }),
     },
   ),
-  branch(({ data }) => data.loading || data.error, renderNothing),
 )(
   class MountedApp extends React.Component {
     render() {

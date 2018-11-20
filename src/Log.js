@@ -1,25 +1,24 @@
 import React from "react";
 import { Helmet } from "react-helmet";
 import gql from "graphql-tag";
-import { compose, branch, renderNothing, withProps } from "recompose";
+import { compose, withProps } from "recompose";
 import EventListener from "react-event-listener";
-import { graphql } from "react-apollo";
 import { Terminal as XTerm } from "xterm";
 import * as fit from "xterm/lib/addons/fit/fit";
 import "xterm/lib/xterm.css";
 
 import ViewportPanel from "./ViewportPanel.js";
 import withWebSocket from "./withWebSocket.js";
+import withData from "./withData.js";
 
 XTerm.applyAddon(fit);
 
 export default compose(
-  graphql(gql`
+  withData(gql`
     query {
       hostname
     }
   `),
-  branch(({ data }) => data.loading || data.error, renderNothing),
   withProps(({ data }) => ({
     webSocketPath: `/api/info`,
   })),

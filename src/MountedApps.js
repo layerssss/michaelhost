@@ -4,16 +4,18 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
-import { compose, branch, renderNothing } from "recompose";
+import { compose  } from "recompose";
 import { Route, Switch } from "react-router";
 
 import MountedApp from "./MountedApp.js";
 import NewMountedAppDialog from "./NewMountedAppDialog.js";
 import withRouter from "./withRouter.js";
 import paths from "./paths.js";
+import withData from './withData.js';
+
 
 export default compose(
-  graphql(gql`
+  withData(gql`
     query {
       mountedApps {
         id
@@ -22,7 +24,6 @@ export default compose(
       }
     }
   `),
-  branch(({ data }) => data.loading || data.error, renderNothing),
   withRouter,
   graphql(
     gql`

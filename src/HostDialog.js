@@ -10,14 +10,15 @@ import {
   Checkbox,
   Button,
 } from "react-bootstrap";
-import { compose, branch, renderNothing } from "recompose";
+import { compose } from "recompose";
 import serialize from "form-serialize";
 
 import withRouter from "./withRouter.js";
+import withData from "./withData.js";
 
 export default compose(
   withRouter,
-  graphql(
+  withData(
     gql`
       query($hostId: ID!) {
         host(id: $hostId) {
@@ -43,7 +44,6 @@ export default compose(
       }),
     },
   ),
-  branch(({ data }) => data.loading || data.error, renderNothing),
   graphql(
     gql`
       mutation(
