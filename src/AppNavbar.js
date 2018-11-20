@@ -46,7 +46,7 @@ export default compose(
       } = this.props;
 
       return (
-        <Navbar staticTop>
+        <Navbar fluid staticTop>
           <Nav activeHref={location.pathname}>
             <NavItem href={rootPath()} onClick={this.handleNavClick}>
               {data.hostname}

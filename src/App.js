@@ -23,7 +23,7 @@ export default compose(
       return (
         <>
           <AppNavbar />
-          <Grid>
+          <Grid fluid>
             <Switch>
               <Route
                 path={paths.rootPath.matcher}
