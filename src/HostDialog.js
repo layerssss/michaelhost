@@ -28,6 +28,7 @@ export default compose(
           upstream
           ssl
           redirect
+          xfwd
           oidcConfig {
             id
             discoveryUrl
@@ -54,6 +55,7 @@ export default compose(
         $ssl: Boolean!
         $enabled: Boolean!
         $redirect: Boolean!
+        $xfwd: Boolean!
         $upstream: String!
         $oidcConfig: OidcConfigInput
       ) {
@@ -64,6 +66,7 @@ export default compose(
           enabled: $enabled
           redirect: $redirect
           upstream: $upstream
+          xfwd: $xfwd
           oidcConfig: $oidcConfig
         ) {
           id
@@ -71,6 +74,7 @@ export default compose(
           upstream
           enabled
           redirect
+          xfwd
           ssl
           oidcConfig {
             id
@@ -113,6 +117,7 @@ export default compose(
                   ssl: Boolean(formData.ssl),
                   enabled: Boolean(formData.enabled),
                   redirect: Boolean(formData.redirect),
+                  xfwd: Boolean(formData.xfwd),
                   oidcConfig: !this.state.oidcEnabled
                     ? null
                     : {
@@ -155,6 +160,9 @@ export default compose(
               </Checkbox>
               <Checkbox name="ssl" defaultChecked={data.host.ssl}>
                 SSL
+              </Checkbox>
+              <Checkbox name="xfwd" defaultChecked={data.host.xfwd}>
+                Enable X-Forward... headers
               </Checkbox>
               <Checkbox
                 checked={this.state.oidcEnabled}
