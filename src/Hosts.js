@@ -23,6 +23,7 @@ export default compose(
           upstream
           origin
           ssl
+          redirect
           enabled
         }
       }
@@ -69,6 +70,7 @@ export default compose(
                 <th>Hostname</th>
                 <th>SSL</th>
                 <th>Upstearm</th>
+                <th>Redirect</th>
                 <th />
               </tr>
             </thead>
@@ -79,6 +81,7 @@ export default compose(
                   <td>{host.hostname}</td>
                   <td>{String(host.ssl)}</td>
                   <td>{host.upstream}</td>
+                  <td>{String(host.redirect)}</td>
                   <td>
                     <ButtonToolbar>
                       <Button

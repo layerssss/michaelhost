@@ -27,6 +27,7 @@ export default compose(
           hostname
           upstream
           ssl
+          redirect
           oidcConfig {
             id
             discoveryUrl
@@ -52,6 +53,7 @@ export default compose(
         $hostname: String!
         $ssl: Boolean!
         $enabled: Boolean!
+        $redirect: Boolean!
         $upstream: String!
         $oidcConfig: OidcConfigInput
       ) {
@@ -60,6 +62,7 @@ export default compose(
           hostname: $hostname
           ssl: $ssl
           enabled: $enabled
+          redirect: $redirect
           upstream: $upstream
           oidcConfig: $oidcConfig
         ) {
@@ -67,6 +70,7 @@ export default compose(
           hostname
           upstream
           enabled
+          redirect
           ssl
           oidcConfig {
             id
@@ -108,6 +112,7 @@ export default compose(
                   upstream: formData.upstream,
                   ssl: Boolean(formData.ssl),
                   enabled: Boolean(formData.enabled),
+                  redirect: Boolean(formData.redirect),
                   oidcConfig: !this.state.oidcEnabled
                     ? null
                     : {
@@ -145,6 +150,9 @@ export default compose(
                   defaultValue={data.host.upstream}
                 />
               </FormGroup>
+              <Checkbox name="redirect" defaultChecked={data.host.redirect}>
+                Redirect
+              </Checkbox>
               <Checkbox name="ssl" defaultChecked={data.host.ssl}>
                 SSL
               </Checkbox>
