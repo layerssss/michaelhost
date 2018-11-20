@@ -85,10 +85,10 @@ export default compose(
     };
 
     render() {
-      const { history, data, updateHost } = this.props;
+      const { history, data, updateHost, hostsPath } = this.props;
 
       return (
-        <Modal show onHide={() => history.goBack()}>
+        <Modal show onHide={() => history.push(hostsPath())}>
           <form
             onSubmit={async event => {
               event.preventDefault();
@@ -116,7 +116,7 @@ export default compose(
                 },
               });
 
-              history.goBack();
+              history.push(hostsPath());
             }}
           >
             <Modal.Header closeButton>

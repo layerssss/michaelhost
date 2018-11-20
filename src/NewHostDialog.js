@@ -48,10 +48,10 @@ export default compose(
 )(
   class NewHostDialog extends React.Component {
     render() {
-      const { history, createHost } = this.props;
+      const { history, createHost, hostsPath } = this.props;
 
       return (
-        <Modal show onHide={() => history.goBack()}>
+        <Modal show onHide={() => history.push(hostsPath())}>
           <form
             onSubmit={async event => {
               event.preventDefault();
@@ -68,7 +68,7 @@ export default compose(
                 },
               });
 
-              history.goBack();
+              history.push(hostsPath());
             }}
           >
             <Modal.Header closeButton>

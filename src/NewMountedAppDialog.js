@@ -46,10 +46,10 @@ export default compose(
 )(
   class NewMountedAppDialog extends React.Component {
     render() {
-      const { history, createMountedApp } = this.props;
+      const { history, createMountedApp, mountedAppsPath } = this.props;
 
       return (
-        <Modal show onHide={() => history.goBack()}>
+        <Modal show onHide={() => history.push(mountedAppsPath())}>
           <form
             onSubmit={async event => {
               event.preventDefault();
@@ -65,7 +65,7 @@ export default compose(
                 },
               });
 
-              history.goBack();
+              history.push(mountedAppsPath());
             }}
           >
             <Modal.Header closeButton>
