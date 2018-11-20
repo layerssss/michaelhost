@@ -3,6 +3,11 @@ const rootPath = {
   generate: () => `/`,
 };
 
+const logPath = {
+  matcher: `${rootPath.matcher}l`,
+  generate: p => `${rootPath.generate(p)}l`,
+};
+
 const hostsPath = {
   matcher: `${rootPath.matcher}h`,
   generate: p => `${rootPath.generate(p)}h`,
@@ -50,6 +55,7 @@ const mountedAppProxyPath = {
 
 const paths = {
   rootPath,
+  logPath,
   hostsPath,
   newHostPath,
   hostPath,

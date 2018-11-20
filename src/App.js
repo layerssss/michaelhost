@@ -10,6 +10,7 @@ import Terminals from "./Terminals.js";
 import MountedApps from "./MountedApps.js";
 import paths from "./paths.js";
 import Dashboard from "./Dashboard.js";
+import Log from "./Log.js";
 import "./App.css";
 
 export default compose(
@@ -30,6 +31,7 @@ export default compose(
                 exact
                 component={Dashboard}
               />
+              <Route path={paths.logPath.matcher} exact component={Log} />
               <Route path={paths.hostsPath.matcher} component={Hosts} />
               <Route path={paths.terminalsPath.matcher} component={Terminals} />
               <Route

@@ -39,6 +39,7 @@ export default compose(
         location,
         rootPath,
         hostsPath,
+        logPath,
         terminalPath,
         terminalsPath,
         mountedAppsPath,
@@ -77,6 +78,10 @@ export default compose(
             ))}
           </Nav>
           <Nav pullRight>
+            <NavItem href={logPath()} onClick={this.handleNavClick}>
+              <FontAwesomeIcon icon="terminal" />
+              Logs
+            </NavItem>
             <NavItem href={terminalsPath()} onClick={this.handleNavClick}>
               <FontAwesomeIcon icon="plus" />
               Create Terminal
