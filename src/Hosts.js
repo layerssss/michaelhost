@@ -23,6 +23,7 @@ export default compose(
           upstream
           origin
           ssl
+          enabled
         }
       }
     `,
@@ -64,6 +65,7 @@ export default compose(
           <Table responsive>
             <thead>
               <tr>
+                <th>enabled</th>
                 <th>Hostname</th>
                 <th>SSL</th>
                 <th>Upstearm</th>
@@ -73,6 +75,7 @@ export default compose(
             <tbody>
               {data.hosts.map(host => (
                 <tr key={host.id}>
+                  <td>{String(host.enabled)}</td>
                   <td>{host.hostname}</td>
                   <td>{String(host.ssl)}</td>
                   <td>{host.upstream}</td>

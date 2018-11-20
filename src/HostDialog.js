@@ -23,6 +23,7 @@ export default compose(
       query($hostId: ID!) {
         host(id: $hostId) {
           id
+          enabled
           hostname
           upstream
           ssl
@@ -50,6 +51,7 @@ export default compose(
         $id: ID!
         $hostname: String!
         $ssl: Boolean!
+        $enabled: Boolean!
         $upstream: String!
         $oidcConfig: OidcConfigInput
       ) {
@@ -57,12 +59,14 @@ export default compose(
           id: $id
           hostname: $hostname
           ssl: $ssl
+          enabled: $enabled
           upstream: $upstream
           oidcConfig: $oidcConfig
         ) {
           id
           hostname
           upstream
+          enabled
           ssl
           oidcConfig {
             id
@@ -103,6 +107,7 @@ export default compose(
                   hostname: formData.hostname,
                   upstream: formData.upstream,
                   ssl: Boolean(formData.ssl),
+                  enabled: Boolean(formData.enabled),
                   oidcConfig: !this.state.oidcEnabled
                     ? null
                     : {
@@ -124,6 +129,9 @@ export default compose(
             </Modal.Header>
             <Modal.Body>
               <FormGroup>
+                <Checkbox name="enabled" defaultChecked={data.host.enabled}>
+                  Enabble
+                </Checkbox>
                 <ControlLabel>Hostname</ControlLabel>
                 <FormControl
                   name="hostname"
