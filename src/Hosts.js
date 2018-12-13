@@ -27,8 +27,7 @@ export default compose(
           enabled
         }
       }
-    `,
-    { options: { partialRefetch: true } },
+    `
   ),
   withRouter,
   graphql(

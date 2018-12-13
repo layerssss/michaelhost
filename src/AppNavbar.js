@@ -25,8 +25,7 @@ export default compose(
         }
         hostname
       }
-    `,
-    { options: { partialRefetch: true } },
+    `
   ),
 )(
   class App extends React.Component {
