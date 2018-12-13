@@ -20,11 +20,6 @@ const apolloClient = new ApolloClient({
     dataIdFromObject: node => node.id,
   }),
   defaultOptions: {
-    query: {
-      fetchPolicy: "cache-and-network",
-      partialRefetch: true,
-      errorPolicy: "all",
-    },
     mutation: {
       errorPolicy: "all",
       awaitRefetchQueries: true,

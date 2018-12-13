@@ -38,13 +38,9 @@ export default compose(
         }
       }
     `,
-    {
-      options: ({ params }) => ({
-        variables: {
-          terminalId: params.terminalId,
-        },
-      }),
-    },
+    ({ params }) => ({
+      terminalId: params.terminalId,
+    }),
   ),
   graphql(
     gql`

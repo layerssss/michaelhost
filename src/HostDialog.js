@@ -39,13 +39,9 @@ export default compose(
         }
       }
     `,
-    {
-      options: ({ params }) => ({
-        variables: {
-          hostId: params.hostId,
-        },
-      }),
-    },
+    ({ params }) => ({
+      hostId: params.hostId,
+    }),
   ),
   graphql(
     gql`

@@ -18,13 +18,9 @@ export default compose(
         }
       }
     `,
-    {
-      options: ({ params }) => ({
-        variables: {
-          mountedAppName: params.mountedAppName,
-        },
-      }),
-    },
+    ({ params }) => ({
+      mountedAppName: params.mountedAppName,
+    }),
   ),
 )(
   class MountedApp extends React.Component {
