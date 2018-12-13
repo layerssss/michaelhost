@@ -22,10 +22,12 @@ const apolloClient = new ApolloClient({
   defaultOptions: {
     query: {
       fetchPolicy: "cache-and-network",
+      partialRefetch: true,
       errorPolicy: "all",
     },
     mutation: {
       errorPolicy: "all",
+      awaitRefetchQueries: true,
     },
   },
 });
