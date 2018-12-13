@@ -1,0 +1,9 @@
+language: node_js
+node_js: 10
+deploy:
+  on:
+    tags: true
+  provider: npm
+  email: layerssss@gmail.com
+  api_key:
+    secure: V+9ILYN3wiEJEg3Q5h6HVdIEHag+6KLq/gAQj08xV9dGmShWAll3TnnGsJCaTEiEVtzKdHI7G8OfzPQAk19jCcH0WniV4MlkTl8tD4xNtdGB0KVWkP60VJV38a6YWZzC5LIRu+wDpexuwnSb8fGtqtQGWFXmfCnEG2sWghBpRz24yFotmBdtGVvs9lzcEOnAq40Rc16rJvbYNZdbhuypxVP8BmmV+35suAYEq+cqokR5rTAUi7cBix48RxINDqCEMtKinQwi47aTDRTfXFevl6rZA/A3Qa9IqIumsLITdj7DxPUO6RIiXpeHjHBjmv/KhqHIoWBAn9+MSj1fCNc+3UxFWYwnWAxX2/tVishFeJjoiwYI6PR/wTc+lkBykFlYqWXfityYuvbSYRz49t76BkIlXG1/nB6rjtSInOhSpbNIm4m9ljkNpV9b1i8SDLXUJ84KUryI1+lrY0HQxqv/SMHk9/cKXQhMIgh1m75+StAlvLKrkC08FD8xr4CNYMG4jUMVpLxw87Rk0Okfc8HGLv5pr0Jleln+xyiHx8+Qoq74T7e6UEY/rQSc5nX8Z+9CmbKi2IfwyQZ8DIPw4NrAGs6BviodHLcI4C9hvHUeWRQ7Yn7tEw8rbTQ3tOuZLmUGe49kifTcbNyMiaeekHZi3L3YaRNuXwWIv2zfUkT49Jw=
