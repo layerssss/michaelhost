@@ -6,7 +6,7 @@
     "build": "react-scripts build",
     "prepack": "react-scripts build",
     "cli": "node ./bin/cli.js",
-    "dev": "NODE_ENV=dev concurrently --names \"react-scripts,node\" \"react-scripts start\" \"nodemon --spawn -w bin/cli.js -w lib ./bin/cli.js service --admin-port 4444\"",
+    "dev": "NODE_ENV=dev concurrently --names \"react-scripts,node\" \"react-scripts start\" \"nodemon --spawn -w bin/cli.js -w lib ./bin/cli.js --exec 'sudo node' --state-file-path /root/.michaelhost-state.json service --admin-port 4444 --email $EMAIL\"",
     "lint": "eslint .",
     "format": "prettier --write './lib/**/*.js' './bin/**/*.js' './src/**/*.js'",
     "test": "react-scripts test --env=jsdom"
