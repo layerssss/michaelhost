@@ -11,6 +11,7 @@ import MountedApps from "./MountedApps.js";
 import paths from "./paths.js";
 import Dashboard from "./Dashboard.js";
 import Log from "./Log.js";
+import ConfirmDialog from "./ConfirmDialog.js";
 import "./App.css";
 
 export default compose(
@@ -41,6 +42,7 @@ export default compose(
               <Redirect to={rootPath()} />
             </Switch>
           </Grid>
+          <ConfirmDialog />
         </>
       );
     }
