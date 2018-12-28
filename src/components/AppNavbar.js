@@ -4,8 +4,8 @@ import { compose } from "recompose";
 import { Navbar, Nav, NavItem, NavDropdown, MenuItem } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import withRouter from "./withRouter.js";
-import withData from "./withData.js";
+import withRouter from "../helpers/withRouter.js";
+import withData from "../helpers/withData.js";
 
 import "./App.css";
 
@@ -25,7 +25,7 @@ export default compose(
         }
         hostname
       }
-    `
+    `,
   ),
 )(
   class App extends React.Component {

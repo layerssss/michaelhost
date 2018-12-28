@@ -3,12 +3,13 @@ import { compose } from "recompose";
 import { Route, Switch, Redirect } from "react-router";
 import { Grid } from "react-bootstrap";
 
+import withRouter from "../helpers/withRouter.js";
+import paths from "../helpers/paths.js";
+
 import AppNavbar from "./AppNavbar.js";
-import withRouter from "./withRouter.js";
 import Hosts from "./Hosts.js";
 import Terminals from "./Terminals.js";
 import MountedApps from "./MountedApps.js";
-import paths from "./paths.js";
 import Dashboard from "./Dashboard.js";
 import Log from "./Log.js";
 import ConfirmDialog from "./ConfirmDialog.js";

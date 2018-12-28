@@ -2,10 +2,10 @@ import React from "react";
 import { Route, Switch, Redirect } from "react-router";
 import { compose } from "recompose";
 
-import paths from "./paths.js";
+import paths from "../helpers/paths.js";
 import Terminal from "./Terminal.js";
 import NewTerminal from "./NewTerminal.js";
-import withRouter from "./withRouter.js";
+import withRouter from "../helpers/withRouter.js";
 
 export default compose(withRouter)(
   class Terminals extends React.Component {

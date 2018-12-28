@@ -1,2 +1,0 @@
-it("renders without crashing", () => {
-});

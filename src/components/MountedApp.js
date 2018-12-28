@@ -3,9 +3,10 @@ import gql from "graphql-tag";
 import { compose } from "recompose";
 import { Helmet } from "react-helmet";
 
-import withRouter from "./withRouter.js";
+import withRouter from "../helpers/withRouter.js";
+import withData from "../helpers/withData.js";
+
 import ViewportPanel from "./ViewportPanel.js";
-import withData from "./withData.js";
 
 export default compose(
   withRouter,

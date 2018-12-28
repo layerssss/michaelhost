@@ -12,7 +12,7 @@ import {
 } from "react-bootstrap";
 import { compose } from "recompose";
 
-import withRouter from "./withRouter.js";
+import withRouter from "../helpers/withRouter.js";
 
 export default compose(
   withRouter,

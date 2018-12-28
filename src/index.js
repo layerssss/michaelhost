@@ -21,8 +21,8 @@ import {
 import "typeface-roboto";
 import "bootswatch/cerulean/bootstrap.css";
 import "./index.css";
-import App from "./App.js";
-import apolloClient from "./apolloClient.js";
+import App from "./components/App.js";
+import apolloClient from "./helpers/apolloClient.js";
 
 library.add(
   faArchive,

@@ -13,8 +13,8 @@ import {
 import { compose } from "recompose";
 import serialize from "form-serialize";
 
-import withRouter from "./withRouter.js";
-import withData from "./withData.js";
+import withRouter from "../helpers/withRouter.js";
+import withData from "../helpers/withData.js";
 
 export default compose(
   withRouter,

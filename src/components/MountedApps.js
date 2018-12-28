@@ -4,15 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
-import { compose  } from "recompose";
+import { compose } from "recompose";
 import { Route, Switch } from "react-router";
 
 import MountedApp from "./MountedApp.js";
 import NewMountedAppDialog from "./NewMountedAppDialog.js";
-import withRouter from "./withRouter.js";
-import paths from "./paths.js";
-import withData from './withData.js';
-
+import withRouter from "../helpers/withRouter.js";
+import paths from "../helpers/paths.js";
+import withData from "../helpers/withData.js";
 
 export default compose(
   withData(gql`

@@ -8,8 +8,8 @@ import * as fit from "xterm/lib/addons/fit/fit";
 import "xterm/lib/xterm.css";
 
 import ViewportPanel from "./ViewportPanel.js";
-import withWebSocket from "./withWebSocket.js";
-import withData from "./withData.js";
+import withWebSocket from "../helpers/withWebSocket.js";
+import withData from "../helpers/withData.js";
 
 XTerm.applyAddon(fit);
 

@@ -7,11 +7,12 @@ import { compose } from "recompose";
 import { Route } from "react-router";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import withData from "./withData.js";
+import withData from "../helpers/withData.js";
+import withRouter from "../helpers/withRouter.js";
+import paths from "../helpers/paths.js";
+
 import HostDialog from "./HostDialog.js";
 import NewHostDialog from "./NewHostDialog.js";
-import withRouter from "./withRouter.js";
-import paths from "./paths.js";
 
 export default compose(
   withData(
@@ -27,7 +28,7 @@ export default compose(
           enabled
         }
       }
-    `
+    `,
   ),
   withRouter,
   graphql(

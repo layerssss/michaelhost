@@ -1,3 +1,4 @@
 module.exports = {
-  extends: "react-app"
+  extends: ["react-app", "plugin:import/errors"],
+  plugins: ["import"],
 };

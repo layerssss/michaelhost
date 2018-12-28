@@ -5,7 +5,7 @@ import { compose } from "recompose";
 import { Panel, ListGroup, ListGroupItem } from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import withData from "./withData.js";
+import withData from "../helpers/withData.js";
 
 export default compose(
   withData(gql`

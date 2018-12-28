@@ -18,9 +18,9 @@ import {
   ControlLabel,
 } from "react-bootstrap";
 
-import withData from "./withData.js";
-import withWebSocket from "./withWebSocket.js";
-import withRouter from "./withRouter.js";
+import withData from "../helpers/withData.js";
+import withWebSocket from "../helpers/withWebSocket.js";
+import withRouter from "../helpers/withRouter.js";
 import ViewportPanel from "./ViewportPanel.js";
 
 XTerm.applyAddon(fit);
