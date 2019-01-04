@@ -6,7 +6,7 @@
     "build": "react-scripts build",
     "prepack": "react-scripts build",
     "cli": "node ./bin/cli.js",
-    "dev": "NODE_ENV=dev concurrently --names \"react-scripts,node\" \"react-scripts start\" \"nodemon --spawn -w bin/cli.js -w lib ./bin/cli.js --exec 'sudo node' --state-file-path /root/.michaelhost-state.json service --admin-port 4444 --email $EMAIL\"",
+    "dev": "NODE_ENV=dev concurrently --kill-others --names \"react-scripts,node\" \"react-scripts start\" \"sudo node ./bin/cli.js --state-file-path /root/.michaelhost-state.json service --admin-port 4444 --email $EMAIL\"",
     "lint": "eslint .",
     "format": "prettier --write './lib/**/*.js' './bin/**/*.js' './src/**/*.js'",
     "test": "react-scripts test --env=jsdom"
@@ -52,7 +52,6 @@
     "graphql-tag": "^2.10.0",
     "http-proxy-middleware": "^0.19.0",
     "jquery": "^3.3.1",
-    "nodemon": "^1.17.5",
     "prettier": "^1.13.7",
     "react": "^16.4.1",
     "react-apollo": "^2.2.4",
