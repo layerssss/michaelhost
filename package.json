@@ -6,7 +6,7 @@
     "build": "react-scripts build",
     "prepack": "react-scripts build",
     "cli": "node ./bin/cli.js",
-    "dev": "concurrently --kill-others --names \"react-scripts,node\" \"react-scripts start\" \"sudo NODE_ENV=dev node ./bin/cli.js --state-file-path /root/.michaelhost-state.json service --admin-port 4444 --email $EMAIL\"",
+    "dev": "concurrently --kill-others --names \"react-scripts,node\" \"react-scripts start\" \"sudo NODE_ENV=dev `which node` ./bin/cli.js --state-file-path /root/.michaelhost-state.json service --admin-port 4444 --email $EMAIL\"",
     "lint": "eslint .",
     "format": "prettier --write './lib/**/*.js' './bin/**/*.js' './src/**/*.js'",
     "test": "react-scripts test --env=jsdom"
@@ -33,7 +33,7 @@
     "rimraf": "^2.6.3",
     "semver": "^5.6.0",
     "shell-quote": "^1.6.1",
-    "spdy": "^3.4.7",
+    "spdy": "^4.0.0",
     "strip-ansi": "^5.0.0",
     "ws": "^6.1.0"
   },
