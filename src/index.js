@@ -17,11 +17,12 @@ import {
   faPowerOff,
   faExpand,
 } from "@fortawesome/free-solid-svg-icons";
+import { faDocker } from "@fortawesome/free-brands-svg-icons";
 
 import "typeface-roboto";
-import "bootswatch/cerulean/bootstrap.css";
+import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
-import App from "./components/App.js";
+import App from "./parts/App.js";
 import apolloClient from "./helpers/apolloClient.js";
 
 library.add(
@@ -36,6 +37,7 @@ library.add(
   faPen,
   faPowerOff,
   faExpand,
+  { ...faDocker, prefix: "fas" },
 );
 
 ReactDOM.render(

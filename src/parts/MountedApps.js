@@ -5,9 +5,8 @@ import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Table, Button, ButtonToolbar } from "react-bootstrap";
 import { compose } from "recompose";
-import { Route, Switch } from "react-router";
+import { Route } from "react-router";
 
-import MountedApp from "./MountedApp.js";
 import NewMountedAppDialog from "./NewMountedAppDialog.js";
 import withRouter from "../helpers/withRouter.js";
 import paths from "../helpers/paths.js";
@@ -103,13 +102,10 @@ export default compose(
               New Mounted App
             </Button>
           </ButtonToolbar>
-          <Switch>
-            <Route
-              path={paths.newMountedAppPath.matcher}
-              component={NewMountedAppDialog}
-            />
-            <Route path={paths.mountedAppPath.matcher} component={MountedApp} />
-          </Switch>
+          <Route
+            path={paths.newMountedAppPath.matcher}
+            component={NewMountedAppDialog}
+          />
         </>
       );
     }

@@ -6,8 +6,8 @@ import _ from "lodash";
 
 export default compose(
   // wrap
-  withState("fullscreen", "setFullscreen", true),
-)(({ title, children, fullscreen, setFullscreen }) => (
+  withState("fullscreen", "setFullscreen", ({ fullscreen }) => !!fullscreen),
+)(({ title, children, fullscreen, setFullscreen, buttons = null }) => (
   <Panel
     style={{
       display: "flex",
@@ -36,6 +36,7 @@ export default compose(
     >
       {title}
       <ButtonToolbar className="pull-right">
+        {buttons}
         <Button
           bsSize="xs"
           onClick={() => {

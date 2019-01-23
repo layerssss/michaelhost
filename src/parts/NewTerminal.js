@@ -4,7 +4,13 @@ import gql from "graphql-tag";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql } from "react-apollo";
 import serialize from "form-serialize";
-import { FormGroup, FormControl, ControlLabel, Button } from "react-bootstrap";
+import {
+  FormGroup,
+  FormControl,
+  ControlLabel,
+  Button,
+  Panel,
+} from "react-bootstrap";
 import { compose } from "recompose";
 
 import withRouter from "../helpers/withRouter.js";
@@ -68,22 +74,29 @@ export default compose(
               history.push(terminalPath({ terminalId }));
             }}
           >
-            <FormGroup>
-              <ControlLabel>Name</ControlLabel>
-              <FormControl name="name" />
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel>Command</ControlLabel>
-              <FormControl name="command" />
-            </FormGroup>
-            <FormGroup>
-              <ControlLabel>Working Directory</ControlLabel>
-              <FormControl name="cwd" />
-            </FormGroup>
-            <Button bsStyle="primary" type="submit">
-              <FontAwesomeIcon icon="save" />
-              Create Terminal
-            </Button>
+            <Panel>
+              <Panel.Heading>New Terminal</Panel.Heading>
+              <Panel.Body>
+                <FormGroup>
+                  <ControlLabel>Name</ControlLabel>
+                  <FormControl name="name" />
+                </FormGroup>
+                <FormGroup>
+                  <ControlLabel>Command</ControlLabel>
+                  <FormControl name="command" />
+                </FormGroup>
+                <FormGroup>
+                  <ControlLabel>Working Directory</ControlLabel>
+                  <FormControl name="cwd" />
+                </FormGroup>
+              </Panel.Body>
+              <Panel.Footer>
+                <Button bsStyle="primary" type="submit">
+                  <FontAwesomeIcon icon="save" />
+                  Create Terminal
+                </Button>
+              </Panel.Footer>
+            </Panel>
           </form>
         </>
       );

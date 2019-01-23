@@ -4,13 +4,13 @@ const rootPath = {
 };
 
 const logPath = {
-  matcher: `${rootPath.matcher}l`,
-  generate: p => `${rootPath.generate(p)}l`,
+  matcher: `${rootPath.matcher}log`,
+  generate: p => `${rootPath.generate(p)}log`,
 };
 
 const hostsPath = {
-  matcher: `${rootPath.matcher}h`,
-  generate: p => `${rootPath.generate(p)}h`,
+  matcher: `${rootPath.matcher}hosts`,
+  generate: p => `${rootPath.generate(p)}hosts`,
 };
 
 const hostPath = {
@@ -24,8 +24,8 @@ const newHostPath = {
 };
 
 const terminalsPath = {
-  matcher: `${rootPath.matcher}t`,
-  generate: p => `${rootPath.generate(p)}t`,
+  matcher: `${rootPath.matcher}terminals`,
+  generate: p => `${rootPath.generate(p)}terminals`,
 };
 
 const terminalPath = {
@@ -34,8 +34,8 @@ const terminalPath = {
 };
 
 const mountedAppsPath = {
-  matcher: `${rootPath.matcher}a`,
-  generate: p => `${rootPath.generate(p)}a`,
+  matcher: `${rootPath.matcher}apps`,
+  generate: p => `${rootPath.generate(p)}apps`,
 };
 
 const newMountedAppPath = {
@@ -44,13 +44,29 @@ const newMountedAppPath = {
 };
 
 const mountedAppPath = {
-  matcher: `${mountedAppsPath.matcher}/:mountedAppName`,
-  generate: p => `${mountedAppsPath.generate(p)}/${p.mountedAppName}`,
+  matcher: `${mountedAppsPath.matcher}/:mountedAppId(\\w{8})`,
+  generate: p => `${mountedAppsPath.generate(p)}/${p.mountedAppId}`,
 };
 
 const mountedAppProxyPath = {
   matcher: `${rootPath.matcher}api/mounted_apps/:mountedAppId(\\w{8})/`,
   generate: p => `${rootPath.generate(p)}api/mounted_apps/${p.mountedAppId}/`,
+};
+
+const composeApplicationsPath = {
+  matcher: `${rootPath.matcher}compose`,
+  generate: p => `${rootPath.generate(p)}compose`,
+};
+
+const composeApplicationPath = {
+  matcher: `${composeApplicationsPath.matcher}/:composeApplicationId(\\w{8})`,
+  generate: p =>
+    `${composeApplicationsPath.generate(p)}/${p.composeApplicationId}`,
+};
+
+const composeNewApplicationPath = {
+  matcher: `${composeApplicationsPath.matcher}/new`,
+  generate: p => `${composeApplicationsPath.generate(p)}/new`,
 };
 
 const paths = {
@@ -65,6 +81,9 @@ const paths = {
   newMountedAppPath,
   mountedAppPath,
   mountedAppProxyPath,
+  composeApplicationsPath,
+  composeApplicationPath,
+  composeNewApplicationPath,
 };
 
 export default paths;

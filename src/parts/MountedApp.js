@@ -6,21 +6,21 @@ import { Helmet } from "react-helmet";
 import withRouter from "../helpers/withRouter.js";
 import withData from "../helpers/withData.js";
 
-import ViewportPanel from "./ViewportPanel.js";
+import ViewportPanel from "../components/ViewportPanel.js";
 
 export default compose(
   withRouter,
   withData(
     gql`
-      query($mountedAppName: String!) {
-        mountedApp(name: $mountedAppName) {
+      query($mountedAppId: ID!) {
+        mountedApp(id: $mountedAppId) {
           id
           name
         }
       }
     `,
     ({ params }) => ({
-      mountedAppName: params.mountedAppName,
+      mountedAppId: params.mountedAppId,
     }),
   ),
 )(

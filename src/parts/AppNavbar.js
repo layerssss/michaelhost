@@ -24,6 +24,10 @@ export default compose(
           name
         }
         hostname
+        composeApplications {
+          id
+          name
+        }
       }
     `,
   ),
@@ -46,6 +50,8 @@ export default compose(
         terminalsPath,
         mountedAppsPath,
         mountedAppPath,
+        composeApplicationPath,
+        composeNewApplicationPath,
       } = this.props;
 
       return (
@@ -58,9 +64,7 @@ export default compose(
               <NavItem
                 key={mountedApp.id}
                 href={mountedAppPath({
-                  mountedAppName: encodeURIComponent(
-                    mountedApp.name.toLowerCase(),
-                  ),
+                  mountedAppId: mountedApp.id,
                 })}
                 onClick={this.handleNavClick}
               >
@@ -88,6 +92,35 @@ export default compose(
               <FontAwesomeIcon icon="plus" />
               Create Terminal
             </NavItem>
+            <NavDropdown
+              title={
+                <>
+                  <FontAwesomeIcon icon="docker" />
+                  Compose Applications
+                </>
+              }
+              id="navbar-configuration-dropdown"
+            >
+              {data.composeApplications.map(composeApplication => (
+                <MenuItem
+                  key={composeApplication.id}
+                  href={composeApplicationPath({
+                    composeApplicationId: composeApplication.id,
+                  })}
+                  onClick={this.handleNavClick}
+                >
+                  <FontAwesomeIcon icon="docker" />
+                  {composeApplication.name}
+                </MenuItem>
+              ))}
+              <MenuItem
+                href={composeNewApplicationPath()}
+                onClick={this.handleNavClick}
+              >
+                <FontAwesomeIcon icon="plus" />
+                Create Application
+              </MenuItem>
+            </NavDropdown>
             <NavDropdown
               title={
                 <>

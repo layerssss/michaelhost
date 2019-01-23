@@ -15,7 +15,6 @@ const ConfirmDialog = compose(
         event.preventDefault();
         event.stopImmediatePropagation();
         setOnConfirm(() => () => {
-          console.log({ buttonNode });
           jquery(buttonNode).attr("data-confirmed", "yes");
           jquery(buttonNode).trigger("click");
           jquery(buttonNode).removeAttr("data-confirmed");

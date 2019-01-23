@@ -7,7 +7,7 @@ import { Terminal as XTerm } from "xterm";
 import * as fit from "xterm/lib/addons/fit/fit";
 import "xterm/lib/xterm.css";
 
-import ViewportPanel from "./ViewportPanel.js";
+import ViewportPanel from "../components/ViewportPanel.js";
 import withWebSocket from "../helpers/withWebSocket.js";
 import withData from "../helpers/withData.js";
 
@@ -20,7 +20,7 @@ export default compose(
     }
   `),
   withProps(({ data }) => ({
-    webSocketPath: `/api/info`,
+    webSocketPath: `/api/log`,
   })),
   withWebSocket,
 )(
