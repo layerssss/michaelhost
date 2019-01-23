@@ -39,6 +39,7 @@ export default compose(
     handleData(data) {
       const { output, alive } = data;
       if (this.state.alive !== alive) this.setState({ alive });
+      this.xterm.setOption("cursorBlink", alive);
       if (output) this.xterm.write(output);
     }
 
