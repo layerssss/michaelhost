@@ -1,6 +1,6 @@
 {
   "name": "michaelhost",
-  "version": "0.1.22",
+  "version": "0.1.23",
   "license": "MIT",
   "scripts": {
     "build": "react-scripts build",
@@ -68,5 +68,10 @@
     "typeface-roboto": "^0.0.54",
     "xterm": "^3.8.0"
   },
-  "browserslist": [">0.2%", "not dead", "not ie <= 11", "not op_mini all"]
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
 }
