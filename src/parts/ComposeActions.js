@@ -10,6 +10,7 @@ import TerminalPanel from "../components/TerminalPanel.js";
 import ComposeNewPortMappingForm from "./ComposeNewPortMappingForm.js";
 import ComposeExecForm from "./ComposeExecForm.js";
 import ComposeRunForm from "./ComposeRunForm.js";
+import ComposeLogsForm from "./ComposeLogsForm.js";
 
 export default compose(
   withRouter,
@@ -167,6 +168,9 @@ export default compose(
               </Button>
               <Button onClick={() => setFormComponent(() => ComposeRunForm)}>
                 Run
+              </Button>
+              <Button onClick={() => setFormComponent(() => ComposeLogsForm)}>
+                Logs
               </Button>
             </ButtonToolbar>
           )}
