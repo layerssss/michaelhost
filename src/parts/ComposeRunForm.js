@@ -21,10 +21,7 @@ export default compose(
       query($composeApplicationId: ID!) {
         composeApplication(id: $composeApplicationId) {
           id
-          containers {
-            id
-            serviceName
-          }
+          serviceNames
         }
       }
     `,
@@ -34,21 +31,17 @@ export default compose(
   ),
   graphql(
     gql`
-      mutation($id: ID!, $composeContainerId: ID!, $command: String!) {
-        composeExec(
-          id: $id
-          composeContainerId: $composeContainerId
-          command: $command
-        ) {
+      mutation($id: ID!, $serviceName: String!, $command: String!) {
+        composeRun(id: $id, serviceName: $serviceName, command: $command) {
           id
         }
       }
     `,
     {
-      name: "composeExec",
+      name: "composeRun",
     },
   ),
-)(({ composeExec, data, onClose }) => (
+)(({ composeRun, data, onClose }) => (
   <>
     <form
       onSubmit={async event => {
@@ -58,10 +51,10 @@ export default compose(
           empty: true,
         });
 
-        await composeExec({
+        await composeRun({
           variables: {
             id: data.composeApplication.id,
-            composeContainerId: formData.composeContainerId,
+            serviceName: formData.serviceName,
             command: formData.command,
           },
         });
@@ -70,12 +63,12 @@ export default compose(
       }}
     >
       <FormGroup>
-        <ControlLabel>Container:</ControlLabel>
-        <FormControl required name="composeContainerId" componentClass="select">
-          {data.composeApplication.containers &&
-            data.composeApplication.containers.map(composeContainer => (
-              <option key={composeContainer.id} value={composeContainer.id}>
-                {composeContainer.id} ({composeContainer.serviceName})
+        <ControlLabel>Service:</ControlLabel>
+        <FormControl required name="serviceName" componentClass="select">
+          {data.composeApplication.serviceNames &&
+            data.composeApplication.serviceNames.map(serviceName => (
+              <option key={serviceName} value={serviceName}>
+                {serviceName}
               </option>
             ))}
         </FormControl>
@@ -86,7 +79,7 @@ export default compose(
       </FormGroup>
       <ButtonToolbar>
         <Button bsStyle="primary" type="submit">
-          Exec
+          Run
         </Button>
         <Button onClick={() => onClose()}>Cancel</Button>
       </ButtonToolbar>

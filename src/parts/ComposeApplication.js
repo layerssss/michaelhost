@@ -64,6 +64,7 @@ export default compose(
                     id
                   }
                 }
+                serviceNames
                 containers {
                   id
                   runningFor
