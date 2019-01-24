@@ -22,6 +22,7 @@ export default compose(
             publicPort
             connectionsCount
             status
+            loopback
           }
         }
       }
@@ -70,7 +71,9 @@ export default compose(
                     composePortMapping.protocol
                   }/${composePortMapping.servicePort} => ${
                     composePortMapping.protocol
-                  }/${composePortMapping.publicPort}`}
+                  }/${composePortMapping.loopback ? "127.0.0.1" : "0.0.0.0"}:${
+                    composePortMapping.publicPort
+                  }`}
                 </td>
                 <td>{composePortMapping.connectionsCount}</td>
                 <td>{composePortMapping.status}</td>

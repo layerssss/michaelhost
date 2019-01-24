@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   FormGroup,
   FormControl,
+  Checkbox,
   ControlLabel,
   Button,
   ButtonToolbar,
@@ -51,6 +52,7 @@ export default compose(
       mutation(
         $id: ID!
         $protocol: String!
+        $loopback: Boolean!
         $serviceName: String!
         $servicePort: Int!
         $publicPort: Int!
@@ -61,6 +63,7 @@ export default compose(
           serviceName: $serviceName
           servicePort: $servicePort
           publicPort: $publicPort
+          loopback: $loopback
         ) {
           id
           portMappings {
@@ -69,6 +72,7 @@ export default compose(
             serviceName
             servicePort
             publicPort
+            loopback
             connectionsCount
           }
         }
@@ -102,6 +106,7 @@ export default compose(
               serviceName: selectedContainer.serviceName,
               servicePort: Number(formData.servicePortSpec.split("/")[1]),
               publicPort: Number(formData.publicPort),
+              loopback: Boolean(formData.loopback),
             },
           });
 
@@ -157,6 +162,9 @@ export default compose(
             max="65535"
           />
         </FormGroup>
+        <Checkbox name="loopback" defaultChecked>
+          Loopback?
+        </Checkbox>
         <ButtonToolbar>
           <Button bsStyle="primary" type="submit">
             <FontAwesomeIcon icon="plus" />
