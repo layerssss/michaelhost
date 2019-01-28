@@ -69,7 +69,7 @@ export default compose(
         <Modal.Footer>
           <Button bsStyle="primary" type="submit">
             <FontAwesomeIcon icon="save" />
-            Create Cron Job
+            Save Cron Job
           </Button>
         </Modal.Footer>
       </form>
