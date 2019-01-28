@@ -16,6 +16,7 @@ import Log from "./Log.js";
 import ConfirmDialog from "./ConfirmDialog.js";
 import ComposeApplication from "./ComposeApplication.js";
 import ComposeNewApplication from "./ComposeNewApplication.js";
+import CronJobs from "./CronJobs.js";
 import withWebSocket from "../helpers/withWebSocket.js";
 import apolloClient from "../helpers/apolloClient.js";
 import "./App.css";
@@ -65,6 +66,7 @@ export default compose(
           path={paths.composeNewApplicationPath.matcher}
           component={ComposeNewApplication}
         />
+        <Route path={paths.cronJobsPath.matcher} component={CronJobs} />
         <Route render={() => <>Page Not Found</>} />
       </Switch>
     </Grid>

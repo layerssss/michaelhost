@@ -23,6 +23,21 @@ const newHostPath = {
   generate: p => `${hostsPath.generate(p)}/new`,
 };
 
+const cronJobsPath = {
+  matcher: `${rootPath.matcher}cron_jobs`,
+  generate: p => `${rootPath.generate(p)}cron_jobs`,
+};
+
+const cronJobPath = {
+  matcher: `${cronJobsPath.matcher}/:cronJobId(\\w{8})`,
+  generate: p => `${cronJobsPath.generate(p)}/${p.cronJobId}`,
+};
+
+const newCronJobPath = {
+  matcher: `${cronJobsPath.matcher}/new`,
+  generate: p => `${cronJobsPath.generate(p)}/new`,
+};
+
 const terminalsPath = {
   matcher: `${rootPath.matcher}terminals`,
   generate: p => `${rootPath.generate(p)}terminals`,
@@ -84,6 +99,9 @@ const paths = {
   composeApplicationsPath,
   composeApplicationPath,
   composeNewApplicationPath,
+  cronJobsPath,
+  cronJobPath,
+  newCronJobPath,
 };
 
 export default paths;

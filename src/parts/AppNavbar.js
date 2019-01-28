@@ -52,6 +52,7 @@ export default compose(
         mountedAppPath,
         composeApplicationPath,
         composeNewApplicationPath,
+        cronJobsPath,
       } = this.props;
 
       return (
@@ -137,6 +138,9 @@ export default compose(
               <MenuItem href={mountedAppsPath()} onClick={this.handleNavClick}>
                 <FontAwesomeIcon icon="archive" />
                 Mounted Apps
+              </MenuItem>
+              <MenuItem href={cronJobsPath()} onClick={this.handleNavClick}>
+                Cron Jobs
               </MenuItem>
             </NavDropdown>
           </Nav>

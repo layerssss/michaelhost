@@ -47,7 +47,6 @@ commander
       await service.start();
 
       await waitForDeath();
-
       await service.stop();
     }),
   );
