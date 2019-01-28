@@ -2,6 +2,7 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { graphql } from "react-apollo";
 import { compose, withProps, lifecycle } from "recompose";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import gql from "graphql-tag";
 import {
   Panel,
@@ -146,12 +147,14 @@ export default compose(
             <FormGroup>
               <ControlLabel>repo:</ControlLabel>
               <FormControl.Static>
+                <FontAwesomeIcon icon="git" />
                 {data.composeApplication.name}
               </FormControl.Static>
             </FormGroup>
             <FormGroup>
               <ControlLabel>containers:</ControlLabel>
               <FormControl.Static>
+                <FontAwesomeIcon icon="docker" />
                 {data.composeApplication.containers ? (
                   <>{data.composeApplication.containers.length} containers</>
                 ) : (
@@ -162,6 +165,7 @@ export default compose(
             <FormGroup>
               <ControlLabel>current task:</ControlLabel>
               <FormControl.Static>
+                <FontAwesomeIcon icon="terminal" />
                 {data.composeApplication.task ? (
                   <>{data.composeApplication.task.name} </>
                 ) : (

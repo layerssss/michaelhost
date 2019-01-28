@@ -3,6 +3,7 @@ import { compose } from "recompose";
 import { graphql } from "react-apollo";
 import gql from "graphql-tag";
 import { Panel, Table, Button, ButtonToolbar } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import withData from "../helpers/withData.js";
 import withRouter from "../helpers/withRouter.js";
@@ -67,6 +68,7 @@ export default compose(
             {data.composeApplication.portMappings.map(composePortMapping => (
               <tr key={composePortMapping.id}>
                 <td>
+                  <FontAwesomeIcon icon="network-wired" />
                   {`${composePortMapping.serviceName}/${
                     composePortMapping.protocol
                   }/${composePortMapping.servicePort} => ${
@@ -91,6 +93,7 @@ export default compose(
                         })
                       }
                     >
+                      <FontAwesomeIcon icon="trash" />
                       Remove
                     </Button>
                   </ButtonToolbar>

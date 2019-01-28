@@ -16,8 +16,13 @@ import {
   faPen,
   faPowerOff,
   faExpand,
+  faPlayCircle,
+  faStopCircle,
+  faInfo,
+  faClock,
+  faNetworkWired,
 } from "@fortawesome/free-solid-svg-icons";
-import { faDocker } from "@fortawesome/free-brands-svg-icons";
+import { faDocker, faGit } from "@fortawesome/free-brands-svg-icons";
 
 import "typeface-roboto";
 import "bootstrap/dist/css/bootstrap.css";
@@ -37,6 +42,12 @@ library.add(
   faPen,
   faPowerOff,
   faExpand,
+  faPlayCircle,
+  faStopCircle,
+  faInfo,
+  faNetworkWired,
+  faClock,
+  { ...faGit, prefix: "fas" },
   { ...faDocker, prefix: "fas" },
 );
 

@@ -140,6 +140,7 @@ export default compose(
                 Mounted Apps
               </MenuItem>
               <MenuItem href={cronJobsPath()} onClick={this.handleNavClick}>
+                <FontAwesomeIcon icon="clock" />
                 Cron Jobs
               </MenuItem>
             </NavDropdown>

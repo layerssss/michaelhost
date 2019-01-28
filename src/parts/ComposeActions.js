@@ -3,6 +3,7 @@ import { graphql } from "react-apollo";
 import { compose, withState } from "recompose";
 import gql from "graphql-tag";
 import { Panel, ButtonToolbar, Button } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import withData from "../helpers/withData.js";
 import withRouter from "../helpers/withRouter.js";
@@ -121,6 +122,7 @@ export default compose(
                   })
                 }
               >
+                <FontAwesomeIcon icon="play-circle" />
                 Up
               </Button>
               <Button
@@ -131,6 +133,7 @@ export default compose(
                   })
                 }
               >
+                <FontAwesomeIcon icon="stop-circle" />
                 Down
               </Button>
               <Button
@@ -141,6 +144,7 @@ export default compose(
                   })
                 }
               >
+                <FontAwesomeIcon icon="info" />
                 Status
               </Button>
               <Button
@@ -154,6 +158,7 @@ export default compose(
                   history.push(rootPath());
                 }}
               >
+                <FontAwesomeIcon icon="trash" />
                 Delete
               </Button>
               <Button
@@ -161,15 +166,19 @@ export default compose(
                   setFormComponent(() => ComposeNewPortMappingForm)
                 }
               >
+                <FontAwesomeIcon icon="network-wired" />
                 Map Port
               </Button>
               <Button onClick={() => setFormComponent(() => ComposeExecForm)}>
+                <FontAwesomeIcon icon="terminal" />
                 Exec
               </Button>
               <Button onClick={() => setFormComponent(() => ComposeRunForm)}>
+                <FontAwesomeIcon icon="terminal" />
                 Run
               </Button>
               <Button onClick={() => setFormComponent(() => ComposeLogsForm)}>
+                <FontAwesomeIcon icon="terminal" />
                 Logs
               </Button>
             </ButtonToolbar>

@@ -101,6 +101,7 @@ export default compose(
                       })
                     }
                   >
+                    <FontAwesomeIcon icon="play-circle" />
                     Trigger
                   </Button>
                   <Button

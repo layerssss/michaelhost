@@ -2,6 +2,7 @@ import React from "react";
 import { compose } from "recompose";
 import gql from "graphql-tag";
 import { Panel, Table } from "react-bootstrap";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import withData from "../helpers/withData.js";
 import withRouter from "../helpers/withRouter.js";
@@ -48,10 +49,14 @@ export default compose(
             <tbody>
               {data.composeApplication.containers.map(composeContainer => (
                 <tr key={composeContainer.id}>
-                  <td>{composeContainer.id}</td>
+                  <td>
+                    <FontAwesomeIcon icon="docker" />
+                    {composeContainer.id}
+                  </td>
                   <td>{composeContainer.serviceName}</td>
                   <td>{composeContainer.runningFor}</td>
                   <td>
+                    <FontAwesomeIcon icon="network-wired" />
                     {composeContainer.ports
                       .map(
                         composeContainerPort =>
