@@ -8,11 +8,14 @@ const apolloClient = new ApolloClient({
   link: ApolloLink.from([
     onError(({ graphQLErrors, networkError }) => {
       if (graphQLErrors)
+        // eslint-disable-next-line no-console
         console.error(
           ["Error:", ...graphQLErrors.map(({ message }) => message)].join("\n"),
         );
 
-      if (networkError) console.error(`[Network error]: ${networkError}`);
+      if (networkError)
+        // eslint-disable-next-line no-console
+        console.error(`[Network error]: ${networkError}`);
     }),
     new HttpLink(),
   ]),
