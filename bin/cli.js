@@ -10,6 +10,7 @@ const createLogger = require("../lib/createLogger.js");
 const Service = require("../lib/Service.js");
 const State = require("../lib/State.js");
 const waitForDeath = require("../lib/waitForDeath.js");
+const rollbar = require('../lib/rollbar.js');
 
 const logger = createLogger("cli");
 
@@ -25,10 +26,12 @@ const runAsync = func =>
   Promise.resolve()
     .then(func)
     .then(() => process.exit(0))
-    .catch(error => {
-      logger.error(error);
-      process.exit(1);
-    });
+    .catch(error =>
+      rollbar.critical(error, () => {
+        logger.error(error);
+        process.exit(1);
+      }),
+    );
 
 commander
   .command("service")
