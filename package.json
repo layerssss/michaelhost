@@ -28,7 +28,7 @@
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "node-cron": "^2.0.3",
-    "node-pty": "^0.7.8",
+    "node-pty": "^0.8.1",
     "openid-client": "^2.4.5",
     "query-string": "^6.2.0",
     "rimraf": "^2.6.3",
