@@ -6785,9 +6785,9 @@ lcid@^2.0.0:
   dependencies:
     invert-kv "^2.0.0"
 
-"le-auto-sni@git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#9162b5c7d2":
+"le-auto-sni@git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#39eea93":
   version "2.1.6"
-  resolved "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#9162b5c7d24e95c077317d308689071c5b963c31"
+  resolved "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#39eea93e66a76eb89f4bd3d2a136e7eead2f7dc8"
   dependencies:
     bluebird "^3.5.1"
 
