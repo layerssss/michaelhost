@@ -25,7 +25,7 @@
     "greenlock": "^2.4.9",
     "homedir": "^0.6.0",
     "http-proxy": "^1.17.0",
-    "le-auto-sni": "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#39eea93",
+    "le-auto-sni": "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#8502ef3",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "node-cron": "^2.0.3",
