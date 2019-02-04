@@ -21,6 +21,7 @@
     "commander": "^2.15.1",
     "cookie": "^0.3.1",
     "express": "^4.16.3",
+    "global-tunnel-ng": "^2.7.1",
     "graphql": "^14.0.2",
     "greenlock": "^2.4.9",
     "homedir": "^0.6.0",
