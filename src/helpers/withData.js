@@ -5,7 +5,6 @@ const withData = (query, getVariables = () => ({})) =>
   compose(
     graphql(query, {
       options: props => ({
-        fetchPolicy: "cache-and-network",
         partialRefetch: true,
         errorPolicy: "all",
         variables: getVariables(props),
