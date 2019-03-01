@@ -43,12 +43,23 @@ commander
     (i, d) => parseInt(i || d, 10),
     3000,
   )
+  .option(
+    "-b --admin-bind [addr]",
+    "admin interface http bind on localhost",
+    (i, d) => i || d,
+    "localhost",
+  )
   .option("-e --email [string]", "admin email address", process.env["EMAIL"])
-  .action(({ adminPort, email }) =>
+  .action(({ adminPort, adminBind, email }) =>
     runAsync(async () => {
       logger.info({ command: "service", adminPort, email });
 
-      const service = await Service.init({ adminPort, email, stateFilePath });
+      const service = await Service.init({
+        adminPort,
+        adminBind,
+        email,
+        stateFilePath,
+      });
       await service.start();
 
       await waitForDeath();
