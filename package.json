@@ -34,6 +34,7 @@
     "node-pty": "^0.8.1",
     "openid-client": "^2.4.5",
     "query-string": "^6.2.0",
+    "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
     "rimraf": "^2.6.3",
     "rollbar": "^2.5.2",
