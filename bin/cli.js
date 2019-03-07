@@ -39,9 +39,13 @@ commander
   .command("service")
   .option(
     "-p --admin-port [integer]",
-    "admin interface http port on localhost",
+    "admin interface http port",
     (i, d) => parseInt(i || d, 10),
     3000,
+  )
+  .option(
+    "-w --webhook-server-port [integer]",
+    "webhook http port on localhost",
   )
   .option(
     "-b --admin-bind [addr]",
@@ -50,13 +54,20 @@ commander
     "localhost",
   )
   .option("-e --email [string]", "admin email address", process.env["EMAIL"])
-  .action(({ adminPort, adminBind, email }) =>
+  .action(({ adminPort, adminBind, webhookServerPort, email }) =>
     runAsync(async () => {
-      logger.info({ command: "service", adminPort, email });
+      logger.info({
+        command: "service",
+        adminPort,
+        adminBind,
+        webhookServerPort,
+        email,
+      });
 
       const service = await Service.init({
         adminPort,
         adminBind,
+        webhookServerPort,
         email,
         stateFilePath,
       });
