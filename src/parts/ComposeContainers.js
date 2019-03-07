@@ -18,6 +18,7 @@ export default compose(
             id
             serviceName
             runningFor
+            image
             ports {
               id
               protocol
@@ -42,6 +43,7 @@ export default compose(
               <tr>
                 <th>ID</th>
                 <th>Service Name</th>
+                <th>Image</th>
                 <th>Running for</th>
                 <th>Ports</th>
               </tr>
@@ -54,6 +56,7 @@ export default compose(
                     {composeContainer.id}
                   </td>
                   <td>{composeContainer.serviceName}</td>
+                  <td>{composeContainer.image}</td>
                   <td>{composeContainer.runningFor}</td>
                   <td>
                     <FontAwesomeIcon icon="network-wired" />
