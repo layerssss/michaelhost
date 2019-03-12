@@ -5,7 +5,7 @@
   "scripts": {
     "build": "react-scripts build",
     "prepack": "react-scripts build",
-    "cli": "NODE_ENV=dev node ./bin/cli.js",
+    "cli": "NODE_ENV=dev sudo `which node` ./bin/cli.js --state-file-path /root/.michaelhost-state.json",
     "dev": "concurrently --kill-others --names \"react-scripts,node\" \"react-scripts start\" \"sudo NODE_ENV=dev `which node` ./bin/cli.js --state-file-path /root/.michaelhost-state.json service --admin-port 4444 --email $EMAIL\"",
     "lint": "eslint .",
     "format": "prettier --write './lib/**/*.js' './bin/**/*.js' './src/**/*.js'",
@@ -28,6 +28,7 @@
     "homedir": "^0.6.0",
     "http-proxy": "^1.17.0",
     "le-auto-sni": "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#8502ef3",
+    "le-sni-auto": "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#8502ef3",
     "lodash": "^4.17.10",
     "moment": "^2.22.2",
     "node-cron": "^2.0.3",
