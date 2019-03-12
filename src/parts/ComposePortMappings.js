@@ -21,7 +21,16 @@ export default compose(
             serviceName
             servicePort
             publicPort
-            connectionsCount
+            connections {
+              id
+              remoteAddress
+              remotePort
+              bytesSent
+              bytesReceived
+              sending
+              receiving
+              errorMessage
+            }
             status
             loopback
           }
@@ -59,46 +68,68 @@ export default compose(
           <thead>
             <tr>
               <th />
-              <th>Connections</th>
               <th>Status</th>
               <th />
             </tr>
           </thead>
           <tbody>
             {data.composeApplication.portMappings.map(composePortMapping => (
-              <tr key={composePortMapping.id}>
-                <td>
-                  <FontAwesomeIcon icon="network-wired" />
-                  {`${composePortMapping.serviceName}/${
-                    composePortMapping.protocol
-                  }/${composePortMapping.servicePort} => ${
-                    composePortMapping.protocol
-                  }/${composePortMapping.loopback ? "127.0.0.1" : "0.0.0.0"}:${
-                    composePortMapping.publicPort
-                  }`}
-                </td>
-                <td>{composePortMapping.connectionsCount}</td>
-                <td>{composePortMapping.status}</td>
-                <td>
-                  <ButtonToolbar>
-                    <Button
-                      bsStyle="danger"
-                      bsSize="xs"
-                      onClick={() =>
-                        composeRemovePortMapping({
-                          variables: {
-                            id: data.composeApplication.id,
-                            composePortMappingId: composePortMapping.id,
-                          },
-                        })
-                      }
-                    >
-                      <FontAwesomeIcon icon="trash" />
-                      Remove
-                    </Button>
-                  </ButtonToolbar>
-                </td>
-              </tr>
+              <React.Fragment key={composePortMapping.id}>
+                <tr>
+                  <td>
+                    <FontAwesomeIcon icon="network-wired" />
+                    {`${composePortMapping.serviceName}/${
+                      composePortMapping.protocol
+                    }/${composePortMapping.servicePort} => ${
+                      composePortMapping.protocol
+                    }/${
+                      composePortMapping.loopback ? "127.0.0.1" : "0.0.0.0"
+                    }:${composePortMapping.publicPort}`}
+                  </td>
+                  <td>{composePortMapping.status}</td>
+                  <td>
+                    <ButtonToolbar>
+                      <Button
+                        bsStyle="danger"
+                        bsSize="xs"
+                        onClick={() =>
+                          composeRemovePortMapping({
+                            variables: {
+                              id: data.composeApplication.id,
+                              composePortMappingId: composePortMapping.id,
+                            },
+                          })
+                        }
+                      >
+                        <FontAwesomeIcon icon="trash" />
+                        Remove
+                      </Button>
+                    </ButtonToolbar>
+                  </td>
+                </tr>
+                {!!composePortMapping.connections.length && (
+                  <tr>
+                    <td>Remote</td>
+                    <td>Receiving</td>
+                    <td>Bytes Received</td>
+                    <td>Sending</td>
+                    <td>Bytes Sent</td>
+                    <td>Error Message</td>
+                  </tr>
+                )}
+                {composePortMapping.connections.map(connection => (
+                  <tr key={connection.id}>
+                    <td>
+                      {connection.remoteAddress}:{connection.remotePort}
+                    </td>
+                    <td>{String(connection.receiving)}</td>
+                    <td>{connection.bytesReceived}</td>
+                    <td>{String(connection.sending)}</td>
+                    <td>{connection.bytesSent}</td>
+                    <td>{connection.errorMessage}</td>
+                  </tr>
+                ))}
+              </React.Fragment>
             ))}
           </tbody>
         </Table>

@@ -76,7 +76,16 @@ export default compose(
                 }
                 portMappings {
                   id
-                  connectionsCount
+                  connections {
+                    id
+                    remoteAddress
+                    remotePort
+                    bytesSent
+                    bytesReceived
+                    sending
+                    receiving
+                    errorMessage
+                  }
                   status
                 }
               }
