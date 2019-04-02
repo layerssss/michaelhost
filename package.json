@@ -26,7 +26,7 @@
     "graphql": "^14.0.2",
     "greenlock": "^2.4.9",
     "homedir": "^0.6.0",
-    "http-proxy": "^1.17.0",
+    "http-proxy": "https://github.com/layerssss/node-http-proxy.git",
     "le-auto-sni": "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#8502ef3",
     "le-sni-auto": "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#8502ef3",
     "lodash": "^4.17.10",

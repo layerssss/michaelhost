@@ -5423,6 +5423,14 @@ http-proxy@^1.16.2, http-proxy@^1.17.0:
     follow-redirects "^1.0.0"
     requires-port "^1.0.0"
 
+"http-proxy@https://github.com/layerssss/node-http-proxy.git":
+  version "1.17.0"
+  resolved "https://github.com/layerssss/node-http-proxy.git#8cbab9fab6ba8500caba859ad3cd4afa8fc9459a"
+  dependencies:
+    eventemitter3 "^3.0.0"
+    follow-redirects "^1.0.0"
+    requires-port "^1.0.0"
+
 http-signature@~1.2.0:
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/http-signature/-/http-signature-1.2.0.tgz#9aecd925114772f3d95b65a60abb8f7c18fbace1"
