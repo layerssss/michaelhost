@@ -73,7 +73,6 @@ export default compose(
             servicePort
             publicPort
             loopback
-            connectionsCount
           }
         }
       }
