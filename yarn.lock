@@ -6847,10 +6847,6 @@ lcid@^2.0.0:
   dependencies:
     invert-kv "^2.0.0"
 
-"le-auto-sni@git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#6c8de20090":
-  version "2.1.8"
-  resolved "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#6c8de2009043462d4538a8fc4bebd2c96f76199b"
-
 le-challenge-fs@^2.0.2:
   version "2.0.8"
   resolved "https://registry.yarnpkg.com/le-challenge-fs/-/le-challenge-fs-2.0.8.tgz#b6d458a37f097e87df3d8b5ff67013737ab9d5a2"
@@ -6863,11 +6859,9 @@ le-sni-auto@^2.1.8:
   resolved "https://registry.yarnpkg.com/le-sni-auto/-/le-sni-auto-2.1.8.tgz#ede84993620242adb7c20c41e28f68798ad8e610"
   integrity sha512-aEUP+DB5mfHi4kHY37nJdtVr+DIF5vxiXKdiZBPOLNgF7pK3iD0wJU6fiwDRtZRz2KOahX+VBxlgTN2r24nKhw==
 
-"le-sni-auto@git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#8502ef3":
-  version "2.1.6"
-  resolved "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#8502ef30d134ba908f3c68d92375cded01c44c56"
-  dependencies:
-    bluebird "^3.5.1"
+"le-sni-auto@git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#6c8de20090":
+  version "2.1.8"
+  resolved "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#6c8de2009043462d4538a8fc4bebd2c96f76199b"
 
 le-store-certbot@^2.2.2:
   version "2.2.2"
