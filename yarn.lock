@@ -6859,9 +6859,10 @@ le-sni-auto@^2.1.8:
   resolved "https://registry.yarnpkg.com/le-sni-auto/-/le-sni-auto-2.1.8.tgz#ede84993620242adb7c20c41e28f68798ad8e610"
   integrity sha512-aEUP+DB5mfHi4kHY37nJdtVr+DIF5vxiXKdiZBPOLNgF7pK3iD0wJU6fiwDRtZRz2KOahX+VBxlgTN2r24nKhw==
 
-"le-sni-auto@git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#6c8de20090":
-  version "2.1.8"
-  resolved "git+https://git.coolaj86.com/layerssss/le-sni-auto.js.git#6c8de2009043462d4538a8fc4bebd2c96f76199b"
+le-sni-auto@^2.1.9:
+  version "2.1.9"
+  resolved "https://registry.yarnpkg.com/le-sni-auto/-/le-sni-auto-2.1.9.tgz#0e394079113511129b9ae24afbb180df2c188584"
+  integrity sha512-QmQHNwQDi/56GY8+qczFZ06FZbxaeJQjbjEhwwQHhkJ9IHhIQFkPfCT/OyDfLj4gqLIrg5ZX8CemxxVZnLEYfg==
 
 le-store-certbot@^2.2.2:
   version "2.2.2"
