@@ -1,6 +1,6 @@
 {
   "name": "michaelhost",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "license": "MIT",
   "scripts": {
     "build": "react-scripts build",
