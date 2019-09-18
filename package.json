@@ -6,7 +6,7 @@
     "build": "react-scripts build",
     "prepack": "react-scripts build",
     "cli": "NODE_ENV=dev sudo `which node` ./bin/cli.js --state-file-path /root/.michaelhost-state.json",
-    "dev": "concurrently --kill-others --names \"react-scripts,node\" \"react-scripts start\" \"sudo NODE_ENV=dev `which node` ./bin/cli.js --state-file-path /root/.michaelhost-state.json service --admin-port 4444 --email $EMAIL\"",
+    "dev": "concurrently --kill-others --names \"react-scripts,node\" \"react-scripts start\" \"sudo NODE_ENV=dev `which node` ./bin/cli.js --state-file-path /root/.michaelhost-state.json service --admin-port 4444 --email $EMAIL --webhook-server-port 4445 --secret notsuchasecret\"",
     "lint": "eslint .",
     "format": "prettier --write './lib/**/*.js' './bin/**/*.js' './src/**/*.js'",
     "test": "react-scripts test --env=jsdom"

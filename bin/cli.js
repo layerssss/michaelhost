@@ -53,8 +53,9 @@ commander
     (i, d) => i || d,
     "localhost",
   )
+  .option("-s --secret [secret]", "secret for webhook")
   .option("-e --email [string]", "admin email address", process.env["EMAIL"])
-  .action(({ adminPort, adminBind, webhookServerPort, email }) =>
+  .action(({ adminPort, adminBind, webhookServerPort, email, secret }) =>
     runAsync(async () => {
       logger.info({
         command: "service",
@@ -65,6 +66,7 @@ commander
       });
 
       const service = await Service.init({
+        secret,
         adminPort,
         adminBind,
         webhookServerPort,
