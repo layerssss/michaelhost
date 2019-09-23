@@ -1,6 +1,6 @@
 {
   "name": "michaelhost",
-  "version": "0.8.1",
+  "version": "0.8.2",
   "license": "MIT",
   "scripts": {
     "build-react": "react-scripts build",
@@ -86,6 +86,8 @@
     "not op_mini all"
   ],
   "pkg": {
-    "assets": ["./build/**/*"]
+    "assets": [
+      "./build/**/*"
+    ]
   }
 }
