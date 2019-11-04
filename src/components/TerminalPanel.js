@@ -31,8 +31,12 @@ export default compose(
         cursorBlink: true,
       });
       this.xterm.open(this.refs.container);
-      this.xterm.on("data", input => webSocket.send(JSON.stringify({ input })));
-      this.xterm.on("resize", size => webSocket.send(JSON.stringify({ size })));
+      this.xterm.on("data", input =>
+        webSocket.send(JSON.stringify({ input }), error => null),
+      );
+      this.xterm.on("resize", size =>
+        webSocket.send(JSON.stringify({ size }), error => null),
+      );
       this.xterm.fit();
     }
 
@@ -62,6 +66,7 @@ export default compose(
                       JSON.stringify({
                         kill: "yes",
                       }),
+                      error => null,
                     )
                   }
                 >

@@ -63,9 +63,7 @@ export default compose(
                     {composeContainer.ports
                       .map(
                         composeContainerPort =>
-                          `${composeContainerPort.port}/${
-                            composeContainerPort.protocol
-                          }`,
+                          `${composeContainerPort.port}/${composeContainerPort.protocol}`,
                       )
                       .join(", ")}
                   </td>
