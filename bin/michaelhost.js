@@ -37,7 +37,7 @@ commander
     "-p --admin-port [integer]",
     "admin interface http port",
     (i, d) => parseInt(i || d, 10),
-    3000,
+    2000,
   )
   .option(
     "-w --webhook-server-port [integer]",
