@@ -1,4 +1,5 @@
 import React from "react";
+import uuid from "uuid";
 import gql from "graphql-tag";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql } from "react-apollo";
@@ -19,8 +20,13 @@ export default compose(
   withRouter,
   graphql(
     gql`
-      mutation($repo: String!, $branch: String!, $path: String!) {
-        composeCreateApplication(repo: $repo, branch: $branch, path: $path) {
+      mutation($id: ID!, $repo: String!, $branch: String!, $path: String!) {
+        composeCreateApplication(
+          id: $id
+          repo: $repo
+          branch: $branch
+          path: $path
+        ) {
           id
           name
           repo
@@ -59,6 +65,7 @@ export default compose(
 
         const result = await composeCreateApplication({
           variables: {
+            id: formData.id,
             repo: formData.repo,
             branch: formData.branch,
             path: formData.path,
@@ -75,6 +82,14 @@ export default compose(
       <Panel>
         <Panel.Heading>New Application</Panel.Heading>
         <Panel.Body>
+          <FormGroup>
+            <ControlLabel>ID</ControlLabel>
+            <FormControl
+              required
+              name="id"
+              defaultValue={uuid.v4().slice(0, 8)}
+            />
+          </FormGroup>
           <FormGroup>
             <ControlLabel>Repository</ControlLabel>
             <FormControl required name="repo" />
