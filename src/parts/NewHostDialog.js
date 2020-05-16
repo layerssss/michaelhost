@@ -1,4 +1,5 @@
 import React from "react";
+import uuid from "uuid";
 import gql from "graphql-tag";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { graphql } from "react-apollo";
@@ -20,6 +21,7 @@ export default compose(
   graphql(
     gql`
       mutation(
+        $id: ID!
         $hostname: String!
         $ssl: Boolean!
         $upstream: String!
@@ -28,7 +30,8 @@ export default compose(
         $changeOrigin: Boolean!
         $oidcConfig: OidcConfigInput
       ) {
-        createHost(
+        updateHost(
+          id: $id
           hostname: $hostname
           ssl: $ssl
           upstream: $upstream
@@ -55,7 +58,7 @@ export default compose(
       }
     `,
     {
-      name: "createHost",
+      name: "updateHost",
       options: {
         refetchQueries: [
           {
@@ -78,7 +81,7 @@ export default compose(
     };
 
     render() {
-      const { history, createHost, hostsPath } = this.props;
+      const { history, updateHost, hostsPath } = this.props;
 
       return (
         <Modal show onHide={() => history.push(hostsPath())}>
@@ -90,8 +93,9 @@ export default compose(
                 empty: true,
               });
 
-              await createHost({
+              await updateHost({
                 variables: {
+                  id: formData.id,
                   hostname: formData.hostname,
                   upstream: formData.upstream,
                   ssl: Boolean(formData.ssl),
@@ -118,6 +122,10 @@ export default compose(
               <Modal.Title>New Host</Modal.Title>
             </Modal.Header>
             <Modal.Body>
+              <FormGroup>
+                <ControlLabel>ID</ControlLabel>
+                <FormControl name="id" defaultValue={uuid.v4().slice(0, 8)} />
+              </FormGroup>
               <FormGroup>
                 <Checkbox name="enabled">Enabble</Checkbox>
                 <ControlLabel>Hostname</ControlLabel>
