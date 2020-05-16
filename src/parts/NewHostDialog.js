@@ -19,12 +19,38 @@ export default compose(
   withRouter,
   graphql(
     gql`
-      mutation($hostname: String!, $ssl: Boolean!, $upstream: String!) {
-        createHost(hostname: $hostname, ssl: $ssl, upstream: $upstream) {
+      mutation(
+        $hostname: String!
+        $ssl: Boolean!
+        $upstream: String!
+        $enabled: Boolean!
+        $redirect: Boolean!
+        $changeOrigin: Boolean!
+        $oidcConfig: OidcConfigInput
+      ) {
+        createHost(
+          hostname: $hostname
+          ssl: $ssl
+          upstream: $upstream
+          enabled: $enabled
+          redirect: $redirect
+          changeOrigin: $changeOrigin
+          oidcConfig: $oidcConfig
+        ) {
           id
           hostname
           upstream
           ssl
+          enabled
+          redirect
+          changeOrigin
+          oidcConfig {
+            id
+            discoveryUrl
+            clientId
+            clientSecret
+            allowEmails
+          }
         }
       }
     `,
@@ -47,6 +73,10 @@ export default compose(
   ),
 )(
   class NewHostDialog extends React.Component {
+    state = {
+      oidcEnabled: false,
+    };
+
     render() {
       const { history, createHost, hostsPath } = this.props;
 
@@ -65,6 +95,19 @@ export default compose(
                   hostname: formData.hostname,
                   upstream: formData.upstream,
                   ssl: Boolean(formData.ssl),
+                  enabled: Boolean(formData.enabled),
+                  redirect: Boolean(formData.redirect),
+                  changeOrigin: Boolean(formData.changeOrigin),
+                  oidcConfig: !this.state.oidcEnabled
+                    ? null
+                    : {
+                        discoveryUrl: formData.discoveryUrl,
+                        clientId: formData.clientId,
+                        clientSecret: formData.clientSecret,
+                        allowEmails: formData.allowEmailsString
+                          .split(",")
+                          .map(s => s.trim()),
+                      },
                 },
               });
 
@@ -76,6 +119,7 @@ export default compose(
             </Modal.Header>
             <Modal.Body>
               <FormGroup>
+                <Checkbox name="enabled">Enabble</Checkbox>
                 <ControlLabel>Hostname</ControlLabel>
                 <FormControl name="hostname" />
               </FormGroup>
@@ -83,7 +127,37 @@ export default compose(
                 <ControlLabel>Upstream</ControlLabel>
                 <FormControl name="upstream" />
               </FormGroup>
+              <Checkbox name="redirect">Redirect</Checkbox>
               <Checkbox name="ssl">SSL</Checkbox>
+              <Checkbox name="changeOrigin">Change Origin</Checkbox>
+              <Checkbox
+                checked={this.state.oidcEnabled}
+                onChange={event =>
+                  this.setState({ oidcEnabled: event.currentTarget.checked })
+                }
+              >
+                Enabble OIDC auth
+              </Checkbox>
+              {this.state.oidcEnabled && (
+                <>
+                  <FormGroup>
+                    <ControlLabel>Discovery URL</ControlLabel>
+                    <FormControl name="discoveryUrl" />
+                  </FormGroup>
+                  <FormGroup>
+                    <ControlLabel>Client ID</ControlLabel>
+                    <FormControl name="clientId" />
+                  </FormGroup>
+                  <FormGroup>
+                    <ControlLabel>Client Secret</ControlLabel>
+                    <FormControl name="clientSecret" />
+                  </FormGroup>
+                  <FormGroup>
+                    <ControlLabel>Allow Emails</ControlLabel>
+                    <FormControl name="allowEmailsString" />
+                  </FormGroup>
+                </>
+              )}
             </Modal.Body>
             <Modal.Footer>
               <Button bsStyle="primary" type="submit">
