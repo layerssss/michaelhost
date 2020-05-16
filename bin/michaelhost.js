@@ -1,10 +1,8 @@
 const commander = require("commander");
 const homedir = require("homedir");
 const path = require("path");
-const globalTunnel = require("global-tunnel-ng");
 
 if (!process.env.NODE_ENV) process.env.NODE_ENV = "production";
-globalTunnel.initialize();
 
 const createLogger = require("../lib/createLogger.js");
 const Service = require("../lib/Service.js");
