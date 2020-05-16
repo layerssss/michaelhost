@@ -95,7 +95,7 @@ export default compose(
 
               await updateHost({
                 variables: {
-                  id: formData.id,
+                  id: uuid.v4().slice(0, 8),
                   hostname: formData.hostname,
                   upstream: formData.upstream,
                   ssl: Boolean(formData.ssl),
@@ -122,10 +122,6 @@ export default compose(
               <Modal.Title>New Host</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-              <FormGroup>
-                <ControlLabel>ID</ControlLabel>
-                <FormControl name="id" defaultValue={uuid.v4().slice(0, 8)} />
-              </FormGroup>
               <FormGroup>
                 <Checkbox name="enabled">Enabble</Checkbox>
                 <ControlLabel>Hostname</ControlLabel>
