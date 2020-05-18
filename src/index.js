@@ -6,6 +6,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Terminal as XTerm } from "xterm";
 import * as fit from "xterm/lib/addons/fit/fit";
+import "typeface-roboto";
 
 import "./index.css";
 import "xterm/lib/xterm.css";
