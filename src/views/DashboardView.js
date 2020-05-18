@@ -29,6 +29,7 @@ function DashboardView() {
       cronJobs {
         id
         command
+        cron
       }
     }
   `);
