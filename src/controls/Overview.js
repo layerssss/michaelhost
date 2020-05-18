@@ -1,12 +1,12 @@
 import React from "react";
 import { Chip, CardActions, Button } from "@material-ui/core";
 
-export default React.memo(Table);
+export default React.memo(Overview);
 
-function Table({ items = [], href }) {
+function Overview({ items = [], href }) {
   return (
     <>
-      <div style={{ flex: "1 0 auto" }}>
+      <div style={{ flex: "1 0 auto", padding: "0 10px" }}>
         {items.map(([title, href]) => (
           <Chip
             key={href}
