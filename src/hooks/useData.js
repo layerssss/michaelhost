@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import _ from "lodash";
 import { useQuery } from "@apollo/react-hooks";
 
-// import useProgressBar from "./useProgressBar";
+import useProgressBar from "./useProgressBar";
 
 export default function useData(query, variables, { ...options } = {}) {
   const { data, loading, error, refetch } = useQuery(query, {
@@ -14,8 +14,11 @@ export default function useData(query, variables, { ...options } = {}) {
   });
 
   const dataInvalid = !data || !Object.keys(data).length || !!error;
-  // useProgressBar(loading, { unobstrusive: true });
+  const [, progressBarSet] = useProgressBar();
 
+  useEffect(() => {
+    progressBarSet(loading);
+  }, [loading]);
   useEffect(() => {
     if (error)
       _.defer(() => {
