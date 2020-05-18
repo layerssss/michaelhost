@@ -1,61 +1,29 @@
+import "react-app-polyfill/ie9";
+import "react-app-polyfill/stable";
+// This must be loaded before react
+import "react-hot-loader";
 import React from "react";
 import ReactDOM from "react-dom";
-import "roboto-fontface";
-import { ApolloProvider } from "react-apollo";
-import { BrowserRouter } from "react-router-dom";
-import { library } from "@fortawesome/fontawesome-svg-core";
-import {
-  faArchive,
-  faTerminal,
-  faGlobeAsia,
-  faPlus,
-  faCogs,
-  faSave,
-  faTrash,
-  faExternalLinkAlt,
-  faPen,
-  faPowerOff,
-  faExpand,
-  faPlayCircle,
-  faStopCircle,
-  faInfo,
-  faClock,
-  faNetworkWired,
-} from "@fortawesome/free-solid-svg-icons";
-import { faDocker, faGit } from "@fortawesome/free-brands-svg-icons";
+import { Terminal as XTerm } from "xterm";
+import * as fit from "xterm/lib/addons/fit/fit";
 
-import "typeface-roboto";
-import "bootstrap/dist/css/bootstrap.css";
 import "./index.css";
-import App from "./parts/App.js";
-import apolloClient from "./helpers/apolloClient.js";
+import "xterm/lib/xterm.css";
 
-library.add(
-  faArchive,
-  faTerminal,
-  faGlobeAsia,
-  faPlus,
-  faCogs,
-  faSave,
-  faTrash,
-  faExternalLinkAlt,
-  faPen,
-  faPowerOff,
-  faExpand,
-  faPlayCircle,
-  faStopCircle,
-  faInfo,
-  faNetworkWired,
-  faClock,
-  { ...faGit, prefix: "fas" },
-  { ...faDocker, prefix: "fas" },
-);
+// import getApolloErrors from "./services/getApolloErrors";
+import App from "./views/App";
 
-ReactDOM.render(
-  <BrowserRouter>
-    <ApolloProvider client={apolloClient}>
-      <App />
-    </ApolloProvider>
-  </BrowserRouter>,
-  document.getElementById("root"),
-);
+// function handleError(event) {
+//   var error = event.error || event.reason;
+//   if (!error) return;
+//   if (error.isAbortError) event.preventDefault();
+//   let errors = getApolloErrors(error);
+//   if (!errors.length) errors = [error];
+//   for (const error of errors) alert(error.message);
+// }
+//
+// window.addEventListener("error", handleError);
+// window.addEventListener("unhandledrejection", handleError);
+XTerm.applyAddon(fit);
+
+ReactDOM.render(<App />, document.getElementById("root"));

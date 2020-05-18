@@ -8,4 +8,7 @@ module.exports = {
     "plugin:prettier/recommended",
   ],
   plugins: ["import"],
+  rules: {
+    "react-hooks/exhaustive-deps": [0],
+  },
 };
