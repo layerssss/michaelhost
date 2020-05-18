@@ -70,7 +70,7 @@ function ViewPort() {
   return (
     <viewportContext.Provider value={{ breadcrumbsSet }}>
       <Drawer variant="permanent" PaperProps={{ style: { width: 54 } }}>
-        <List>
+        <List disablePadding>
           {navItems.map(([title, href, icon]) => (
             <ListItem
               key={title}
