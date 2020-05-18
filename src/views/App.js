@@ -2,6 +2,7 @@ import React from "react";
 import { hot } from "react-hot-loader/root";
 import { ApolloProvider } from "@apollo/react-common";
 import { BrowserRouter } from "react-router-dom";
+import { SnackbarProvider } from "notistack";
 import {
   useMediaQuery,
   createMuiTheme,
@@ -12,6 +13,7 @@ import {
 import apolloClient from "../services/apolloClient";
 import ViewPort from "./Viewport";
 import RouteEventListener from "./RouteEventListener";
+import ErrorEventListener from "./ErrorEventListener";
 
 export default hot(React.memo(App));
 function App() {
@@ -37,12 +39,15 @@ function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <ApolloProvider client={apolloClient}>
-        <BrowserRouter>
-          <RouteEventListener />
-          <ViewPort />
-        </BrowserRouter>
-      </ApolloProvider>
+      <SnackbarProvider>
+        <ApolloProvider client={apolloClient}>
+          <BrowserRouter>
+            <ErrorEventListener />
+            <RouteEventListener />
+            <ViewPort />
+          </BrowserRouter>
+        </ApolloProvider>
+      </SnackbarProvider>
     </MuiThemeProvider>
   );
 }

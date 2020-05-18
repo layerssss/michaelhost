@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import _ from "lodash";
 import { useQuery } from "@apollo/react-hooks";
 
 // import useProgressBar from "./useProgressBar";
@@ -16,8 +17,11 @@ export default function useData(query, variables, { ...options } = {}) {
   // useProgressBar(loading, { unobstrusive: true });
 
   useEffect(() => {
-    if (error) console.error(error);
-  }, [error]);
+    if (error)
+      _.defer(() => {
+        throw error;
+      });
+  }, [!error]);
 
   const dataObject = dataInvalid ? null : data;
 
