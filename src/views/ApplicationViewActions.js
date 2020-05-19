@@ -1,6 +1,7 @@
 import React from "react";
 import gql from "graphql-tag";
 import {
+  Git,
   Play,
   Stop,
   InformationVariant,
@@ -33,6 +34,13 @@ function ApplicationViewActions({ applicationId }) {
   const composePS = useAction(gql`
     mutation($applicationId: ID!) {
       composePS(id: $applicationId) {
+        id
+      }
+    }
+  `);
+  const composeGitFetch = useAction(gql`
+    mutation($applicationId: ID!) {
+      composeGitFetch(id: $applicationId) {
         id
       }
     }
@@ -77,6 +85,11 @@ function ApplicationViewActions({ applicationId }) {
           icon: <InformationVariant />,
           title: "compone ps",
           onClick: () => composePS({ applicationId }),
+        },
+        {
+          icon: <Git />,
+          title: "git fetch",
+          onClick: () => composeGitFetch({ applicationId }),
         },
         {
           icon: <Delete />,
