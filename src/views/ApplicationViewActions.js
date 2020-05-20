@@ -3,6 +3,7 @@ import gql from "graphql-tag";
 import {
   Git,
   Play,
+  Sync,
   Stop,
   InformationVariant,
   Delete,
@@ -27,6 +28,13 @@ function ApplicationViewActions({ applicationId }) {
   const composeDown = useAction(gql`
     mutation($applicationId: ID!) {
       composeDown(id: $applicationId) {
+        id
+      }
+    }
+  `);
+  const composePull = useAction(gql`
+    mutation($applicationId: ID!) {
+      composePull(id: $applicationId) {
         id
       }
     }
@@ -80,6 +88,11 @@ function ApplicationViewActions({ applicationId }) {
           icon: <Stop />,
           title: "compone down",
           onClick: () => composeDown({ applicationId }),
+        },
+        {
+          icon: <Sync />,
+          title: "compone pull",
+          onClick: () => composePull({ applicationId }),
         },
         {
           icon: <InformationVariant />,
