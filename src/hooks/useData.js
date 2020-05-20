@@ -9,7 +9,6 @@ export default function useData(query, variables, { ...options } = {}) {
     variables,
     errorPolicy: "none",
     partialRefetch: true,
-    fetchPolicy: "cache-and-network",
     ...options,
   });
 

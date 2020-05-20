@@ -29,14 +29,16 @@ function ApplicationView({ useTitle, applicationId }) {
             query($composeApplicationId: ID!) {
               composeApplication(id: $composeApplicationId) {
                 id
+                serviceNames
+                headRevision
                 task {
                   id
                   name
                   terminal {
+                    name
                     id
                   }
                 }
-                serviceNames
                 containers {
                   id
                   runningFor

@@ -23,6 +23,9 @@ function ApplicationsView({ useTitle }) {
           loopback
           publicPort
         }
+        containers {
+          id
+        }
       }
     }
   `);
@@ -31,7 +34,7 @@ function ApplicationsView({ useTitle }) {
     <>
       <Widget title={title}>
         <Table
-          columns={["id", "repo", "public ports"]}
+          columns={["id", "repo", "public ports", "containers"]}
           rows={data?.composeApplications.map(application => ({
             values: [
               application.id,
@@ -42,6 +45,9 @@ function ApplicationsView({ useTitle }) {
                     `${loopback ? "localhost" : "0.0.0.0"}:${publicPort}`,
                 )
                 .join(", "),
+              application.containers === null
+                ? "-"
+                : application.containers.length,
             ],
             actions: [
               { title: "view", href: `/applications/${application.id}` },

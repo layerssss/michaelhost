@@ -8,7 +8,7 @@
     "build": "yarn build-react && yarn build-pkg",
     "prepack": "react-app-rewired build",
     "cli": "NODE_ENV=dev sudo `which node` ./bin/michaelhost.js --state-file-path /root/.michaelhost-state.json",
-    "dev": "concurrently --kill-others --names \"react-app-rewired,node\" \"react-app-rewired start\" \"sudo NODE_ENV=dev `which node` ./bin/michaelhost.js --state-file-path /root/.michaelhost-state.json service --admin-port 2002 --email $EMAIL --webhook-server-port 2001 --secret notsuchasecret\"",
+    "dev": "concurrently --kill-others --names \"react-app-rewired,node\" \"react-app-rewired start\" \"sudo NODE_ENV=dev `which node` ./bin/michaelhost.js --state-file-path /root/.michaelhost-state.json service --admin-port 2002 --email $EMAIL --webhook-server-port 2001 --secret ${MICHAELHOST_SECRET:-notsuchasecret}\"",
     "lint": "eslint .",
     "format": "prettier --write './lib/**/*.js' './bin/**/*.js' './src/**/*.js'"
   },
@@ -42,6 +42,7 @@
     "query-string": "^6.2.0",
     "request": "^2.88.0",
     "request-promise-native": "^1.0.7",
+    "rimraf": "^3.0.2",
     "rollbar": "^2.5.2",
     "secure-compare": "^3.0.1",
     "semver": "^6.0.0",

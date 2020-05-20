@@ -14,6 +14,7 @@ function ApplicationViewDetails({ applicationId }) {
           repo
           branch
           path
+          headRevision
         }
       }
     `,
@@ -28,6 +29,7 @@ function ApplicationViewDetails({ applicationId }) {
           ["repo", data?.composeApplication.repo],
           ["branch", data?.composeApplication.branch],
           ["path", data?.composeApplication.path],
+          ["head revision", data?.composeApplication.headRevision || "-"],
         ]}
       />
     </>
