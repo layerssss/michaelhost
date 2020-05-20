@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
+import _ from "lodash";
 import gql from "graphql-tag";
 import { Route, useHistory, useLocation, matchPath } from "react-router";
 import { Console } from "mdi-material-ui";
@@ -50,8 +51,8 @@ function ViewPort() {
     if (!currentPath) history.replace("/dashboard");
   }, [!!currentPath]);
   const apolloClient = useApolloClient();
-  useWebSocket(`/api/state`, data => {
-    if (data.terminals)
+  useWebSocket(`/api/state`, ({ terminals, error }) => {
+    if (terminals)
       apolloClient.writeQuery({
         query: gql`
           query {
@@ -62,8 +63,21 @@ function ViewPort() {
           }
         `,
         data: {
-          terminals: data.terminals,
+          terminals,
         },
+      });
+    if (error)
+      _.defer(() => {
+        const { message, name, ...errorInfo } = error;
+        throw new Error(
+          [
+            `Error in ${name}`,
+            ...Object.entries(errorInfo).map(
+              ([k, v]) => `${k}: ${JSON.stringify(v)}`,
+            ),
+            error.message,
+          ].join("\n"),
+        );
       });
   });
 

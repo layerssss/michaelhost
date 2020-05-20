@@ -15,7 +15,14 @@ function ErrorEventListener() {
       let errors = getApolloErrors(error);
       if (!errors.length) errors = [error];
       for (const error of errors)
-        enqueueSnackbar(error.message, { variant: "error" });
+        enqueueSnackbar(error.message, {
+          variant: "error",
+          ContentProps: {
+            style: {
+              whiteSpace: "pre-line",
+            },
+          },
+        });
     };
 
     window.addEventListener("error", handleError);
