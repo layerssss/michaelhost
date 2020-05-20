@@ -1,29 +1,26 @@
 import { useMutation } from "@apollo/react-hooks";
 
-// import { useProgressBar } from "hooks";
+import useProgressBar from "./useProgressBar";
 
 export default function useAction(mutation, defaultOptions) {
   const [mutate, { loading, error }] = useMutation(mutation);
-  // const progressBar = useProgressBar();
+  const [progressBar] = useProgressBar();
   const action = async (variables, actionOptions) => {
-    const {
-      // progressBarOptions = {},
-      ...options
-    } = {
+    const options = {
       ...(defaultOptions?.constructor === Function
         ? defaultOptions(variables)
         : defaultOptions),
       ...actionOptions,
     };
 
-    // return await progressBar(progressBarOptions, async () => {
-    const result = await mutate({
-      variables,
-      ...options,
-    });
+    return await progressBar(async () => {
+      const result = await mutate({
+        variables,
+        ...options,
+      });
 
-    return result.data;
-    // });
+      return result.data;
+    });
   };
 
   action.loading = loading;

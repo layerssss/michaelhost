@@ -1,8 +1,9 @@
 import React from "react";
 import gql from "graphql-tag";
-import { Plus } from "mdi-material-ui";
+import { Plus, Broom } from "mdi-material-ui";
 
 import useData from "../hooks/useData";
+import useAction from "../hooks/useAction";
 import Widget from "../controls/Widget";
 import Table from "../controls/Table";
 import Actions from "../controls/Actions";
@@ -27,6 +28,12 @@ function ApplicationsView({ useTitle }) {
           id
         }
       }
+    }
+  `);
+
+  const composePruneContainers = useAction(gql`
+    mutation {
+      composePruneContainers
     }
   `);
 
@@ -61,6 +68,14 @@ function ApplicationsView({ useTitle }) {
             icon: <Plus />,
             title: "new application",
             href: "/applications/new",
+          },
+          {
+            icon: <Broom />,
+            title: "prune containers",
+            onClick: async () => {
+              if (!window.confirm("Are you sure?")) return;
+              composePruneContainers();
+            },
           },
         ]}
       />

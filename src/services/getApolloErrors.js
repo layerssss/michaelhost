@@ -28,7 +28,7 @@ function getApolloErrors(apolloError) {
     const { statusCode, bodyText, name, message } = apolloError.networkError;
     if (name === "ServerParseError")
       errors.push(
-        new ExtendedError("无法加载操作结果，请刷新重试", {
+        new ExtendedError(`server parse error (${message})\n${bodyText}`, {
           type: "NetworkError",
           operation,
           statusCode,
@@ -39,7 +39,7 @@ function getApolloErrors(apolloError) {
     else
       errors.push(
         new ExtendedError(
-          `网络错误(${
+          `network error (${
             statusCode && statusCode !== 200 ? statusCode : message || name
           })`,
           {

@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo } from "react";
 import _ from "lodash";
+import { useSnackbar } from "notistack";
 import gql from "graphql-tag";
 import { Route, useHistory, useLocation, matchPath } from "react-router";
 import { Console } from "mdi-material-ui";
@@ -50,8 +51,9 @@ function ViewPort() {
   useEffect(() => {
     if (!currentPath) history.replace("/dashboard");
   }, [!!currentPath]);
+  const { enqueueSnackbar } = useSnackbar();
   const apolloClient = useApolloClient();
-  useWebSocket(`/api/state`, ({ terminals, error }) => {
+  useWebSocket(`/api/state`, ({ terminals, error, message }) => {
     if (terminals)
       apolloClient.writeQuery({
         query: gql`
@@ -66,6 +68,7 @@ function ViewPort() {
           terminals,
         },
       });
+    if (message) enqueueSnackbar(message);
     if (error)
       _.defer(() => {
         const { message, name, ...errorInfo } = error;
