@@ -1,5 +1,6 @@
 import React from "react";
 import gql from "graphql-tag";
+import { DesktopClassic } from "mdi-material-ui";
 
 import useData from "../hooks/useData";
 import {
@@ -8,6 +9,7 @@ import {
   TerminalsIcon,
   ApplicationsIcon,
 } from "../controls/icons";
+import StaticForm from "../controls/StaticForm";
 import Widget from "../controls/Widget";
 import Overview from "../controls/Overview";
 
@@ -15,6 +17,8 @@ export default React.memo(DashboardView);
 function DashboardView() {
   const [data] = useData(gql`
     query DashboardView {
+      hostname
+      version
       hosts {
         id
         hostname
@@ -35,6 +39,14 @@ function DashboardView() {
   `);
   return (
     <>
+      <Widget icon={<DesktopClassic />} title="system info">
+        <StaticForm
+          fields={[
+            ["hostname", data?.hostname],
+            ["michaelhost version", data?.version],
+          ]}
+        />
+      </Widget>
       <Widget icon={<HostsIcon />} title="hosts">
         <Overview
           items={data?.hosts.map(host => [host.hostname, `/hosts/${host.id}`])}

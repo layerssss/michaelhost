@@ -3,7 +3,7 @@ import _ from "lodash";
 import { useSnackbar } from "notistack";
 import gql from "graphql-tag";
 import { Route, useHistory, useLocation, matchPath } from "react-router";
-import { Console } from "mdi-material-ui";
+import { Home, Console } from "mdi-material-ui";
 import {
   Toolbar,
   IconButton,
@@ -106,9 +106,9 @@ function ViewPort() {
       <main style={{ marginLeft: 54 }}>
         <AppBar position="sticky">
           <Toolbar style={{ flexFlow: "row wrap" }}>
-            <Button href="/" color="inherit">
-              {data?.hostname || "-"}
-            </Button>
+            <IconButton title={data?.hostname} href="/" color="inherit">
+              <Home />
+            </IconButton>
             {breadcrumbs.map(({ id, title, href }) => (
               <React.Fragment key={id}>
                 <ChevronRight />
