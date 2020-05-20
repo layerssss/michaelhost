@@ -14,7 +14,7 @@ function Actions({ actions = [] }) {
           <Fab
             style={{
               zIndex: 1000,
-              position: "absolute",
+              position: "fixed",
               right: 10,
               bottom: 10,
             }}
@@ -30,7 +30,7 @@ function Actions({ actions = [] }) {
         <SpeedDial
           style={{
             zIndex: 1000,
-            position: "absolute",
+            position: "fixed",
             right: 10,
             bottom: 10,
           }}
