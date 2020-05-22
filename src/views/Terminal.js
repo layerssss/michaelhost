@@ -1,14 +1,12 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import { Fab } from "@material-ui/core";
-import { Terminal as XTerm } from "xterm";
-import { useComponentSize } from "react-use-size";
 import { Stop } from "mdi-material-ui";
 
+import XTerm from "../controls/XTerm";
 import useWebSocket from "../hooks/useWebSocket";
 
 export default React.memo(Terminal);
 function Terminal({ terminalId }) {
-  const terminalSize = useComponentSize();
   const [alive, aliveSet] = useState(false);
   const containerRef = useRef();
   const xtermRef = useRef();
@@ -22,31 +20,14 @@ function Terminal({ terminalId }) {
       if (xtermRef.current) xtermRef.current.clear();
     },
   );
-  useEffect(() => {
-    if (xtermRef.current) xtermRef.current.setOption("cursorBlink", alive);
-  }, [alive]);
-  useEffect(() => {
-    const xterm = new XTerm({
-      cursorBlink: true,
-    });
-    xtermRef.current = xterm;
-    xterm.open(containerRef.current);
-    xterm.on("data", input => webSocket({ input }));
-    xterm.on("resize", size => webSocket({ size }));
-    return () => {
-      xterm.destroy();
-      xtermRef.current = null;
-    };
-  }, []);
-  useEffect(() => {
-    if (xtermRef.current) xtermRef.current.fit();
-  }, [terminalSize.width, terminalSize.height]);
 
   return (
-    <div
-      style={{ height: "100%", position: "relative" }}
-      ref={terminalSize.ref}
-    >
+    <div style={{ height: "100%", position: "relative" }}>
+      <XTerm
+        xtermRef={xtermRef}
+        onData={input => webSocket({ input })}
+        onResize={size => webSocket({ size })}
+      />
       <div style={{ height: "100%" }} ref={containerRef}></div>
       {alive && (
         <Fab

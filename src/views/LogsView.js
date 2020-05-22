@@ -1,8 +1,7 @@
-import React, { useEffect, useRef } from "react";
-import { Terminal as XTerm } from "xterm";
-import { useComponentSize } from "react-use-size";
+import React, { useRef } from "react";
 import { FileDocument } from "mdi-material-ui";
 
+import XTerm from "../controls/XTerm";
 import useWebSocket from "../hooks/useWebSocket";
 import Widget from "../controls/Widget";
 
@@ -10,8 +9,6 @@ export default React.memo(LogsView);
 function LogsView({ useTitle }) {
   const title = "logs";
   useTitle(title);
-  const terminalSize = useComponentSize();
-  const containerRef = useRef();
   const xtermRef = useRef();
   useWebSocket(
     `/api/log`,
@@ -22,31 +19,12 @@ function LogsView({ useTitle }) {
       if (xtermRef.current) xtermRef.current.clear();
     },
   );
-  useEffect(() => {
-    const xterm = new XTerm({
-      cursorBlink: true,
-    });
-    xtermRef.current = xterm;
-    xterm.open(containerRef.current);
-    return () => {
-      xterm.destroy();
-      xtermRef.current = null;
-    };
-  }, []);
-  useEffect(() => {
-    if (xtermRef.current) xtermRef.current.fit();
-  }, [terminalSize.width, terminalSize.height]);
 
   return (
     <>
       <Widget title={title} icon={<FileDocument />}>
         <div style={{ height: "calc(100vh - 150px)" }}>
-          <div
-            style={{ height: "100%", position: "relative" }}
-            ref={terminalSize.ref}
-          >
-            <div style={{ height: "100%" }} ref={containerRef}></div>
-          </div>
+          <XTerm xtermRef={xtermRef} />
         </div>
       </Widget>
     </>

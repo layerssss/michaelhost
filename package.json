@@ -83,7 +83,9 @@
     "react-use-size": "^1.2.3",
     "roboto-fontface": "^0.10.0",
     "typeface-roboto": "^0.0.54",
-    "xterm": "^3.8.0"
+    "xterm": "^4.6.0",
+    "xterm-addon-fit": "^0.4.0",
+    "xterm-addon-web-links": "^0.4.0"
   },
   "browserslist": [
     ">0.2%",
