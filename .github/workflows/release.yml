@@ -30,6 +30,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
+          registry-url: 'https://registry.npmjs.org'
       - uses: actions/download-artifact@v1
         with:
           name: build
@@ -73,8 +74,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: michaelhost-win.exec
-          asset_path: ./dist/michaelhost-win.exec
+          asset_name: michaelhost-win.exe
+          asset_path: ./dist/michaelhost-win.exe
           asset_content_type: application/octet-stream
       - uses: actions/upload-release-asset@v1
         env:
