@@ -77,8 +77,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: michaelhost-macos
-          asset_path: ./dist/michaelhost-macos
+          asset_name: michaelhost-darwin
+          asset_path: ./dist/michaelhost-darwin
           asset_content_type: application/octet-stream
       - uses: actions/upload-release-asset@v1
         env:
