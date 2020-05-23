@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+set -ex
+
+./node_modules/.bin/pkg \
+  ./bin/michaelhost.js \
+  --target host \
+  --public \
+  --output ./distapp/assets/michaelhost_bin.asset \
+  --config ./package.json
+cp ./node_modules/node-pty/build/Release/pty.node ./distapp/assets/pty.node.asset
+cp ./node_modules/nodegit/build/Release/nodegit.node ./distapp/assets/nodegit.node.asset
+
+./node_modules/.bin/pkg \
+  ./distapp/entrypoint.js \
+  --target host \
+  --public \
+  --output ./dist/michaelhost \
+  --config ./distapp/package.json

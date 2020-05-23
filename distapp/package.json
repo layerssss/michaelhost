@@ -1,0 +1,17 @@
+{
+  "name": "michaelhost-distapp",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Michael Yin",
+  "pkg": {
+    "assets": [
+      "./assets/*"
+    ]
+  },
+  "license": "MIT"
+}

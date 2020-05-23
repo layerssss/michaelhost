@@ -5,7 +5,7 @@ on:
     tags:
       - "v*"
 jobs:
-  build:
+  build-linux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -16,15 +16,28 @@ jobs:
       - run: yarn build
       - uses: actions/upload-artifact@v1
         with:
-          name: dist
-          path: "dist/"
+          name: michaelhost-linux
+          path: "dist/michaelhost"
       - uses: actions/upload-artifact@v1
         with:
           name: build
           path: "build/"
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: "12.x"
+      - run: yarn install
+      - run: yarn build
+      - uses: actions/upload-artifact@v1
+        with:
+          name: michaelhost-macos
+          path: "dist/michaelhost"
   publish_to_npm:
     runs-on: ubuntu-latest
-    needs: build
+    needs: build-linux
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -39,12 +52,18 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
   publish_to_github:
     runs-on: ubuntu-latest
-    needs: build
+    needs: [build-linux, build-macos]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/download-artifact@v1
         with:
-          name: dist
+          name: michaelhost-linux
+          path: dist/michaelhost-linux
+      - uses: actions/download-artifact@v1
+        with:
+          name: michaelhost-macos
+          path: dist/michaelhost-macos
+
       - uses: actions/create-release@v1
         id: create_release
         env:
@@ -52,15 +71,7 @@ jobs:
         with:
           tag_name: ${{ github.ref }}
           release_name: ${{ github.ref }}
-      # upload assets
-      - uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: michaelhost-linux
-          asset_path: ./dist/michaelhost-linux
-          asset_content_type: application/octet-stream
+
       - uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -74,22 +85,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: michaelhost-win.exe
-          asset_path: ./dist/michaelhost-win.exe
-          asset_content_type: application/octet-stream
-      - uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: pty.node
-          asset_path: ./dist/pty.node
-          asset_content_type: application/octet-stream
-      - uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_name: nodegit.node
-          asset_path: ./dist/nodegit.node
+          asset_name: michaelhost-linux
+          asset_path: ./dist/michaelhost-linux
           asset_content_type: application/octet-stream

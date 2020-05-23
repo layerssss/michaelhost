@@ -4,8 +4,7 @@
   "license": "MIT",
   "scripts": {
     "build-react": "react-app-rewired build",
-    "build-pkg": "npx pkg ./bin/michaelhost.js --out-path ./dist --config ./package.json && cp ./node_modules/node-pty/build/Release/pty.node ./dist/pty.node && cp ./node_modules/nodegit/build/Release/nodegit.node ./dist/nodegit.node",
-    "build": "yarn build-react && yarn build-pkg",
+    "build": "yarn build-react && ./build_dist",
     "cli": "NODE_ENV=dev sudo `which node` ./bin/michaelhost.js --state-file-path /root/.michaelhost-state.json",
     "dev": "concurrently --kill-others --names \"react-app-rewired,node\" \"react-app-rewired start\" \"sudo NODE_ENV=dev `which node` ./bin/michaelhost.js --state-file-path /root/.michaelhost-state.json service --admin-port 2002 --email $EMAIL --webhook-server-port 2001 --secret ${MICHAELHOST_SECRET:-notsuchasecret}\"",
     "lint": "eslint .",
@@ -69,6 +68,7 @@
     "http-proxy-middleware": "^1.0.4",
     "mdi-material-ui": "^6.15.0",
     "notistack": "^0.9.16",
+    "pkg": "^4.4.8",
     "prettier": "^2.0.5",
     "react": "^16.13.1",
     "react-app-rewired": "^2.1.6",

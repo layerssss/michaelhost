@@ -2,4 +2,8 @@
 /build
 
 *.log
-dist
+dist/*
+distapp/assets/michaelhost_bin.asset
+distapp/assets/nodegit.node.asset
+distapp/assets/pty.node.asset
+!.keep
