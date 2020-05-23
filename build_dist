@@ -1,6 +1,8 @@
 #!/usr/bin/env sh
 set -ex
 
+PLATFORM=$(uname -s | awk '{print tolower($0)}')
+
 ./node_modules/.bin/pkg \
   ./bin/michaelhost.js \
   --target host \
@@ -14,5 +16,5 @@ cp ./node_modules/nodegit/build/Release/nodegit.node ./distapp/assets/nodegit.no
   ./distapp/entrypoint.js \
   --target host \
   --public \
-  --output ./dist/michaelhost \
+  --output ./dist/michaelhost-${PLATFORM} \
   --config ./distapp/package.json

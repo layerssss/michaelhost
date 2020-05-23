@@ -17,7 +17,7 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: michaelhost-linux
-          path: "dist/michaelhost"
+          path: "dist"
   build-macos:
     runs-on: macos-latest
     steps:
@@ -30,4 +30,4 @@ jobs:
       - uses: actions/upload-artifact@v1
         with:
           name: michaelhost-macos
-          path: "dist/michaelhost"
+          path: "dist"
