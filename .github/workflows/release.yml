@@ -14,11 +14,11 @@ jobs:
           node-version: "12.x"
       - run: yarn install
       - run: yarn build
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: michaelhost-linux
           path: "dist/michaelhost"
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: build
           path: "build/"
@@ -31,7 +31,7 @@ jobs:
           node-version: "12.x"
       - run: yarn install
       - run: yarn build
-      - uses: actions/upload-artifact@v1
+      - uses: actions/upload-artifact@v2
         with:
           name: michaelhost-macos
           path: "dist/michaelhost"
@@ -44,7 +44,7 @@ jobs:
         with:
           node-version: "12.x"
           registry-url: "https://registry.npmjs.org"
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v2
         with:
           name: build
       - run: npm publish
@@ -55,11 +55,11 @@ jobs:
     needs: [build-linux, build-macos]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v2
         with:
           name: michaelhost-linux
           path: dist/michaelhost-linux
-      - uses: actions/download-artifact@v1
+      - uses: actions/download-artifact@v2
         with:
           name: michaelhost-macos
           path: dist/michaelhost-macos
