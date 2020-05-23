@@ -5,7 +5,7 @@ export default React.memo(RouteEventListener);
 function RouteEventListener() {
   const history = useHistory();
   useEffect(() => {
-    const handleClick = function(event) {
+    const handleClick = function (event) {
       let element = event.target;
       while (!element.matches('a[href^="/"]')) {
         element = element.parentNode;

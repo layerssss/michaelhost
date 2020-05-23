@@ -42,7 +42,7 @@ function ApplicationsView({ useTitle }) {
       <Widget title={title}>
         <Table
           columns={["id", "repo", "public ports", "containers"]}
-          rows={data?.composeApplications.map(application => ({
+          rows={data?.composeApplications.map((application) => ({
             values: [
               application.id,
               `${application.repo}#${application.branch}/${application.path}`,

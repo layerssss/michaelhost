@@ -8,11 +8,11 @@ export default function useWebSocket(webSocketPath, onMessage, onConnect) {
     const wsOrigin = window.location.origin.replace(/^http/, "ws");
     const webSocket = new WebSocket(`${wsOrigin}${webSocketPath}`);
     webSocketRef.current = webSocket;
-    webSocket.addEventListener("close", event => {
+    webSocket.addEventListener("close", (event) => {
       webSocketRef.current = null;
       if (!webSocket.__destroyed) webSocketInit();
     });
-    webSocket.addEventListener("message", event =>
+    webSocket.addEventListener("message", (event) =>
       onMessage(JSON.parse(event.data)),
     );
     webSocket.addEventListener("open", () => {
@@ -36,7 +36,7 @@ export default function useWebSocket(webSocketPath, onMessage, onConnect) {
     };
   }, [webSocketPath]);
 
-  return data => {
+  return (data) => {
     if (webSocketRef.current?.readyState === WebSocket.OPEN)
       webSocketRef.current.send(JSON.stringify(data));
     else buffer.push(data);

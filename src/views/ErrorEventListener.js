@@ -8,7 +8,7 @@ export default React.memo(ErrorEventListener);
 function ErrorEventListener() {
   const { enqueueSnackbar } = useSnackbar();
   useEffect(() => {
-    const handleError = event => {
+    const handleError = (event) => {
       var error = event.error || event.reason;
       if (!error) return;
       if (error.isAbortError) event.preventDefault();

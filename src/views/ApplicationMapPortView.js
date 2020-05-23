@@ -83,7 +83,7 @@ function ApplicationMapPortView({ useTitle, applicationId }) {
               {
                 required: true,
                 options: _.flatten(
-                  data?.composeApplication.containers.map(container =>
+                  data?.composeApplication.containers.map((container) =>
                     container.ports.map(({ protocol, port }) =>
                       [container.serviceName, protocol, port].join("/"),
                     ),

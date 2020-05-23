@@ -64,7 +64,7 @@ function ApplicationExecView({ useTitle, applicationId }) {
               "",
               {
                 required: true,
-                options: data?.composeApplication.containers.map(c => c.id),
+                options: data?.composeApplication.containers.map((c) => c.id),
               },
             ],
             [

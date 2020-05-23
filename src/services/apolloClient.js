@@ -9,7 +9,7 @@ const apolloClient = new ApolloClient({
     new HttpLink(),
   ]),
   cache: new InMemoryCache({
-    dataIdFromObject: node => node.id,
+    dataIdFromObject: (node) => node.id,
   }),
 });
 

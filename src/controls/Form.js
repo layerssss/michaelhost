@@ -21,7 +21,7 @@ function Form({ fields = [], onSubmit }) {
       style={{
         padding: 5,
       }}
-      onSubmit={async event => {
+      onSubmit={async (event) => {
         event.preventDefault();
         const formData = serialize(event.target, {
           hash: true,
@@ -114,7 +114,7 @@ const SelectField = React.memo(function SelectField({
     <FormControl fullWidth disabled={disabled} {...others}>
       <InputLabel>{label}</InputLabel>
       <Select name={name} disabled={disabled} defaultValue={defaultValue}>
-        {options.map(option => (
+        {options.map((option) => (
           <MenuItem key={option} value={option}>
             {option}
           </MenuItem>

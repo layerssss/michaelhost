@@ -30,8 +30,8 @@ export default function useProgressBar() {
     };
   }, [loading]);
 
-  const progressBarSet = progress => loadingSet(!!progress);
-  const progressBar = async func => {
+  const progressBarSet = (progress) => loadingSet(!!progress);
+  const progressBar = async (func) => {
     loadingSet(true);
     try {
       return await func();

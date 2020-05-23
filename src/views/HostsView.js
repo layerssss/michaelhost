@@ -52,7 +52,7 @@ function HostsView({ useTitle }) {
       <Widget title="hosts" icon={<HostsIcon />}>
         <Table
           columns={["enabled", "ssl", "hostname", "upstream"]}
-          rows={data?.hosts.map(host => ({
+          rows={data?.hosts.map((host) => ({
             values: [host.enabled, host.ssl, host.hostname, host.upstream],
             actions: [
               { title: "view", href: `/hosts/${host.id}` },

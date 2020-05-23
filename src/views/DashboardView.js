@@ -49,13 +49,16 @@ function DashboardView() {
       </Widget>
       <Widget icon={<HostsIcon />} title="hosts">
         <Overview
-          items={data?.hosts.map(host => [host.hostname, `/hosts/${host.id}`])}
+          items={data?.hosts.map((host) => [
+            host.hostname,
+            `/hosts/${host.id}`,
+          ])}
           href="/hosts"
         />
       </Widget>
       <Widget icon={<TerminalsIcon />} title="terminals">
         <Overview
-          items={data?.terminals.map(terminal => [
+          items={data?.terminals.map((terminal) => [
             terminal.name,
             `/terminals/${terminal.id}`,
           ])}

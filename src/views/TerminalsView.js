@@ -26,7 +26,7 @@ function Terminals({ useTitle }) {
       <Widget title={title} icon={<TerminalsIcon />}>
         <Table
           columns={["name"]}
-          rows={data?.terminals.map(terminal => ({
+          rows={data?.terminals.map((terminal) => ({
             values: [terminal.name],
             actions: [
               {

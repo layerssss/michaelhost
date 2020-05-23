@@ -21,7 +21,7 @@ function Table({ columns, rows }) {
       <MUITable size="small">
         <TableHead>
           <TableRow>
-            {columns.map(column => (
+            {columns.map((column) => (
               <TableCell key={column}>{column}</TableCell>
             ))}
             <TableCell />

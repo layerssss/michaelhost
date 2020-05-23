@@ -100,8 +100,8 @@ function EditHostView({ hostId, useTitle }) {
                     clientSecret,
                     allowEmails: allowEmailsString
                       .split(",")
-                      .map(s => s.trim())
-                      .filter(s => s),
+                      .map((s) => s.trim())
+                      .filter((s) => s),
                   },
             });
             history.push(`/hosts/${hostId}`);

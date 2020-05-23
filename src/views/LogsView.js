@@ -12,7 +12,7 @@ function LogsView({ useTitle }) {
   const xtermRef = useRef();
   useWebSocket(
     `/api/log`,
-    data => {
+    (data) => {
       if (data.output && xtermRef.current) xtermRef.current.write(data.output);
     },
     () => {

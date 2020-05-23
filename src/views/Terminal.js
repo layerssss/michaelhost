@@ -12,7 +12,7 @@ function Terminal({ terminalId }) {
   const xtermRef = useRef();
   const webSocket = useWebSocket(
     `/api/terminals/${terminalId}`,
-    data => {
+    (data) => {
       aliveSet(data.alive);
       if (data.output && xtermRef.current) xtermRef.current.write(data.output);
     },
@@ -25,8 +25,8 @@ function Terminal({ terminalId }) {
     <div style={{ height: "100%", position: "relative" }}>
       <XTerm
         xtermRef={xtermRef}
-        onData={input => webSocket({ input })}
-        onResize={size => webSocket({ size })}
+        onData={(input) => webSocket({ input })}
+        onResize={(size) => webSocket({ size })}
       />
       <div style={{ height: "100%" }} ref={containerRef}></div>
       {alive && (

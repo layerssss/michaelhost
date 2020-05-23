@@ -34,13 +34,13 @@ function ApplicationViewContainers({ applicationId }) {
       <Widget title="containers" size="large">
         <Table
           columns={["id", "service name", "image", "runningFor", "ports"]}
-          rows={data?.composeApplication.containers?.map(container => ({
+          rows={data?.composeApplication.containers?.map((container) => ({
             values: [
               container.id,
               container.serviceName,
               container.image,
               container.runningFor,
-              container.ports.map(port => `${port.port}/${port.protocol}`),
+              container.ports.map((port) => `${port.port}/${port.protocol}`),
             ],
           }))}
         />

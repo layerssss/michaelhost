@@ -44,7 +44,7 @@ function ViewPort() {
     () =>
       routes
         .map(([path]) => path)
-        .find(path => matchPath(location.pathname, { exact: true, path })),
+        .find((path) => matchPath(location.pathname, { exact: true, path })),
     [location.pathname],
   );
 
@@ -118,7 +118,7 @@ function ViewPort() {
               </React.Fragment>
             ))}
             <div style={{ flex: "1 0 auto" }} />
-            {data?.terminals.map(terminal => (
+            {data?.terminals.map((terminal) => (
               <IconButton
                 key={terminal.id}
                 href={`/terminals/${terminal.id}`}
@@ -151,7 +151,7 @@ function ViewPort() {
               >
                 <Component
                   {...match.params}
-                  useTitle={title => {
+                  useTitle={(title) => {
                     // eslint-disable-next-line react-hooks/rules-of-hooks
                     useBreadcrumb({
                       title,

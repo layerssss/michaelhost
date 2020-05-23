@@ -20,11 +20,11 @@ commander
     path.join(homedir(), ".michaelhost-state.json"),
   );
 
-const runAsync = func =>
+const runAsync = (func) =>
   Promise.resolve()
     .then(func)
     .then(() => process.exit(0))
-    .catch(error =>
+    .catch((error) =>
       rollbar.critical(error, () => {
         logger.error(error);
         process.exit(1);

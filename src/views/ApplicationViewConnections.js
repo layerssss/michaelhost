@@ -39,7 +39,7 @@ function ApplicationViewPortMappings({ applicationId }) {
         <Table
           columns={["public port", "remote", "rx", "tx", "error"]}
           rows={_.flatten(
-            data?.composeApplication.portMappings.map(portMapping =>
+            data?.composeApplication.portMappings.map((portMapping) =>
               portMapping.connections.map(
                 ({
                   remoteAddress,

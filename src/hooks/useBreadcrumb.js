@@ -14,15 +14,15 @@ export default function useBreadcrumb({ title, href }) {
   };
 
   useEffect(() => {
-    breadcrumbsSet(breadcrumbs => [...breadcrumbs, breadcrumb]);
+    breadcrumbsSet((breadcrumbs) => [...breadcrumbs, breadcrumb]);
     return () => {
-      breadcrumbsSet(breadcrumbs => breadcrumbs.filter(b => b.id !== id));
+      breadcrumbsSet((breadcrumbs) => breadcrumbs.filter((b) => b.id !== id));
     };
   }, []);
 
   useEffect(() => {
-    breadcrumbsSet(breadcrumbs =>
-      breadcrumbs.map(b => (b.id !== id ? b : breadcrumb)),
+    breadcrumbsSet((breadcrumbs) =>
+      breadcrumbs.map((b) => (b.id !== id ? b : breadcrumb)),
     );
   }, [title, href]);
 }
