@@ -24,5 +24,5 @@ jobs:
       - run: yarn build
       - uses: actions/upload-artifact@v1
         with:
-          name: ${{ github.ref }}-dist
+          name: dist
           path: "dist/"
