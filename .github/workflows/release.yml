@@ -12,12 +12,6 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-      - uses: actions/cache@v1
-        with:
-          path: node_modules
-          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-yarn-
       - run: yarn install
       - run: yarn build
       - uses: actions/upload-artifact@v1
@@ -36,7 +30,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
       - uses: actions/download-artifact@v1
         with:
           name: build
