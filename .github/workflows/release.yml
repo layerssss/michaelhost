@@ -97,5 +97,5 @@ jobs:
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
           asset_name: nodegit.pty
-          asset_path: ./dist/nodegit.pty
+          asset_path: ./dist/nodegit.node
           asset_content_type: application/octet-stream
