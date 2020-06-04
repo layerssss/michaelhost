@@ -1,7 +1,6 @@
 FROM node:10
 
 RUN mkdir /michaelhost
-RUN mkdir /data
 WORKDIR /michaelhost
 
 ADD ./package.json .
@@ -15,7 +14,6 @@ ADD src src
 ADD ./config-overrides.js .
 
 RUN yarn build-react
-RUN node ./bin/michaelhost.js --state-file-path /data/michaelhost-state.json init
-WORKDIR /data
+RUN ln -s /michaelhost/bin/michaelhost.js /bin/michaelhost
 
-ENTRYPOINT ["node", "/michaelhost/bin/michaelhost.js", "--state-file-path", "/data/michaelhost-state.json"]
+CMD michaelhost

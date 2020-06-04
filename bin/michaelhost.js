@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 const commander = require("commander");
 const homedir = require("homedir");
 const path = require("path");
