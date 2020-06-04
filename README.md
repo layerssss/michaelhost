@@ -11,7 +11,6 @@ This is Michael Yin's very own hosting software.
 * docker-compose instance management with port forwarding
 * Web-based terminals
 * Cronjobs
-* MountedApp through admin dashboard
 * Webhooks server (DockerHub, GitHub)
 
 ## Usage
