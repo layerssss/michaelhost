@@ -26,10 +26,16 @@ const runAsync = (func) =>
     .then(func)
     .then(() => process.exit(0))
     .catch((error) =>
-      rollbar.critical(error, () => {
-        logger.error(error);
-        process.exit(1);
-      }),
+      rollbar.critical(
+        error,
+        {
+          blackbox: createLogger.blackbox,
+        },
+        () => {
+          logger.error(error);
+          process.exit(1);
+        },
+      ),
     );
 
 commander
