@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
+      - run: "echo $GITHUB_SHA > REVISION"
       - run: yarn install
       - run: yarn build
       - uses: actions/upload-artifact@v2
@@ -29,6 +30,7 @@ jobs:
       - uses: actions/setup-node@v1
         with:
           node-version: "12.x"
+      - run: "echo $GITHUB_SHA > REVISION"
       - run: yarn install
       - run: yarn build
       - uses: actions/upload-artifact@v2

@@ -8,3 +8,4 @@ distapp/assets/nodegit.node.asset
 distapp/assets/pty.node.asset
 !.keep
 .git
+REVISION
