@@ -90,3 +90,10 @@ jobs:
           asset_name: michaelhost-linux
           asset_path: ./dist/michaelhost-linux
           asset_content_type: application/octet-stream
+      - uses: rollbar/github-deploy-action@1.1.0
+        with:
+          environment: 'production'
+          version: ${{ github.sha }}
+        env:
+          ROLLBAR_ACCESS_TOKEN: ${{ secrets.ROLLBAR_ACCESS_TOKEN }}
+          ROLLBAR_USERNAME: ${{ github.actor }}
