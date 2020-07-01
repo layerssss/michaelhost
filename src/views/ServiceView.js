@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 import gql from "graphql-tag";
 import { useHistory } from "react-router-dom";
 import { Delete, ConsoleLine, CogBox, Refresh } from "mdi-material-ui";
@@ -25,6 +26,13 @@ function ServiceView({ useTitle, serviceId }) {
             protocol
             targetPort
             publishedPort
+          }
+
+          tasks {
+            id
+            createdAt
+            status
+            message
           }
         }
       }
@@ -125,6 +133,16 @@ function ServiceView({ useTitle, serviceId }) {
           rows={data?.service.ports.map((port) => ({
             values: [port.protocol, port.targetPort, port.publishedPort],
           }))}
+        />
+      </Widget>
+      <Widget title="tasks" size="large">
+        <Table
+          columns={["id", "created at", "status", "message"]}
+          rows={data?.service.tasks.map(
+            ({ id, createdAt, status, message }) => ({
+              values: [id, moment(createdAt).format("LLL"), status, message],
+            }),
+          )}
         />
       </Widget>
     </>

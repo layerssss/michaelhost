@@ -17,6 +17,7 @@ function ServicesView({ useTitle }) {
         name
         image
         replicas
+        runningTaskCount
       }
     }
   `);
@@ -27,7 +28,11 @@ function ServicesView({ useTitle }) {
         <Table
           columns={["name", "image", "relicas"]}
           rows={data?.services.map((service) => ({
-            values: [service.name, service.image, service.replicas],
+            values: [
+              service.name,
+              service.image,
+              `${service.runningTaskCount}/${service.replicas}`,
+            ],
             actions: [{ title: "view", href: `/services/${service.id}` }],
           }))}
         />
