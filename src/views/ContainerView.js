@@ -160,6 +160,7 @@ function ContainerView({ useTitle, containerId }) {
             title: "rm",
             disabled: data?.container.running,
             onClick: async () => {
+              if (!window.confirm("Are you sure?")) return;
               await containerRm({
                 containerId,
               });

@@ -1,7 +1,7 @@
 import React from "react";
 import gql from "graphql-tag";
 import { useHistory } from "react-router-dom";
-import { Delete, Docker } from "mdi-material-ui";
+import { Delete, Database } from "mdi-material-ui";
 
 import useData from "../hooks/useData";
 import useAction from "../hooks/useAction";
@@ -55,6 +55,7 @@ function VolumeView({ useTitle, volumeId }) {
             icon: <Delete />,
             title: "rm",
             onClick: async () => {
+              if (!window.confirm("Are you sure?")) return;
               await volumeRm({
                 volumeId,
               });
@@ -63,7 +64,7 @@ function VolumeView({ useTitle, volumeId }) {
           },
         ]}
       />
-      <Widget title={title} icon={<Docker />}>
+      <Widget title={title} icon={<Database />}>
         <StaticForm
           fields={[
             ["name", data?.volume.name],

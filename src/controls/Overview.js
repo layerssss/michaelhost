@@ -10,7 +10,7 @@ function Overview({ items = [], href }) {
         {items.map(([title, href]) => (
           <Chip
             key={href}
-            style={{ margin: 5 }}
+            style={{ margin: 5, maxWidth: 140 }}
             component="a"
             clickable
             href={href}

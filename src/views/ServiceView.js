@@ -1,7 +1,7 @@
 import React from "react";
 import gql from "graphql-tag";
 import { useHistory } from "react-router-dom";
-import { Delete, ConsoleLine, Docker, Refresh } from "mdi-material-ui";
+import { Delete, ConsoleLine, CogBox, Refresh } from "mdi-material-ui";
 
 import useData from "../hooks/useData";
 import useAction from "../hooks/useAction";
@@ -100,6 +100,7 @@ function ServiceView({ useTitle, serviceId }) {
             icon: <Delete />,
             title: "rm",
             onClick: async () => {
+              if (!window.confirm("Are you sure?")) return;
               await serviceRm({
                 serviceId,
               });
@@ -108,7 +109,7 @@ function ServiceView({ useTitle, serviceId }) {
           },
         ]}
       />
-      <Widget title={title} icon={<Docker />}>
+      <Widget title={title} icon={<CogBox />}>
         <StaticForm
           fields={[
             ["id", serviceId],
