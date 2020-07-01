@@ -4,6 +4,7 @@ import { Broom } from "mdi-material-ui";
 
 import useAction from "../hooks/useAction";
 import useData from "../hooks/useData";
+import formatTimestamp from "../services/formatTimestamp";
 import Widget from "../controls/Widget";
 import Actions from "../controls/Actions";
 import Table from "../controls/Table";
@@ -20,6 +21,8 @@ function ContainersView({ useTitle }) {
         name
         image
         status
+        startedAt
+        running
       }
     }
   `);
@@ -34,9 +37,14 @@ function ContainersView({ useTitle }) {
     <>
       <Widget title={title} icon={<ContainersIcon />}>
         <Table
-          columns={["name", "image", "status"]}
+          columns={["name", "image", "status", "started at"]}
           rows={data?.containers.map((container) => ({
-            values: [container.name, container.image, container.status],
+            values: [
+              container.name,
+              container.image,
+              container.status,
+              container.running ? formatTimestamp(container.startedAt) : "-",
+            ],
             actions: [{ title: "view", href: `/containers/${container.id}` }],
           }))}
         />

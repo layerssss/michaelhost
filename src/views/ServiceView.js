@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 import gql from "graphql-tag";
 import { useHistory } from "react-router-dom";
 import { Delete, ConsoleLine, CogBox, Refresh } from "mdi-material-ui";
@@ -10,6 +9,7 @@ import Widget from "../controls/Widget";
 import Table from "../controls/Table";
 import Actions from "../controls/Actions";
 import StaticForm from "../controls/StaticForm";
+import formatTimestamp from "../services/formatTimestamp";
 
 export default React.memo(ServiceView);
 function ServiceView({ useTitle, serviceId }) {
@@ -140,7 +140,13 @@ function ServiceView({ useTitle, serviceId }) {
           columns={["id", "created at", "status", "message"]}
           rows={data?.service.tasks.map(
             ({ id, createdAt, status, message }) => ({
-              values: [id, moment(createdAt).format("LLL"), status, message],
+              values: [
+                //
+                id,
+                formatTimestamp(createdAt),
+                status,
+                message,
+              ],
             }),
           )}
         />

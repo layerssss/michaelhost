@@ -2,7 +2,6 @@ import React from "react";
 import gql from "graphql-tag";
 import { useHistory } from "react-router-dom";
 import { Stop, Delete, ConsoleLine, Docker, Play } from "mdi-material-ui";
-import moment from "moment";
 
 import useFormDialogs from "../hooks/useFormDialogs";
 import useData from "../hooks/useData";
@@ -10,6 +9,7 @@ import useAction from "../hooks/useAction";
 import Widget from "../controls/Widget";
 import Actions from "../controls/Actions";
 import StaticForm from "../controls/StaticForm";
+import formatTimestamp from "../services/formatTimestamp";
 
 export default React.memo(ContainerView);
 function ContainerView({ useTitle, containerId }) {
@@ -184,9 +184,9 @@ function ContainerView({ useTitle, containerId }) {
         <StaticForm
           fields={[
             ["status", data?.container.status],
-            ["createdAt", moment(data?.container.createdAt).format("LLL")],
-            ["startedAt", moment(data?.container.startedAt).format("LLL")],
-            ["finishedAt", moment(data?.container.finishedAt).format("LLL")],
+            ["createdAt", formatTimestamp(data?.container.createdAt)],
+            ["startedAt", formatTimestamp(data?.container.startedAt)],
+            ["finishedAt", formatTimestamp(data?.container.finishedAt)],
           ]}
         />
       </Widget>
