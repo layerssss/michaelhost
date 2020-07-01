@@ -10,6 +10,7 @@ import {
   CssBaseline,
 } from "@material-ui/core";
 
+import FormDialogsProvider from "../providers/FormDialogsProvider";
 import apolloClient from "../services/apolloClient";
 import ViewPort from "./Viewport";
 import RouteEventListener from "./RouteEventListener";
@@ -42,9 +43,11 @@ function App() {
       <SnackbarProvider>
         <ApolloProvider client={apolloClient}>
           <BrowserRouter>
-            <ErrorEventListener />
-            <RouteEventListener />
-            <ViewPort />
+            <FormDialogsProvider>
+              <ErrorEventListener />
+              <RouteEventListener />
+              <ViewPort />
+            </FormDialogsProvider>
           </BrowserRouter>
         </ApolloProvider>
       </SnackbarProvider>

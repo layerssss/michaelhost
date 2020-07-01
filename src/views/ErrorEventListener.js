@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { useSnackbar } from "notistack";
 
+import AbortError from "../services/AbortError";
 import getApolloErrors from "../services/getApolloErrors";
 
 export default React.memo(ErrorEventListener);
@@ -15,14 +16,15 @@ function ErrorEventListener() {
       let errors = getApolloErrors(error);
       if (!errors.length) errors = [error];
       for (const error of errors)
-        enqueueSnackbar(error.message, {
-          variant: "error",
-          ContentProps: {
-            style: {
-              whiteSpace: "pre-line",
+        if (!(error instanceof AbortError))
+          enqueueSnackbar(error.message, {
+            variant: "error",
+            ContentProps: {
+              style: {
+                whiteSpace: "pre-line",
+              },
             },
-          },
-        });
+          });
     };
 
     window.addEventListener("error", handleError);

@@ -6,7 +6,7 @@ const path = require("path");
 if (!process.env.NODE_ENV) process.env.NODE_ENV = "production";
 
 const createLogger = require("../lib/createLogger.js");
-const Service = require("../lib/Service.js");
+const Server = require("../lib/Server.js");
 const State = require("../lib/State.js");
 const waitForDeath = require("../lib/waitForDeath.js");
 const rollbar = require("../lib/rollbar.js");
@@ -68,7 +68,7 @@ commander
         email,
       });
 
-      const service = await Service.init({
+      const server = await Server.init({
         secret,
         adminPort,
         adminBind,
@@ -76,10 +76,10 @@ commander
         email,
         stateFilePath,
       });
-      await service.start();
+      await server.start();
 
       await waitForDeath();
-      await service.stop();
+      await server.stop();
     }),
   );
 

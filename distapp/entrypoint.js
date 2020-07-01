@@ -36,6 +36,7 @@ Promise.resolve()
     });
   })
   .catch((error) => {
+    // eslint-disable-next-line no-console
     console.error(error.stack || error.message);
     process.exit(1);
   });

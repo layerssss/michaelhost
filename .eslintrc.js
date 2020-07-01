@@ -10,5 +10,6 @@ module.exports = {
   plugins: ["import"],
   rules: {
     "react-hooks/exhaustive-deps": [0],
+    "no-console": [1],
   },
 };

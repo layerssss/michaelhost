@@ -8,6 +8,9 @@ import {
   CronJobsIcon,
   TerminalsIcon,
   ApplicationsIcon,
+  ContainersIcon,
+  ServicesIcon,
+  VolumesIcon,
 } from "../controls/icons";
 import StaticForm from "../controls/StaticForm";
 import Widget from "../controls/Widget";
@@ -34,6 +37,21 @@ function DashboardView() {
         id
         command
         cron
+      }
+      containers {
+        id
+        name
+        status
+      }
+      services {
+        id
+        name
+        replicas
+      }
+      volumes {
+        id
+        name
+        driver
       }
     }
   `);
@@ -81,6 +99,33 @@ function DashboardView() {
             `/cron_jobs/${id}`,
           ])}
           href="/cron_jobs"
+        />
+      </Widget>
+      <Widget icon={<ContainersIcon />} title="containers">
+        <Overview
+          items={data?.containers.map(({ id, name, status }) => [
+            `${name} (${status})`,
+            `/containers/${id}`,
+          ])}
+          href="/containers"
+        />
+      </Widget>
+      <Widget icon={<ServicesIcon />} title="services">
+        <Overview
+          items={data?.services.map(({ id, name, replicas }) => [
+            `${name} (${replicas !== null ? replicas : "-"})`,
+            `/services/${id}`,
+          ])}
+          href="/services"
+        />
+      </Widget>
+      <Widget icon={<VolumesIcon />} title="volumes">
+        <Overview
+          items={data?.volumes.map(({ id, name, driver }) => [
+            `${name} (${driver})`,
+            `/volumes/${id}`,
+          ])}
+          href="/volumes"
         />
       </Widget>
     </>

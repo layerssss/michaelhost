@@ -20,6 +20,7 @@ function Actions({ actions = [] }) {
             }}
             href={actions[0].href}
             onClick={actions[0].onClick}
+            disabled={actions[0].disabled}
             color="secondary"
           >
             {actions[0].icon || <RadioboxBlank />}
@@ -40,18 +41,21 @@ function Actions({ actions = [] }) {
           onOpen={() => openSet(true)}
           open={open}
         >
-          {actions.map(({ title, onClick, href, icon = <RadioboxBlank /> }) => (
-            <SpeedDialAction
-              key={title}
-              tooltipTitle={title}
-              icon={icon}
-              onClick={() => {
-                if (onClick) onClick();
-                openSet(false);
-              }}
-              href={href}
-            />
-          ))}
+          {actions.map(
+            ({ title, disabled, onClick, href, icon = <RadioboxBlank /> }) => (
+              <SpeedDialAction
+                key={title}
+                tooltipTitle={title}
+                icon={icon}
+                disabled={disabled}
+                onClick={() => {
+                  if (onClick) onClick();
+                  openSet(false);
+                }}
+                href={href}
+              />
+            ),
+          )}
         </SpeedDial>
       )}
     </>

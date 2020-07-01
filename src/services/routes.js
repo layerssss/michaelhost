@@ -18,6 +18,12 @@ import CronJobsView from "../views/CronJobsView";
 import NewCronJobView from "../views/NewCronJobView";
 import EditCronJobView from "../views/EditCronJobView";
 import LogsView from "../views/LogsView";
+import ContainersView from "../views/ContainersView";
+import ContainerView from "../views/ContainerView";
+import ServicesView from "../views/ServicesView";
+import ServiceView from "../views/ServiceView";
+import VolumesView from "../views/VolumesView";
+import VolumeView from "../views/VolumeView";
 
 const routes = [
   ["/dashboard", DashboardView],
@@ -39,6 +45,12 @@ const routes = [
   ["/cron_jobs/new", NewCronJobView],
   ["/cron_jobs/:cronJobId(\\w{8,})", CronJobView],
   ["/cron_jobs/:cronJobId(\\w{8,})/edit", EditCronJobView],
+  ["/containers", ContainersView],
+  ["/containers/:containerId", ContainerView],
+  ["/services", ServicesView],
+  ["/services/:serviceId", ServiceView],
+  ["/volumes", VolumesView],
+  ["/volumes/:volumeId", VolumeView],
   ["/logs", LogsView],
 ];
 export default routes;
