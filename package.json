@@ -33,7 +33,7 @@
     "graphql": "^15.0.0",
     "homedir": "^0.6.0",
     "isomorphic-git": "^1.4.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "moment": "^2.26.0",
     "node-cron": "^2.0.3",
     "node-fetch": "^2.6.0",
