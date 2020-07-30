@@ -22,7 +22,7 @@
     "@root/pem": "^1.0.4",
     "acme-http-01-webroot": "^3.0.0",
     "apollo-link-batch-http": "^1.2.14",
-    "apollo-server-express": "^2.13.1",
+    "apollo-server-express": "^2.14.2",
     "body-parser": "^1.18.3",
     "bunyan": "^1.8.12",
     "bunyan-prettystream": "^0.1.3",
