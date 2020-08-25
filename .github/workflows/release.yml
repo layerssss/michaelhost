@@ -49,6 +49,7 @@ jobs:
       - uses: actions/download-artifact@v2
         with:
           name: build
+          path: "build/"
       - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
