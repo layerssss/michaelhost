@@ -20,6 +20,7 @@ function EditHostView({ hostId, useTitle }) {
           redirect
           ssl
           changeOrigin
+          whitelistIps
           oidcConfig {
             id
             discoveryUrl
@@ -47,6 +48,7 @@ function EditHostView({ hostId, useTitle }) {
         $redirect: Boolean!
         $changeOrigin: Boolean!
         $oidcConfig: OidcConfigInput
+        $whitelistIps: String!
       ) {
         updateHost(
           id: $id
@@ -56,6 +58,7 @@ function EditHostView({ hostId, useTitle }) {
           enabled: $enabled
           redirect: $redirect
           changeOrigin: $changeOrigin
+          whitelistIps: $whitelistIps
           oidcConfig: $oidcConfig
         ) {
           id
@@ -65,6 +68,7 @@ function EditHostView({ hostId, useTitle }) {
           enabled
           redirect
           changeOrigin
+          whitelistIps
           oidcConfig {
             id
             discoveryUrl
@@ -118,6 +122,7 @@ function EditHostView({ hostId, useTitle }) {
             ["Boolean", "redirect", data.host.redirect],
             ["Boolean", "ssl", data.host.ssl],
             ["Boolean", "changeOrigin", data.host.changeOrigin],
+            ["String", "whitelistIps", data.host.whitelistIps],
             ["Boolean", "oidcEnabled", !!data.host.oidcConfig],
             [
               "String",

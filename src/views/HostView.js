@@ -20,6 +20,7 @@ function HostView({ useTitle, hostId }) {
           redirect
           ssl
           changeOrigin
+          whitelistIps
           oidcConfig {
             id
             discoveryUrl
@@ -53,6 +54,7 @@ function HostView({ useTitle, hostId }) {
             ["redirect", data?.host.redirect],
             ["ssl", data?.host.ssl],
             ["change origin", data?.host.changeOrigin],
+            ["whitelist IPs", data?.host.whitelistIps],
           ]}
         />
       </Widget>

@@ -23,6 +23,7 @@ function NewHostView({ useTitle }) {
         $redirect: Boolean!
         $changeOrigin: Boolean!
         $oidcConfig: OidcConfigInput
+        $whitelistIps: String!
       ) {
         updateHost(
           id: $id
@@ -32,6 +33,7 @@ function NewHostView({ useTitle }) {
           enabled: $enabled
           redirect: $redirect
           changeOrigin: $changeOrigin
+          whitelistIps: $whitelistIps
           oidcConfig: $oidcConfig
         ) {
           id
@@ -41,6 +43,7 @@ function NewHostView({ useTitle }) {
           enabled
           redirect
           changeOrigin
+          whitelistIps
           oidcConfig {
             id
             discoveryUrl
@@ -102,6 +105,7 @@ function NewHostView({ useTitle }) {
             ["Boolean", "redirect", false],
             ["Boolean", "ssl", false],
             ["Boolean", "changeOrigin", false],
+            ["String", "whitelistIps", ""],
             ["Boolean", "oidcEnabled", false],
             ["String", "discoveryUrl", "", { type: "url" }],
             ["String", "clientId", ""],
