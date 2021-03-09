@@ -4,7 +4,6 @@ module.exports = {
     "eslint:recommended",
     "plugin:import/errors",
     "prettier",
-    "prettier/react",
     "plugin:prettier/recommended",
   ],
   plugins: ["import"],

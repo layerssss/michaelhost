@@ -1,5 +1,4 @@
 import React from "react";
-import { hot } from "react-hot-loader/root";
 import { ApolloProvider } from "@apollo/react-common";
 import { BrowserRouter } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
@@ -16,7 +15,7 @@ import ViewPort from "./Viewport";
 import RouteEventListener from "./RouteEventListener";
 import ErrorEventListener from "./ErrorEventListener";
 
-export default hot(React.memo(App));
+export default React.memo(App);
 function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const theme = React.useMemo(

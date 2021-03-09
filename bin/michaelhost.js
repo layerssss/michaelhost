@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-const commander = require("commander");
+const { Command } = require("commander");
 const homedir = require("homedir");
 const path = require("path");
 
@@ -13,6 +13,7 @@ const rollbar = require("../lib/rollbar.js");
 
 const logger = createLogger("cli");
 
+const commander = new Command();
 commander
   .version(require("../package.json").version)
   .option(
@@ -92,6 +93,6 @@ commander.command("init").action(() =>
   }),
 );
 
-const { stateFilePath } = commander.parse(process.argv);
-
+commander.parse(process.argv);
+const { stateFilePath } = commander.opts();
 logger.info({ stateFilePath });
