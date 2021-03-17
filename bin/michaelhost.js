@@ -1,4 +1,7 @@
 #!/usr/bin/env node
+
+require("../lib/tunnelBootstrap.js");
+
 const { Command } = require("commander");
 const homedir = require("homedir");
 const path = require("path");

@@ -30,6 +30,8 @@
     "cookie": "^0.4.1",
     "dockerode": "^3.2.1",
     "express": "^4.16.3",
+    "global-agent": "^2.1.12",
+    "global-tunnel-ng": "^2.7.1",
     "graphql": "^15.5.0",
     "homedir": "^0.6.0",
     "ip": "^1.1.5",
