@@ -8,7 +8,7 @@
     "cli_sudo": "NODE_ENV=dev sudo `which node` ./bin/michaelhost.js --state-file-path /root/.michaelhost-state.json",
     "dev_sudo": "concurrently --kill-others --names \"react-app-rewired,node\" \"react-app-rewired start\" \"sudo NODE_ENV=dev `which node` ./bin/michaelhost.js --state-file-path /root/.michaelhost-state.json service --admin-port 2002 --email $EMAIL --webhook-server-port 2001 --secret ${MICHAELHOST_SECRET:-notsuchasecret}\"",
     "cli": "NODE_ENV=dev node ./bin/michaelhost.js",
-    "dev": "concurrently --kill-others --names \"react-app-rewired,node\" \"react-app-rewired start\" \"NODE_ENV=dev node ./bin/michaelhost.js service --admin-port 2002 --email $EMAIL\"",
+    "dev": "concurrently --kill-others --names \"react-app-rewired,node\" \"react-app-rewired start\" \"NODE_ENV=dev node ./bin/michaelhost.js service --admin-port 2002 --secret ${MICHAELHOST_SECRET:-notsuchasecret} --email $EMAIL\"",
     "lint": "eslint .",
     "format": "prettier --write './lib/**/*.js' './bin/**/*.js' './src/**/*.js'"
   },
@@ -36,6 +36,7 @@
     "homedir": "^0.6.0",
     "ip": "^1.1.5",
     "isomorphic-git": "^1.8.1",
+    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "moment": "^2.29.1",
     "node-cron": "^2.0.3",
