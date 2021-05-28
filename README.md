@@ -12,6 +12,7 @@ This is Michael Yin's very own hosting software.
 * Web-based terminals
 * Cronjobs
 * Webhooks server (DockerHub, GitHub)
+* Docker: containers / services / volumes
 
 ## Usage
 
@@ -31,7 +32,7 @@ Absolutely no warranty
 
 MIT License
 
-Copyright (c) 2019 Michael Yin
+Copyright (c) 2021 Michael Yin
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
