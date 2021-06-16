@@ -18,6 +18,7 @@ function NewHostView({ useTitle }) {
         $id: ID!
         $hostname: String!
         $ssl: Boolean!
+        $plain: Boolean!
         $upstream: String!
         $enabled: Boolean!
         $redirect: Boolean!
@@ -29,6 +30,7 @@ function NewHostView({ useTitle }) {
           id: $id
           hostname: $hostname
           ssl: $ssl
+          plain: $plain
           upstream: $upstream
           enabled: $enabled
           redirect: $redirect
@@ -40,6 +42,7 @@ function NewHostView({ useTitle }) {
           hostname
           upstream
           ssl
+          plain
           enabled
           redirect
           changeOrigin
@@ -104,6 +107,7 @@ function NewHostView({ useTitle }) {
             ["String", "upstream", "", { required: true, type: "url" }],
             ["Boolean", "redirect", false],
             ["Boolean", "ssl", false],
+            ["Boolean", "plain", true],
             ["Boolean", "changeOrigin", false],
             ["String", "whitelistIps", ""],
             ["Boolean", "oidcEnabled", false],
