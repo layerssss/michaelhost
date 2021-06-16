@@ -19,6 +19,7 @@ function HostView({ useTitle, hostId }) {
           upstream
           redirect
           ssl
+          plain
           changeOrigin
           whitelistIps
           oidcConfig {
@@ -53,6 +54,7 @@ function HostView({ useTitle, hostId }) {
             ["upstream", data?.host.upstream],
             ["redirect", data?.host.redirect],
             ["ssl", data?.host.ssl],
+            ["plain", data?.host.plain],
             ["change origin", data?.host.changeOrigin],
             ["whitelist IPs", data?.host.whitelistIps],
           ]}

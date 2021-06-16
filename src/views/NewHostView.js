@@ -18,6 +18,7 @@ function NewHostView({ useTitle }) {
         $id: ID!
         $hostname: String!
         $ssl: Boolean!
+        $plain: Boolean!
         $upstream: String!
         $enabled: Boolean!
         $redirect: Boolean!
@@ -104,6 +105,7 @@ function NewHostView({ useTitle }) {
             ["String", "upstream", "", { required: true, type: "url" }],
             ["Boolean", "redirect", false],
             ["Boolean", "ssl", false],
+            ["Boolean", "plain", false],
             ["Boolean", "changeOrigin", false],
             ["String", "whitelistIps", ""],
             ["Boolean", "oidcEnabled", false],

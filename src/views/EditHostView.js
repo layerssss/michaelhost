@@ -19,6 +19,7 @@ function EditHostView({ hostId, useTitle }) {
           upstream
           redirect
           ssl
+          plain
           changeOrigin
           whitelistIps
           oidcConfig {
@@ -43,6 +44,7 @@ function EditHostView({ hostId, useTitle }) {
         $id: ID!
         $hostname: String!
         $ssl: Boolean!
+        $plain: Boolean!
         $upstream: String!
         $enabled: Boolean!
         $redirect: Boolean!
@@ -54,6 +56,7 @@ function EditHostView({ hostId, useTitle }) {
           id: $id
           hostname: $hostname
           ssl: $ssl
+          plain: $plain
           upstream: $upstream
           enabled: $enabled
           redirect: $redirect
@@ -65,6 +68,7 @@ function EditHostView({ hostId, useTitle }) {
           hostname
           upstream
           ssl
+          plain
           enabled
           redirect
           changeOrigin
@@ -121,6 +125,7 @@ function EditHostView({ hostId, useTitle }) {
             ],
             ["Boolean", "redirect", data.host.redirect],
             ["Boolean", "ssl", data.host.ssl],
+            ["Boolean", "plain", data.host.plain],
             ["Boolean", "changeOrigin", data.host.changeOrigin],
             ["String", "whitelistIps", data.host.whitelistIps],
             ["Boolean", "oidcEnabled", !!data.host.oidcConfig],
