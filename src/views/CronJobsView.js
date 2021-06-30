@@ -19,6 +19,7 @@ function CronJobsView({ useTitle }) {
         id
         command
         cron
+        singleInstance
       }
     }
   `);
@@ -57,9 +58,9 @@ function CronJobsView({ useTitle }) {
     <>
       <Widget title={title} icon={<CronJobsIcon />}>
         <Table
-          columns={["command", "cron"]}
+          columns={["command", "cron", "single instance"]}
           rows={data?.cronJobs.map((cronJob) => ({
-            values: [cronJob.command, cronJob.cron],
+            values: [cronJob.command, cronJob.cron, cronJob.singleInstance],
             actions: [
               { title: "view", href: `/cron_jobs/${cronJob.id}` },
               {

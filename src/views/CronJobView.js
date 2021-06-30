@@ -16,6 +16,7 @@ function CronJobView({ useTitle, cronJobId }) {
           id
           command
           cron
+          singleInstance
         }
       }
     `,
@@ -39,6 +40,7 @@ function CronJobView({ useTitle, cronJobId }) {
           fields={[
             ["command", data?.cronJob.command],
             ["cron", data?.cronJob.cron],
+            ["single instance", data?.cronJob.singleInstance],
           ]}
         />
       </Widget>
