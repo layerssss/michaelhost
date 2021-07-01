@@ -14,6 +14,7 @@ function CronJobView({ useTitle, cronJobId }) {
       query CronJobView($cronJobId: ID!) {
         cronJob(id: $cronJobId) {
           id
+          name
           command
           cron
           singleInstance
@@ -39,6 +40,7 @@ function CronJobView({ useTitle, cronJobId }) {
         <StaticForm
           fields={[
             ["command", data?.cronJob.command],
+            ["name", data?.cronJob.name],
             ["cron", data?.cronJob.cron],
             ["single instance", data?.cronJob.singleInstance],
           ]}

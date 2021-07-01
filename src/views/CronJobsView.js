@@ -17,6 +17,7 @@ function CronJobsView({ useTitle }) {
     query CronJobsView {
       cronJobs {
         id
+        name
         command
         cron
         singleInstance
@@ -58,9 +59,14 @@ function CronJobsView({ useTitle }) {
     <>
       <Widget title={title} icon={<CronJobsIcon />}>
         <Table
-          columns={["command", "cron", "single instance"]}
+          columns={["name", "command", "cron", "single instance"]}
           rows={data?.cronJobs.map((cronJob) => ({
-            values: [cronJob.command, cronJob.cron, cronJob.singleInstance],
+            values: [
+              cronJob.name,
+              cronJob.command,
+              cronJob.cron,
+              cronJob.singleInstance,
+            ],
             actions: [
               { title: "view", href: `/cron_jobs/${cronJob.id}` },
               {

@@ -13,13 +13,20 @@ function NewCronJobView({ useTitle }) {
 
   const createCronJob = useAction(
     gql`
-      mutation($command: String!, $cron: String!, $singleInstance: Boolean!) {
+      mutation(
+        $name: String!
+        $command: String!
+        $cron: String!
+        $singleInstance: Boolean!
+      ) {
         createCronJob(
+          name: $name
           command: $command
           cron: $cron
           singleInstance: $singleInstance
         ) {
           id
+          name
           command
           cron
           singleInstance
@@ -52,6 +59,7 @@ function NewCronJobView({ useTitle }) {
             history.push("/cron_jobs");
           }}
           fields={[
+            ["String", "name", ""],
             ["String", "command", "", { required: true }],
             ["String", "cron", "0 8 * * *", { required: true }],
             ["Boolean", "singleInstance", false, { required: true }],

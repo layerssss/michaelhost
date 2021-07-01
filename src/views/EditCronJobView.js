@@ -14,6 +14,7 @@ function EditCronJobView({ cronJobId, useTitle }) {
       query EditCronJobView($cronJobId: ID!) {
         cronJob(id: $cronJobId) {
           id
+          name
           command
           cron
           singleInstance
@@ -30,17 +31,20 @@ function EditCronJobView({ cronJobId, useTitle }) {
     gql`
       mutation(
         $id: ID!
+        $name: String!
         $command: String!
         $cron: String!
         $singleInstance: Boolean!
       ) {
         updateCronJob(
           id: $id
+          name: $name
           command: $command
           cron: $cron
           singleInstance: $singleInstance
         ) {
           id
+          name
           command
           cron
           singleInstance
@@ -61,14 +65,10 @@ function EditCronJobView({ cronJobId, useTitle }) {
             history.push(`/cron_jobs/${cronJobId}`);
           }}
           fields={[
+            ["String", "name", data.cronJob.name],
             ["String", "command", data.cronJob.command, { required: true }],
             ["String", "cron", data.cronJob.cron, { required: true }],
-            [
-              "Boolean",
-              "singleInstance",
-              data.cronJob.singleInstance,
-              { required: true },
-            ],
+            ["Boolean", "singleInstance", data.cronJob.singleInstance],
           ]}
         />
       )}
