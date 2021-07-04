@@ -61,7 +61,11 @@ commander
     "localhost",
   )
   .option("-s --secret [secret]", "secret for webhook")
-  .option("-e --email [string]", "admin email address", process.env["EMAIL"])
+  .option(
+    "-e --email [string]",
+    "admin email address, used in Let's Encrypit",
+    process.env["EMAIL"],
+  )
   .action(({ adminPort, adminBind, webhookServerPort, email, secret }) =>
     runAsync(async () => {
       logger.info({
