@@ -60,7 +60,7 @@ commander
     (i, d) => i || d,
     "localhost",
   )
-  .option("-s --secret [secret]", "secret for webhook")
+  .option("-s --secret [secret]", "secret for WebhookServer / ReverseProxy")
   .option(
     "-e --email [string]",
     "admin email address, used in Let's Encrypit",
@@ -111,7 +111,7 @@ commander
     (i, d) => i || d,
     "localhost",
   )
-  .option("-s --secret [secret]", "secret for webhook")
+  .option("-s --secret [secret]", "secret for WebhookServer / ReverseProxy")
   .action(({ adminPort, adminBind, webhookServerPort, secret }) =>
     runAsync(async () => {
       logger.info({
@@ -143,7 +143,8 @@ commander
     "admin email address, used in Let's Encrypit",
     process.env["EMAIL"],
   )
-  .action(({ email }) =>
+  .option("-s --secret [secret]", "secret for WebhookServer / ReverseProxy")
+  .action(({ email, secret }) =>
     runAsync(async () => {
       logger.info({
         command: "slave",
@@ -152,6 +153,7 @@ commander
 
       const server = await Server.init({
         email,
+        secret,
         stateFilePath,
         slave: true,
       });
