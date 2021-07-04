@@ -1,6 +1,6 @@
 {
   "name": "michaelhost",
-  "version": "0.20.1",
+  "version": "0.20.2",
   "license": "MIT",
   "scripts": {
     "build-react": "react-app-rewired build",
