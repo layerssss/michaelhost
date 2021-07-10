@@ -7,7 +7,6 @@ import {
   HostsIcon,
   CronJobsIcon,
   TerminalsIcon,
-  ApplicationsIcon,
   ContainersIcon,
   ServicesIcon,
   VolumesIcon,
@@ -29,9 +28,6 @@ function DashboardView() {
       terminals {
         id
         name
-      }
-      composeApplications {
-        id
       }
       cronJobs {
         id
@@ -81,15 +77,6 @@ function DashboardView() {
             `/terminals/${terminal.id}`,
           ])}
           href="/terminals"
-        />
-      </Widget>
-      <Widget icon={<ApplicationsIcon />} title="applications">
-        <Overview
-          items={data?.composeApplications.map(({ id }) => [
-            id,
-            `/applications/${id}`,
-          ])}
-          href="/applications"
         />
       </Widget>
       <Widget icon={<CronJobsIcon />} title="cron jobs">

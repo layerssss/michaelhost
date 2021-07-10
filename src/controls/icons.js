@@ -6,7 +6,6 @@ import {
   Web,
   Console,
   CalendarClock,
-  MusicClefTreble,
   Docker,
   CogBox,
 } from "mdi-material-ui";
@@ -41,22 +40,6 @@ export const HostsIcon = React.memo(function HostsIcon() {
   return (
     <Badge badgeContent={data?.hosts.length} color="secondary">
       <Web />
-    </Badge>
-  );
-});
-
-export const ApplicationsIcon = React.memo(function ApplicationsIcon() {
-  const [data] = useData(gql`
-    query ApplicationsIcon {
-      composeApplications {
-        id
-      }
-    }
-  `);
-
-  return (
-    <Badge badgeContent={data?.composeApplications.length} color="secondary">
-      <MusicClefTreble />
     </Badge>
   );
 });
