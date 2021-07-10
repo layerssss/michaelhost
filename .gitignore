@@ -1,5 +1,4 @@
 /node_modules
-/build
 
 *.log
 dist/*
@@ -9,3 +8,6 @@ distapp/assets/pty.node.asset
 !.keep
 .git
 REVISION
+
+/admin_ui/build
+/admin_ui/node_modules
