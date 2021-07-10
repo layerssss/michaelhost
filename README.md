@@ -8,7 +8,6 @@ This is Michael Yin's very own hosting software.
 * Web-UI admin dashboard server
 * Let's Encrypt powered SSL reverse proxy
 * Optional OIDC guard on reverse proxy
-* docker-compose instance management with port forwarding
 * Web-based terminals
 * Cronjobs
 * Webhooks server (DockerHub, GitHub)
