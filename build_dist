@@ -10,7 +10,6 @@ PLATFORM=$(uname -s | awk '{print tolower($0)}')
   --output ./distapp/assets/michaelhost_bin.asset \
   --config ./package.json
 cp ./node_modules/node-pty/build/Release/pty.node ./distapp/assets/pty.node.asset
-cp ./node_modules/nodegit/build/Release/nodegit.node ./distapp/assets/nodegit.node.asset
 
 ./node_modules/.bin/pkg \
   ./distapp/entrypoint.js \
