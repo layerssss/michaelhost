@@ -5,7 +5,8 @@
   "scripts": {
     "build": "(cd admin_ui && yarn build) && ./build_dist",
     "cli": "NODE_ENV=dev node ./bin/michaelhost.js",
-    "dev": "concurrently --kill-others --names \"react-app-rewired,node\" \"cd admin_ui && yarn start\" \"NODE_ENV=dev node ./bin/michaelhost.js service --admin-port 2002 --secret ${MICHAELHOST_SECRET:-notsuchasecret} --email $EMAIL\"",
+    "dev_node": "NODE_ENV=dev node ./bin/michaelhost.js service --admin-port 2002 --webhook-server-port 2001 --secret ${MICHAELHOST_SECRET:-notsuchasecret} --email $EMAIL",
+    "dev_react": "cd admin_ui && yarn start",
     "lint": "eslint .",
     "format": "prettier --write './lib/**/*.js' './bin/**/*.js' './admin_ui/src/**/*.js'"
   },
@@ -47,7 +48,6 @@
     "ws": "^7.4.4"
   },
   "devDependencies": {
-    "concurrently": "^6.0.0",
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.1",

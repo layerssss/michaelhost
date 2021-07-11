@@ -11,7 +11,7 @@ This is Michael Yin's very own hosting software.
 * Web-based terminals
 * Cronjobs
 * Webhooks server (DockerHub, GitHub)
-* Docker: containers / services / volumes
+* Docker: containers / services / volumes / images
 
 ## Usage
 

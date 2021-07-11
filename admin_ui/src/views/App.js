@@ -4,7 +4,7 @@ import { BrowserRouter } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
 import {
   useMediaQuery,
-  createMuiTheme,
+  createTheme,
   MuiThemeProvider,
   CssBaseline,
 } from "@material-ui/core";
@@ -20,7 +20,7 @@ function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const theme = React.useMemo(
     () =>
-      createMuiTheme({
+      createTheme({
         palette: {
           type: prefersDarkMode ? "dark" : "light",
           primary: { main: "#1976D2" },

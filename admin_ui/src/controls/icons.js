@@ -7,6 +7,7 @@ import {
   Console,
   CalendarClock,
   Docker,
+  ZipDisk,
   CogBox,
 } from "mdi-material-ui";
 
@@ -104,6 +105,22 @@ export const VolumesIcon = React.memo(function VolumesIcon() {
   return (
     <Badge badgeContent={data?.volumes.length} color="secondary">
       <Database />
+    </Badge>
+  );
+});
+
+export const ImagesIcon = React.memo(function VolumesIcon() {
+  const [data] = useData(gql`
+    query ImagesIcon {
+      images {
+        id
+      }
+    }
+  `);
+
+  return (
+    <Badge badgeContent={data?.images.length} color="secondary">
+      <ZipDisk />
     </Badge>
   );
 });

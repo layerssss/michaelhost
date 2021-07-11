@@ -8,6 +8,7 @@ import {
   ContainersIcon,
   VolumesIcon,
   ServicesIcon,
+  ImagesIcon,
 } from "../controls/icons";
 
 const navItems = [
@@ -17,6 +18,7 @@ const navItems = [
   ["containers", "/containers", <ContainersIcon />],
   ["services", "/services", <ServicesIcon />],
   ["volumes", "/volumes", <VolumesIcon />],
+  ["images", "/images", <ImagesIcon />],
   ["cron jobs", "/cron_jobs", <CronJobsIcon />],
   ["logs", "/logs", <FileDocument />],
 ];

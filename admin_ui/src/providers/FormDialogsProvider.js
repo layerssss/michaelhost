@@ -37,11 +37,12 @@ function FormDialogsProvider({ children }) {
           formDialogClose();
           formDialog.cancel();
         }}
-        onExited={() =>
-          formDialogsSet((formDialogs) =>
-            formDialogs.filter((f) => f.id !== formDialog.id),
-          )
-        }
+        TransitionProps={{
+          onExited: () =>
+            formDialogsSet((formDialogs) =>
+              formDialogs.filter((f) => f.id !== formDialog.id),
+            ),
+        }}
         PaperProps={{
           component: "form",
           onSubmit: async (event) => {

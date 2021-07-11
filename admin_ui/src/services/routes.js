@@ -17,6 +17,9 @@ import ServicesView from "../views/ServicesView";
 import ServiceView from "../views/ServiceView";
 import VolumesView from "../views/VolumesView";
 import VolumeView from "../views/VolumeView";
+import ImagesView from "../views/ImagesView";
+import ImageView from "../views/ImageView";
+import PullImageView from "../views/PullImageView";
 
 const routes = [
   ["/dashboard", DashboardView],
@@ -38,5 +41,8 @@ const routes = [
   ["/volumes", VolumesView],
   ["/volumes/:volumeId", VolumeView],
   ["/logs", LogsView],
+  ["/images", ImagesView],
+  ["/images/pull", PullImageView],
+  ["/images/:imageId(sha256:.*)", ImageView],
 ];
 export default routes;
