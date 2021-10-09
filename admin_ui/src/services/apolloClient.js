@@ -1,16 +1,8 @@
-import { InMemoryCache } from "apollo-cache-inmemory";
-import { ApolloLink } from "apollo-link";
-import { ApolloClient } from "@apollo/client";
-import { BatchHttpLink } from "apollo-link-batch-http";
+import { ApolloClient, InMemoryCache } from "@apollo/client";
 
 const apolloClient = new ApolloClient({
-  link: ApolloLink.from([
-    //
-    new BatchHttpLink(),
-  ]),
-  cache: new InMemoryCache({
-    dataIdFromObject: (node) => node.id,
-  }),
+  uri: "/graphql",
+  cache: new InMemoryCache(),
 });
 
 export default apolloClient;
