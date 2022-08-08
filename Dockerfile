@@ -9,7 +9,7 @@ RUN yarn build
 
 FROM node:14-alpine as builder
 
-RUN apk add --no-cache python make g++
+RUN apk add --no-cache python3 make g++
 RUN mkdir /michaelhost
 WORKDIR /michaelhost
 ADD ./package.json .
