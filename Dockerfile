@@ -1,4 +1,6 @@
-FROM node:14-alpine as admin_ui_builder
+FROM node:16-alpine as base
+
+FROM base as admin_ui_builder
 
 RUN mkdir /admin_ui
 WORKDIR /admin_ui
@@ -7,7 +9,7 @@ RUN yarn install && yarn cache clean
 RUN yarn build
 
 
-FROM node:14-alpine as builder
+FROM base as builder
 
 RUN apk add --no-cache python3 make g++
 RUN mkdir /michaelhost
@@ -17,7 +19,7 @@ ADD ./yarn.lock .
 RUN yarn install --production && yarn cache clean
 
 
-FROM node:14-alpine
+FROM base
 
 RUN apk add --no-cache openssh-client
 RUN mkdir /michaelhost
