@@ -17,14 +17,14 @@ jobs:
       - run: yarn install
         working-directory: admin_ui
       - run: yarn build
-      - uses: actions/upload-artifact@v2
+      - uses: actions/upload-artifact@v3
         with:
-          name: michaelhost-linux
-          path: "dist/"
-      - uses: actions/upload-artifact@v2
-        with:
-          name: build
+          name: linux-build
           path: "build/"
+      - uses: actions/upload-artifact@v3
+        with:
+          name: linux-dist
+          path: "dist/"
   publish_to_npm:
     runs-on: ubuntu-latest
     needs: build-linux
@@ -34,9 +34,9 @@ jobs:
         with:
           node-version: "16.x"
           registry-url: "https://registry.npmjs.org"
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
-          name: build
+          name: linux-build
           path: "build/"
       - run: npm publish
         env:
@@ -46,9 +46,9 @@ jobs:
     needs: [build-linux]
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/download-artifact@v2
+      - uses: actions/download-artifact@v3
         with:
-          name: michaelhost-linux
+          name: linux-dist
           path: "dist/"
 
       - uses: actions/create-release@v1
