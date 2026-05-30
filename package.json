@@ -8,6 +8,7 @@
   },
   "scripts": {
     "build": "npm --prefix admin_ui run build",
+    "build_docker": "docker buildx build --platform linux/amd64,linux/arm64 -t layerssss/michaelhost:latest -t layerssss/michaelhost:$npm_package_version --push .",
     "cli": "NODE_ENV=dev node ./bin/michaelhost.js",
     "dev_node": "NODE_ENV=dev node ./bin/michaelhost.js service --admin-port 2002 --webhook-server-port 2001 --secret ${MICHAELHOST_SECRET:-notsuchasecret}",
     "dev_react": "npm --prefix admin_ui run dev",
