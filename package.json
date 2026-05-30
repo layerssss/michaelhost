@@ -2,14 +2,18 @@
   "name": "michaelhost",
   "version": "1.3.1",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/layerssss/michaelhost"
+  },
   "scripts": {
-    "build": "yarn --cwd admin_ui webpack --mode production",
+    "build": "npm --prefix admin_ui run build",
     "cli": "NODE_ENV=dev node ./bin/michaelhost.js",
     "dev_node": "NODE_ENV=dev node ./bin/michaelhost.js service --admin-port 2002 --webhook-server-port 2001 --secret ${MICHAELHOST_SECRET:-notsuchasecret}",
-    "dev_react": "yarn --cwd admin_ui webpack serve --mode development",
-    "lint": "yarn lint_node && yarn lint_react",
+    "dev_react": "npm --prefix admin_ui run dev",
+    "lint": "npm run lint_node && npm run lint_react",
     "lint_node": "eslint .",
-    "lint_react": "yarn --cwd admin_ui eslint .",
+    "lint_react": "npm --prefix admin_ui run lint",
     "format": "prettier --write './lib/**/*.js' './bin/**/*.js' './admin_ui/src/**/*.js'",
     "postinstall": "chmod +x node_modules/node-pty/prebuilds/*/spawn-helper 2>/dev/null || true"
   },
@@ -44,7 +48,6 @@
     "@eslint/js": "^10.0.1",
     "eslint": "^10.4.1",
     "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-import": "^2.32.0",
     "eslint-plugin-prettier": "^5.5.6",
     "prettier": "^3.8.3"
   }

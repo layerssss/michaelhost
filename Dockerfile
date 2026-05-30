@@ -1,12 +1,12 @@
-FROM node:16-alpine as base
+FROM node:26-alpine as base
 
 FROM base as admin_ui_builder
 
 RUN mkdir /admin_ui
 WORKDIR /admin_ui
 ADD /admin_ui .
-RUN yarn install && yarn cache clean
-RUN yarn build
+RUN npm install
+RUN npm run build
 
 
 FROM base as builder
@@ -15,8 +15,7 @@ RUN apk add --no-cache python3 make g++
 RUN mkdir /michaelhost
 WORKDIR /michaelhost
 ADD ./package.json .
-ADD ./yarn.lock .
-RUN yarn install --production && yarn cache clean
+RUN npm install --omit=dev
 
 
 FROM base

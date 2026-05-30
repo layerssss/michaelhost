@@ -1,11 +1,5 @@
 module.exports = {
-  extends: [
-    "eslint:recommended",
-    "plugin:import/errors",
-    "prettier",
-    "plugin:prettier/recommended",
-  ],
-  plugins: ["import"],
+  extends: ["eslint:recommended", "prettier", "plugin:prettier/recommended"],
   parserOptions: {
     ecmaVersion: 2021,
     sourceType: "script",

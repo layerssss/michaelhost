@@ -17,11 +17,12 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: ".nvmrc"
+          cache: npm
       - run: "echo $GITHUB_SHA > REVISION"
-      - run: yarn install
-      - run: yarn install
+      - run: npm install
+      - run: npm install
         working-directory: admin_ui
-      - run: yarn build
+      - run: npm run build
       - run: npm publish --provenance
       - uses: rollbar/github-deploy-action@1.1.0
         with:

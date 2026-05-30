@@ -1,5 +1,4 @@
 const js = require("@eslint/js");
-const importPlugin = require("eslint-plugin-import");
 const prettierRecommended = require("eslint-plugin-prettier/recommended");
 
 const browserGlobals = {
@@ -44,9 +43,6 @@ module.exports = [
   },
   {
     files: ["src/**/*.js"],
-    plugins: {
-      import: importPlugin,
-    },
     languageOptions: {
       ecmaVersion: 2021,
       sourceType: "module",
@@ -58,9 +54,6 @@ module.exports = [
       },
     },
     rules: {
-      ...importPlugin.configs.errors.rules,
-      "import/named": "off",
-      "import/no-unresolved": "off",
       "no-console": [1],
       "no-unused-vars": [
         "error",
