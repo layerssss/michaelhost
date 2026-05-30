@@ -12,7 +12,7 @@ import {
 } from "@mui/material";
 import serialize from "form-serialize";
 
-export default React.memo(Form);
+export default Form;
 
 function Form({ fields = [], onSubmit }) {
   const [loading, loadingSet] = useState(false);
@@ -78,12 +78,7 @@ function Form({ fields = [], onSubmit }) {
   );
 }
 
-const BooleanField = React.memo(function BooleanField({
-  name,
-  defaultValue,
-  label,
-  disabled,
-}) {
+function BooleanField({ name, defaultValue, label, disabled }) {
   return (
     <FormControl fullWidth disabled={disabled}>
       <FormControlLabel
@@ -100,9 +95,9 @@ const BooleanField = React.memo(function BooleanField({
       />
     </FormControl>
   );
-});
+}
 
-const SelectField = React.memo(function SelectField({
+function SelectField({
   name,
   defaultValue,
   label,
@@ -122,4 +117,4 @@ const SelectField = React.memo(function SelectField({
       </Select>
     </FormControl>
   );
-});
+}

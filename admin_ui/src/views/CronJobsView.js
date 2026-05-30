@@ -9,7 +9,7 @@ import Table from "../controls/Table";
 import Actions from "../controls/Actions";
 import { CronJobsIcon } from "../controls/icons";
 
-export default React.memo(CronJobsView);
+export default CronJobsView;
 function CronJobsView({ useTitle }) {
   const title = "cron jobs";
   useTitle(title);
@@ -48,7 +48,7 @@ function CronJobsView({ useTitle }) {
     },
   );
   const triggerCronJob = useAction(gql`
-    mutation($cronJobId: ID!) {
+    mutation ($cronJobId: ID!) {
       triggerCronJob(id: $cronJobId) {
         id
       }

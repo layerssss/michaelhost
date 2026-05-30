@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 
 export const formDialogsContext = React.createContext();
-export default React.memo(FormDialogsProvider);
+export default FormDialogsProvider;
 
 function FormDialogsProvider({ children }) {
   const [formDialogs, formDialogsSet] = useState([]);
@@ -115,12 +115,7 @@ function FormDialogsProvider({ children }) {
   );
 }
 
-const BooleanField = React.memo(function BooleanField({
-  name,
-  defaultValue,
-  label,
-  disabled,
-}) {
+function BooleanField({ name, defaultValue, label, disabled }) {
   return (
     <FormControl fullWidth disabled={disabled}>
       <FormControlLabel
@@ -137,9 +132,9 @@ const BooleanField = React.memo(function BooleanField({
       />
     </FormControl>
   );
-});
+}
 
-const SelectField = React.memo(function SelectField({
+function SelectField({
   name,
   defaultValue,
   label,
@@ -159,4 +154,4 @@ const SelectField = React.memo(function SelectField({
       </Select>
     </FormControl>
   );
-});
+}

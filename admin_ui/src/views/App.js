@@ -11,7 +11,7 @@ import ViewPort from "./Viewport";
 import RouteEventListener from "./RouteEventListener";
 import ErrorEventListener from "./ErrorEventListener";
 
-export default React.memo(App);
+export default App;
 function App() {
   const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
   const theme = React.useMemo(

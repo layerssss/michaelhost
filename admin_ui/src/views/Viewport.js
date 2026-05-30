@@ -24,7 +24,7 @@ import useData from "../hooks/useData";
 import routes from "../services/routes";
 import navItems from "../services/navItems";
 
-export default React.memo(ViewPort);
+export default ViewPort;
 export const viewportContext = React.createContext();
 
 function ViewPort() {
@@ -75,7 +75,7 @@ function ViewPort() {
     if (message) enqueueSnackbar(message);
     if (error)
       _.defer(() => {
-        const { message, name, ...errorInfo } = error;
+        const { message: _message, name, ...errorInfo } = error;
         throw new Error(
           [
             `Error in ${name}`,
@@ -151,7 +151,6 @@ function ViewPort() {
             <currentMatch.Component
               {...currentMatch.match.params}
               useTitle={(title) => {
-                // eslint-disable-next-line react-hooks/rules-of-hooks
                 useBreadcrumb({
                   title,
                   href: currentMatch.match.pathname,

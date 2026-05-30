@@ -12,7 +12,7 @@ import {
 
 import useData from "../hooks/useData";
 
-export const TerminalsIcon = React.memo(function TerminalsIcon() {
+export function TerminalsIcon() {
   const [data] = useData(gql`
     query TerminalsIcon {
       terminals {
@@ -26,9 +26,9 @@ export const TerminalsIcon = React.memo(function TerminalsIcon() {
       <Console />
     </Badge>
   );
-});
+}
 
-export const CronJobsIcon = React.memo(function CronJobsIcon() {
+export function CronJobsIcon() {
   const [data] = useData(gql`
     query CronJobsIcon {
       cronJobs {
@@ -42,9 +42,9 @@ export const CronJobsIcon = React.memo(function CronJobsIcon() {
       <CalendarClock />
     </Badge>
   );
-});
+}
 
-export const ContainersIcon = React.memo(function ContainersIcon() {
+export function ContainersIcon() {
   const [data] = useData(gql`
     query ContainersIcon {
       containers {
@@ -58,9 +58,9 @@ export const ContainersIcon = React.memo(function ContainersIcon() {
       <Docker />
     </Badge>
   );
-});
+}
 
-export const ServicesIcon = React.memo(function ServicesIcon() {
+export function ServicesIcon() {
   const [data] = useData(gql`
     query ServicesIcon {
       services {
@@ -74,9 +74,9 @@ export const ServicesIcon = React.memo(function ServicesIcon() {
       <CogBox />
     </Badge>
   );
-});
+}
 
-export const VolumesIcon = React.memo(function VolumesIcon() {
+export function VolumesIcon() {
   const [data] = useData(gql`
     query VolumesIcon {
       volumes {
@@ -90,9 +90,9 @@ export const VolumesIcon = React.memo(function VolumesIcon() {
       <Database />
     </Badge>
   );
-});
+}
 
-export const ImagesIcon = React.memo(function VolumesIcon() {
+export function ImagesIcon() {
   const [data] = useData(gql`
     query ImagesIcon {
       images {
@@ -106,4 +106,4 @@ export const ImagesIcon = React.memo(function VolumesIcon() {
       <ZipDisk />
     </Badge>
   );
-});
+}

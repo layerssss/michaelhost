@@ -10,7 +10,7 @@ import Table from "../controls/Table";
 import { ImagesIcon } from "../controls/icons";
 import formatTimestamp from "../services/formatTimestamp";
 
-export default React.memo(ImagesView);
+export default ImagesView;
 function ImagesView({ useTitle }) {
   const title = "images";
   useTitle(title);

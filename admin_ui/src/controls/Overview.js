@@ -1,7 +1,7 @@
 import React from "react";
 import { Chip, CardActions, Button } from "@mui/material";
 
-export default React.memo(Overview);
+export default Overview;
 
 function Overview({ items = [], href }) {
   return (

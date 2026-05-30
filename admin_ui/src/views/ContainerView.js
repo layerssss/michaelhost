@@ -11,7 +11,7 @@ import Actions from "../controls/Actions";
 import StaticForm from "../controls/StaticForm";
 import formatTimestamp from "../services/formatTimestamp";
 
-export default React.memo(ContainerView);
+export default ContainerView;
 function ContainerView({ useTitle, containerId }) {
   const { showFormDialog } = useFormDialogs();
   const [data, { refetch }] = useData(
@@ -43,38 +43,30 @@ function ContainerView({ useTitle, containerId }) {
     `,
     { containerId },
   );
-  const containerExec = useAction(
-    gql`
-      mutation ContainerView($command: String!, $containerId: ID!) {
-        containerExec(id: $containerId, command: $command) {
-          id
-        }
+  const containerExec = useAction(gql`
+    mutation ContainerView($command: String!, $containerId: ID!) {
+      containerExec(id: $containerId, command: $command) {
+        id
       }
-    `,
-  );
-  const containerLogs = useAction(
-    gql`
-      mutation ContainerView($containerId: ID!) {
-        containerLogs(id: $containerId) {
-          id
-        }
+    }
+  `);
+  const containerLogs = useAction(gql`
+    mutation ContainerView($containerId: ID!) {
+      containerLogs(id: $containerId) {
+        id
       }
-    `,
-  );
-  const containerStart = useAction(
-    gql`
-      mutation ContainerView($containerId: ID!) {
-        containerStart(id: $containerId)
-      }
-    `,
-  );
-  const containerStop = useAction(
-    gql`
-      mutation ContainerView($containerId: ID!) {
-        containerStop(id: $containerId)
-      }
-    `,
-  );
+    }
+  `);
+  const containerStart = useAction(gql`
+    mutation ContainerView($containerId: ID!) {
+      containerStart(id: $containerId)
+    }
+  `);
+  const containerStop = useAction(gql`
+    mutation ContainerView($containerId: ID!) {
+      containerStop(id: $containerId)
+    }
+  `);
   const containerRm = useAction(
     gql`
       mutation ContainerView($containerId: ID!) {

@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, CardHeader, Avatar } from "@mui/material";
 
-export default React.memo(Widget);
+export default Widget;
 
 function Widget({ icon, title, subtitle, children, size = "small" }) {
   return (

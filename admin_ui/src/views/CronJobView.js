@@ -7,7 +7,7 @@ import Widget from "../controls/Widget";
 import Actions from "../controls/Actions";
 import StaticForm from "../controls/StaticForm";
 
-export default React.memo(CronJobView);
+export default CronJobView;
 function CronJobView({ useTitle, cronJobId }) {
   const [data] = useData(
     gql`

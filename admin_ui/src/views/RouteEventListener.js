@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router";
 
-export default React.memo(RouteEventListener);
+export default RouteEventListener;
 function RouteEventListener() {
   const navigate = useNavigate();
   useEffect(() => {

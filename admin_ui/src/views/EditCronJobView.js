@@ -7,7 +7,7 @@ import useAction from "../hooks/useAction";
 import Widget from "../controls/Widget";
 import Form from "../controls/Form";
 
-export default React.memo(EditCronJobView);
+export default EditCronJobView;
 function EditCronJobView({ cronJobId, useTitle }) {
   const [data] = useData(
     gql`
@@ -27,31 +27,29 @@ function EditCronJobView({ cronJobId, useTitle }) {
   useTitle(title);
   const navigate = useNavigate();
 
-  const updateCronJob = useAction(
-    gql`
-      mutation(
-        $id: ID!
-        $name: String!
-        $command: String!
-        $cron: String!
-        $singleInstance: Boolean!
+  const updateCronJob = useAction(gql`
+    mutation (
+      $id: ID!
+      $name: String!
+      $command: String!
+      $cron: String!
+      $singleInstance: Boolean!
+    ) {
+      updateCronJob(
+        id: $id
+        name: $name
+        command: $command
+        cron: $cron
+        singleInstance: $singleInstance
       ) {
-        updateCronJob(
-          id: $id
-          name: $name
-          command: $command
-          cron: $cron
-          singleInstance: $singleInstance
-        ) {
-          id
-          name
-          command
-          cron
-          singleInstance
-        }
+        id
+        name
+        command
+        cron
+        singleInstance
       }
-    `,
-  );
+    }
+  `);
 
   return (
     <Widget title={title}>

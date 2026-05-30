@@ -3,7 +3,7 @@ import { Fab, Tooltip } from "@mui/material";
 import { SpeedDial, SpeedDialAction } from "@mui/material";
 import { RadioboxBlank, DotsVertical } from "mdi-material-ui";
 
-export default React.memo(Actions);
+export default Actions;
 
 function Actions({ actions = [] }) {
   const [open, openSet] = useState(false);

@@ -6,7 +6,7 @@ import useData from "../hooks/useData";
 import Widget from "../controls/Widget";
 import Terminal from "./Terminal";
 
-export default React.memo(TerminalView);
+export default TerminalView;
 function TerminalView({ terminalId, useTitle }) {
   const [data] = useData(
     gql`

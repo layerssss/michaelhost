@@ -6,21 +6,19 @@ import useAction from "../hooks/useAction";
 import Widget from "../controls/Widget";
 import Form from "../controls/Form";
 
-export default React.memo(PullImageView);
+export default PullImageView;
 function PullImageView({ useTitle }) {
   const title = "run command";
   useTitle(title);
   const navigate = useNavigate();
 
-  const imagePull = useAction(
-    gql`
-      mutation($tag: String!) {
-        imagePull(tag: $tag) {
-          id
-        }
+  const imagePull = useAction(gql`
+    mutation ($tag: String!) {
+      imagePull(tag: $tag) {
+        id
       }
-    `,
-  );
+    }
+  `);
 
   return (
     <>

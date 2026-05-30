@@ -9,7 +9,7 @@ import {
   TableCell,
 } from "@mui/material";
 
-export default React.memo(Table);
+export default Table;
 
 function Table({ columns, rows }) {
   return (

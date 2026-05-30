@@ -4,7 +4,7 @@ import { useComponentSize } from "react-use-size";
 import { FitAddon } from "@xterm/addon-fit";
 import { WebLinksAddon } from "@xterm/addon-web-links";
 
-export default React.memo(XTerm);
+export default XTerm;
 function XTerm({
   cursorBlink = false,
   onData = () => {},

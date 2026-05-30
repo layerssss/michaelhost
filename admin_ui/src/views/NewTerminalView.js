@@ -6,7 +6,7 @@ import useAction from "../hooks/useAction";
 import Widget from "../controls/Widget";
 import Form from "../controls/Form";
 
-export default React.memo(NewTerminalView);
+export default NewTerminalView;
 function NewTerminalView({ useTitle }) {
   const title = "run command";
   useTitle(title);
@@ -14,7 +14,7 @@ function NewTerminalView({ useTitle }) {
 
   const runCommand = useAction(
     gql`
-      mutation($command: String!, $name: String!, $cwd: String!) {
+      mutation ($command: String!, $name: String!, $cwd: String!) {
         runCommand(command: $command, name: $name, cwd: $cwd) {
           id
           name

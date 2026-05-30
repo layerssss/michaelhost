@@ -11,7 +11,7 @@ import Actions from "../controls/Actions";
 import StaticForm from "../controls/StaticForm";
 import formatTimestamp from "../services/formatTimestamp";
 
-export default React.memo(ServiceView);
+export default ServiceView;
 function ServiceView({ useTitle, serviceId }) {
   const [data, { refetch }] = useData(
     gql`
@@ -39,22 +39,18 @@ function ServiceView({ useTitle, serviceId }) {
     `,
     { serviceId },
   );
-  const serviceLogs = useAction(
-    gql`
-      mutation ServiceView($serviceId: ID!) {
-        serviceLogs(id: $serviceId) {
-          id
-        }
+  const serviceLogs = useAction(gql`
+    mutation ServiceView($serviceId: ID!) {
+      serviceLogs(id: $serviceId) {
+        id
       }
-    `,
-  );
-  const servicePull = useAction(
-    gql`
-      mutation ServiceView($serviceId: ID!) {
-        servicePull(id: $serviceId)
-      }
-    `,
-  );
+    }
+  `);
+  const servicePull = useAction(gql`
+    mutation ServiceView($serviceId: ID!) {
+      servicePull(id: $serviceId)
+    }
+  `);
   const serviceRm = useAction(
     gql`
       mutation ServiceView($serviceId: ID!) {

@@ -10,7 +10,7 @@ import Actions from "../controls/Actions";
 import Table from "../controls/Table";
 import { ContainersIcon } from "../controls/icons";
 
-export default React.memo(ContainersView);
+export default ContainersView;
 function ContainersView({ useTitle }) {
   const title = "containers";
   useTitle(title);

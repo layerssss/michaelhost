@@ -14,7 +14,7 @@ import StaticForm from "../controls/StaticForm";
 import Widget from "../controls/Widget";
 import Overview from "../controls/Overview";
 
-export default React.memo(DashboardView);
+export default DashboardView;
 function DashboardView() {
   const [data] = useData(gql`
     query DashboardView {

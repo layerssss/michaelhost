@@ -3,11 +3,13 @@
   "version": "1.3.0",
   "license": "MIT",
   "scripts": {
-    "build": "cd admin_ui && yarn build",
+    "build": "yarn --cwd admin_ui webpack --mode production",
     "cli": "NODE_ENV=dev node ./bin/michaelhost.js",
     "dev_node": "NODE_ENV=dev node ./bin/michaelhost.js service --admin-port 2002 --webhook-server-port 2001 --secret ${MICHAELHOST_SECRET:-notsuchasecret}",
-    "dev_react": "cd admin_ui && yarn start",
-    "lint": "eslint .",
+    "dev_react": "yarn --cwd admin_ui webpack serve --mode development",
+    "lint": "yarn lint_node && yarn lint_react",
+    "lint_node": "eslint .",
+    "lint_react": "yarn --cwd admin_ui eslint .",
     "format": "prettier --write './lib/**/*.js' './bin/**/*.js' './admin_ui/src/**/*.js'",
     "postinstall": "chmod +x node_modules/node-pty/prebuilds/*/spawn-helper 2>/dev/null || true"
   },

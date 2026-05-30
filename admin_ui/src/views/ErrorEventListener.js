@@ -4,7 +4,7 @@ import { useSnackbar } from "notistack";
 import AbortError from "../services/AbortError";
 import getApolloErrors from "../services/getApolloErrors";
 
-export default React.memo(ErrorEventListener);
+export default ErrorEventListener;
 
 function ErrorEventListener() {
   const { enqueueSnackbar } = useSnackbar();

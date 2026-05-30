@@ -10,7 +10,7 @@ import Actions from "../controls/Actions";
 import StaticForm from "../controls/StaticForm";
 import formatTimestamp from "../services/formatTimestamp";
 
-export default React.memo(ImageView);
+export default ImageView;
 function ImageView({ useTitle, imageId }) {
   const [data] = useData(
     gql`

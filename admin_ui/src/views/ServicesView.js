@@ -6,7 +6,7 @@ import Widget from "../controls/Widget";
 import Table from "../controls/Table";
 import { ServicesIcon } from "../controls/icons";
 
-export default React.memo(ServicesView);
+export default ServicesView;
 function ServicesView({ useTitle }) {
   const title = "services";
   useTitle(title);

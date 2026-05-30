@@ -5,7 +5,7 @@ import { Stop } from "mdi-material-ui";
 import XTerm from "../controls/XTerm";
 import useWebSocket from "../hooks/useWebSocket";
 
-export default React.memo(Terminal);
+export default Terminal;
 function Terminal({ terminalId }) {
   const [alive, aliveSet] = useState(false);
   const containerRef = useRef();

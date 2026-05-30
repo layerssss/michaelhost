@@ -9,7 +9,7 @@ import Widget from "../controls/Widget";
 import Actions from "../controls/Actions";
 import StaticForm from "../controls/StaticForm";
 
-export default React.memo(VolumeView);
+export default VolumeView;
 function VolumeView({ useTitle, volumeId }) {
   const [data] = useData(
     gql`

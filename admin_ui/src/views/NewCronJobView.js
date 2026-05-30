@@ -6,14 +6,14 @@ import useAction from "../hooks/useAction";
 import Widget from "../controls/Widget";
 import Form from "../controls/Form";
 
-export default React.memo(NewCronJobView);
+export default NewCronJobView;
 function NewCronJobView({ useTitle }) {
   useTitle("new host");
   const navigate = useNavigate();
 
   const createCronJob = useAction(
     gql`
-      mutation(
+      mutation (
         $name: String!
         $command: String!
         $cron: String!

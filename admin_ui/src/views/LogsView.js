@@ -5,7 +5,7 @@ import XTerm from "../controls/XTerm";
 import useWebSocket from "../hooks/useWebSocket";
 import Widget from "../controls/Widget";
 
-export default React.memo(LogsView);
+export default LogsView;
 function LogsView({ useTitle }) {
   const title = "logs";
   useTitle(title);

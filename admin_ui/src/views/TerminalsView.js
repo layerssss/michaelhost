@@ -8,7 +8,7 @@ import Table from "../controls/Table";
 import Actions from "../controls/Actions";
 import { TerminalsIcon } from "../controls/icons";
 
-export default React.memo(Terminals);
+export default Terminals;
 function Terminals({ useTitle }) {
   const title = "terminals";
   useTitle(title);

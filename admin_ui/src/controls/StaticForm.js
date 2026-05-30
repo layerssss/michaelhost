@@ -1,7 +1,7 @@
 import React from "react";
 import { TextField } from "@mui/material";
 
-export default React.memo(Form);
+export default Form;
 
 function Form({ fields = [] }) {
   return (

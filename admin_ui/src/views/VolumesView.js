@@ -9,7 +9,7 @@ import Actions from "../controls/Actions";
 import Table from "../controls/Table";
 import { VolumesIcon } from "../controls/icons";
 
-export default React.memo(VolumesView);
+export default VolumesView;
 function VolumesView({ useTitle }) {
   const title = "volumes";
   useTitle(title);
