@@ -3,7 +3,6 @@ import gql from "graphql-tag";
 import { Badge } from "@material-ui/core";
 import {
   Database,
-  Web,
   Console,
   CalendarClock,
   Docker,
@@ -25,22 +24,6 @@ export const TerminalsIcon = React.memo(function TerminalsIcon() {
   return (
     <Badge badgeContent={data?.terminals.length} color="secondary">
       <Console />
-    </Badge>
-  );
-});
-
-export const HostsIcon = React.memo(function HostsIcon() {
-  const [data] = useData(gql`
-    query HostsIcon {
-      hosts {
-        id
-      }
-    }
-  `);
-
-  return (
-    <Badge badgeContent={data?.hosts.length} color="secondary">
-      <Web />
     </Badge>
   );
 });

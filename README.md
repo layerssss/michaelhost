@@ -6,8 +6,6 @@ This is Michael Yin's very own hosting software.
 ## What's included
 
 * Web-UI admin dashboard server
-* Let's Encrypt powered SSL reverse proxy
-* Optional OIDC guard on reverse proxy
 * Web-based terminals
 * Cronjobs
 * Webhooks server (DockerHub, GitHub)
@@ -16,13 +14,12 @@ This is Michael Yin's very own hosting software.
 ## Usage
 
 ```
-# with sudo or permissions to listen to 80 / 443 ports
 npm i -g michaelhost
 
 # init state file at ~/.michaelhost-state.json
-michaelhost init --email "your@domain"
+michaelhost init
 
-michaelhost service --email "your@domain"
+michaelhost service
 ```
 
 Absolutely no warranty

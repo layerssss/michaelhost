@@ -1,8 +1,4 @@
 import DashboardView from "../views/DashboardView";
-import HostsView from "../views/HostsView";
-import NewHostView from "../views/NewHostView";
-import HostView from "../views/HostView";
-import EditHostView from "../views/EditHostView";
 import NewTerminalView from "../views/NewTerminalView";
 import TerminalView from "../views/TerminalView";
 import TerminalsView from "../views/TerminalsView";
@@ -23,10 +19,6 @@ import PullImageView from "../views/PullImageView";
 
 const routes = [
   ["/dashboard", DashboardView],
-  ["/hosts", HostsView],
-  ["/hosts/new", NewHostView],
-  ["/hosts/:hostId(\\w{8,})", HostView],
-  ["/hosts/:hostId(\\w{8,})/edit", EditHostView],
   ["/terminals", TerminalsView],
   ["/terminals/new", NewTerminalView],
   ["/terminals/:terminalId(\\w{8,})", TerminalView],

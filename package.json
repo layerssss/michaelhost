@@ -1,11 +1,11 @@
 {
   "name": "michaelhost",
-  "version": "1.1.8",
+  "version": "1.2.0",
   "license": "MIT",
   "scripts": {
-    "build": "(cd admin_ui && yarn build) && ./build_dist",
+    "build": "cd admin_ui && yarn build",
     "cli": "NODE_ENV=dev node ./bin/michaelhost.js",
-    "dev_node": "NODE_ENV=dev node ./bin/michaelhost.js service --admin-port 2002 --webhook-server-port 2001 --secret ${MICHAELHOST_SECRET:-notsuchasecret} --email $EMAIL",
+    "dev_node": "NODE_ENV=dev node ./bin/michaelhost.js service --admin-port 2002 --webhook-server-port 2001 --secret ${MICHAELHOST_SECRET:-notsuchasecret}",
     "dev_react": "cd admin_ui && yarn start",
     "lint": "eslint .",
     "format": "prettier --write './lib/**/*.js' './bin/**/*.js' './admin_ui/src/**/*.js'"
@@ -14,32 +14,19 @@
     "michaelhost": "bin/michaelhost.js"
   },
   "dependencies": {
-    "@root/acme": "^3.1.0",
-    "@root/csr": "^0.8.1",
-    "@root/keypairs": "^0.10.1",
-    "@root/pem": "^1.0.4",
-    "acme-http-01-webroot": "^3.0.0",
     "apollo-server-express": "^2.21.1",
     "body-parser": "^1.18.3",
     "bunyan": "^1.8.15",
     "bunyan-prettystream": "^0.1.3",
     "commander": "^7.1.0",
-    "cookie": "^0.4.1",
     "dockerode": "^3.2.1",
     "express": "^4.16.3",
-    "global-agent": "^2.1.12",
-    "global-tunnel-ng": "^2.7.1",
     "graphql": "^15.5.0",
     "homedir": "^0.6.0",
-    "ip": "^1.1.5",
-    "jsonwebtoken": "^8.5.1",
     "lodash": "^4.17.21",
     "node-cron": "^2.0.3",
     "node-fetch": "^2.6.1",
-    "node-forge": "^0.10.0",
     "node-pty": "^0.10.0",
-    "openid-client": "^4.4.2",
-    "query-string": "^6.14.1",
     "rollbar": "^2.21.0",
     "secure-compare": "^3.0.1",
     "semver": "^7.3.4",
@@ -52,7 +39,6 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-import": "^2.22.1",
     "eslint-plugin-prettier": "^3.3.1",
-    "pkg": "^5.8.0",
     "prettier": "^2.2.1",
     "react": "^17.0.2",
     "react-scripts": "^4.0.3"
@@ -62,10 +48,5 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ],
-  "pkg": {
-    "assets": [
-      "./admin_ui/build/**/*"
-    ]
-  }
+  ]
 }

@@ -4,7 +4,6 @@ import { DesktopClassic } from "mdi-material-ui";
 
 import useData from "../hooks/useData";
 import {
-  HostsIcon,
   CronJobsIcon,
   TerminalsIcon,
   ContainersIcon,
@@ -21,10 +20,6 @@ function DashboardView() {
     query DashboardView {
       hostname
       version
-      hosts {
-        id
-        hostname
-      }
       terminals {
         id
         name
@@ -59,15 +54,6 @@ function DashboardView() {
             ["hostname", data?.hostname],
             ["michaelhost version", data?.version],
           ]}
-        />
-      </Widget>
-      <Widget icon={<HostsIcon />} title="hosts">
-        <Overview
-          items={data?.hosts.map((host) => [
-            host.hostname,
-            `/hosts/${host.id}`,
-          ])}
-          href="/hosts"
         />
       </Widget>
       <Widget icon={<TerminalsIcon />} title="terminals">
