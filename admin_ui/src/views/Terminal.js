@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Fab } from "@material-ui/core";
+import { Fab } from "@mui/material";
 import { Stop } from "mdi-material-ui";
 
 import XTerm from "../controls/XTerm";

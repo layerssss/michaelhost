@@ -9,7 +9,7 @@ import {
   CardActions,
   Select,
   Button,
-} from "@material-ui/core";
+} from "@mui/material";
 import serialize from "form-serialize";
 
 export default React.memo(Form);

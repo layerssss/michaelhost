@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { Fab, Tooltip } from "@material-ui/core";
-import { SpeedDial, SpeedDialAction } from "@material-ui/lab";
+import { Fab, Tooltip } from "@mui/material";
+import { SpeedDial, SpeedDialAction } from "@mui/material";
 import { RadioboxBlank, DotsVertical } from "mdi-material-ui";
 
 export default React.memo(Actions);
@@ -45,7 +45,7 @@ function Actions({ actions = [] }) {
             ({ title, disabled, onClick, href, icon = <RadioboxBlank /> }) => (
               <SpeedDialAction
                 key={title}
-                tooltipTitle={title}
+                slotProps={{ tooltip: { title } }}
                 icon={icon}
                 disabled={disabled}
                 onClick={() => {

@@ -1,6 +1,6 @@
 import React from "react";
 import gql from "graphql-tag";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Delete, Database } from "mdi-material-ui";
 
 import useData from "../hooks/useData";
@@ -46,7 +46,7 @@ function ImageView({ useTitle, imageId }) {
     },
   );
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const title = `image: ${data?.image.id}`;
   useTitle(title);
   return (
@@ -61,7 +61,7 @@ function ImageView({ useTitle, imageId }) {
               await imageRm({
                 imageId,
               });
-              history.push(`/images`);
+              navigate(`/images`);
             },
           },
         ]}

@@ -1,6 +1,6 @@
 import React from "react";
 import gql from "graphql-tag";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Delete, ConsoleLine, CogBox, Refresh } from "mdi-material-ui";
 
 import useData from "../hooks/useData";
@@ -76,7 +76,7 @@ function ServiceView({ useTitle, serviceId }) {
     },
   );
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const title = `service: ${data?.service.name}`;
   useTitle(title);
   return (
@@ -91,7 +91,7 @@ function ServiceView({ useTitle, serviceId }) {
                 serviceId,
               });
               const terminalId = result.serviceLogs.id;
-              history.push(`/terminals/${terminalId}`);
+              navigate(`/terminals/${terminalId}`);
             },
           },
           {
@@ -112,7 +112,7 @@ function ServiceView({ useTitle, serviceId }) {
               await serviceRm({
                 serviceId,
               });
-              history.push(`/services`);
+              navigate(`/services`);
             },
           },
         ]}

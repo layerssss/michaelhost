@@ -1,6 +1,6 @@
 import React from "react";
 import gql from "graphql-tag";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Stop, Delete, ConsoleLine, Docker, Play } from "mdi-material-ui";
 
 import useFormDialogs from "../hooks/useFormDialogs";
@@ -96,7 +96,7 @@ function ContainerView({ useTitle, containerId }) {
     },
   );
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const title = `container: ${data?.container.name}`;
   useTitle(title);
   return (
@@ -119,7 +119,7 @@ function ContainerView({ useTitle, containerId }) {
                 })),
               });
               const terminalId = result.containerExec.id;
-              history.push(`/terminals/${terminalId}`);
+              navigate(`/terminals/${terminalId}`);
             },
           },
           {
@@ -130,7 +130,7 @@ function ContainerView({ useTitle, containerId }) {
                 containerId,
               });
               const terminalId = result.containerLogs.id;
-              history.push(`/terminals/${terminalId}`);
+              navigate(`/terminals/${terminalId}`);
             },
           },
           {
@@ -164,7 +164,7 @@ function ContainerView({ useTitle, containerId }) {
               await containerRm({
                 containerId,
               });
-              history.push(`/containers`);
+              navigate(`/containers`);
             },
           },
         ]}

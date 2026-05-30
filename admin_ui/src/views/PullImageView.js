@@ -1,6 +1,6 @@
 import React from "react";
 import gql from "graphql-tag";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import useAction from "../hooks/useAction";
 import Widget from "../controls/Widget";
@@ -10,7 +10,7 @@ export default React.memo(PullImageView);
 function PullImageView({ useTitle }) {
   const title = "run command";
   useTitle(title);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const imagePull = useAction(
     gql`
@@ -30,7 +30,7 @@ function PullImageView({ useTitle }) {
             const result = await imagePull({
               ...formData,
             });
-            history.push(`/images/${result.imagePull.id}`);
+            navigate(`/images/${result.imagePull.id}`);
           }}
           fields={[
             //

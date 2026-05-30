@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardHeader, Avatar } from "@material-ui/core";
+import { Card, CardHeader, Avatar } from "@mui/material";
 
 export default React.memo(Widget);
 

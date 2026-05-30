@@ -7,7 +7,7 @@ import {
   TableRow,
   TableBody,
   TableCell,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export default React.memo(Table);
 

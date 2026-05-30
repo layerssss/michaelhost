@@ -5,7 +5,7 @@ import { viewportContext } from "../views/Viewport";
 
 export default function useBreadcrumb({ title, href }) {
   const { breadcrumbsSet } = useContext(viewportContext);
-  const id = useMemo(() => uuid.v4(), []);
+  const id = useMemo(() => uuid(), []);
 
   const breadcrumb = {
     id,

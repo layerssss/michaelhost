@@ -1,6 +1,6 @@
 import React from "react";
 import gql from "graphql-tag";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Delete, Database } from "mdi-material-ui";
 
 import useData from "../hooks/useData";
@@ -44,7 +44,7 @@ function VolumeView({ useTitle, volumeId }) {
     },
   );
 
-  const history = useHistory();
+  const navigate = useNavigate();
   const title = `volume: ${data?.volume.name}`;
   useTitle(title);
   return (
@@ -59,7 +59,7 @@ function VolumeView({ useTitle, volumeId }) {
               await volumeRm({
                 volumeId,
               });
-              history.push(`/volumes`);
+              navigate(`/volumes`);
             },
           },
         ]}

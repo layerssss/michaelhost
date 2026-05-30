@@ -2,8 +2,8 @@ import React, { useState, useEffect, useMemo } from "react";
 import _ from "lodash";
 import { useSnackbar } from "notistack";
 import gql from "graphql-tag";
-import { Route, useHistory, useLocation, matchPath } from "react-router";
-import { Home, Console } from "mdi-material-ui";
+import { useNavigate, useLocation, matchPath } from "react-router";
+import { Home, Console, ChevronRight } from "mdi-material-ui";
 import {
   Toolbar,
   IconButton,
@@ -11,12 +11,12 @@ import {
   Drawer,
   List,
   ListItem,
+  ListItemButton,
   ListItemIcon,
   Tooltip,
   AppBar,
-} from "@material-ui/core";
-import { useApolloClient } from "@apollo/client";
-import { ChevronRight } from "mdi-material-ui";
+} from "@mui/material";
+import { useApolloClient } from "@apollo/client/react";
 
 import useBreadcrumb from "../hooks/useBreadcrumb";
 import useWebSocket from "../hooks/useWebSocket";
@@ -38,19 +38,23 @@ function ViewPort() {
     }
   `);
   const location = useLocation();
-  const history = useHistory();
+  const navigate = useNavigate();
   const [breadcrumbs, breadcrumbsSet] = useState([]);
-  const currentPath = useMemo(
+  const currentMatch = useMemo(
     () =>
       routes
-        .map(([path]) => path)
-        .find((path) => matchPath(location.pathname, { exact: true, path })),
+        .map(([path, Component]) => ({
+          path,
+          Component,
+          match: matchPath({ path, end: true }, location.pathname),
+        }))
+        .find(({ match }) => match),
     [location.pathname],
   );
 
   useEffect(() => {
-    if (!currentPath) history.replace("/dashboard");
-  }, [!!currentPath]);
+    if (!currentMatch) navigate("/dashboard", { replace: true });
+  }, [!!currentMatch]);
   const { enqueueSnackbar } = useSnackbar();
   const apolloClient = useApolloClient();
   useWebSocket(`/api/state`, ({ terminals, error, message }) => {
@@ -86,19 +90,24 @@ function ViewPort() {
 
   return (
     <viewportContext.Provider value={{ breadcrumbsSet }}>
-      <Drawer variant="permanent" PaperProps={{ style: { width: 54 } }}>
+      <Drawer
+        variant="permanent"
+        slotProps={{ paper: { style: { width: 54 } } }}
+      >
         <List disablePadding>
           {navItems.map(([title, href, icon]) => (
-            <ListItem
-              key={title}
-              button
-              component="a"
-              href={href}
-              selected={!!matchPath(location.pathname, { path: href })}
-            >
-              <Tooltip title={title}>
-                <ListItemIcon>{icon}</ListItemIcon>
-              </Tooltip>
+            <ListItem key={title} disablePadding>
+              <ListItemButton
+                component="a"
+                href={href}
+                selected={
+                  !!matchPath({ path: href, end: false }, location.pathname)
+                }
+              >
+                <Tooltip title={title}>
+                  <ListItemIcon>{icon}</ListItemIcon>
+                </Tooltip>
+              </ListItemButton>
             </ListItem>
           ))}
         </List>
@@ -131,38 +140,26 @@ function ViewPort() {
             ))}
           </Toolbar>
         </AppBar>
-        {routes.map(([path, Component]) => (
-          <Route
-            key={path}
-            path={path}
-            render={({ match }) => (
-              <div
-                style={
-                  match.isExact
-                    ? {
-                        display: "flex",
-                        flexFlow: "row wrap",
-                        justifyContent: "stretch",
-                      }
-                    : {
-                        display: "none",
-                      }
-                }
-              >
-                <Component
-                  {...match.params}
-                  useTitle={(title) => {
-                    // eslint-disable-next-line react-hooks/rules-of-hooks
-                    useBreadcrumb({
-                      title,
-                      href: match.url,
-                    });
-                  }}
-                />
-              </div>
-            )}
-          />
-        ))}
+        {currentMatch && (
+          <div
+            style={{
+              display: "flex",
+              flexFlow: "row wrap",
+              justifyContent: "stretch",
+            }}
+          >
+            <currentMatch.Component
+              {...currentMatch.match.params}
+              useTitle={(title) => {
+                // eslint-disable-next-line react-hooks/rules-of-hooks
+                useBreadcrumb({
+                  title,
+                  href: currentMatch.match.pathname,
+                });
+              }}
+            />
+          </div>
+        )}
       </main>
     </viewportContext.Provider>
   );

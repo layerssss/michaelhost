@@ -13,7 +13,7 @@ import {
   Checkbox,
   MenuItem,
   Select,
-} from "@material-ui/core";
+} from "@mui/material";
 
 export const formDialogsContext = React.createContext();
 export default React.memo(FormDialogsProvider);
@@ -43,21 +43,23 @@ function FormDialogsProvider({ children }) {
               formDialogs.filter((f) => f.id !== formDialog.id),
             ),
         }}
-        PaperProps={{
-          component: "form",
-          onSubmit: async (event) => {
-            event.preventDefault();
-            const formData = serialize(event.target, {
-              hash: true,
-              empty: true,
-            });
-            for (const [fieldType, name] of formDialog.fields) {
-              if (fieldType === "Boolean")
-                formData[name] = Boolean(formData[name]);
-            }
+        slotProps={{
+          paper: {
+            component: "form",
+            onSubmit: async (event) => {
+              event.preventDefault();
+              const formData = serialize(event.target, {
+                hash: true,
+                empty: true,
+              });
+              for (const [fieldType, name] of formDialog.fields) {
+                if (fieldType === "Boolean")
+                  formData[name] = Boolean(formData[name]);
+              }
 
-            formDialogClose();
-            formDialog.done(formData);
+              formDialogClose();
+              formDialog.done(formData);
+            },
           },
         }}
       >

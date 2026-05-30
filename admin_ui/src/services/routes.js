@@ -21,11 +21,11 @@ const routes = [
   ["/dashboard", DashboardView],
   ["/terminals", TerminalsView],
   ["/terminals/new", NewTerminalView],
-  ["/terminals/:terminalId(\\w{8,})", TerminalView],
+  ["/terminals/:terminalId", TerminalView],
   ["/cron_jobs", CronJobsView],
   ["/cron_jobs/new", NewCronJobView],
-  ["/cron_jobs/:cronJobId(\\w{8,})", CronJobView],
-  ["/cron_jobs/:cronJobId(\\w{8,})/edit", EditCronJobView],
+  ["/cron_jobs/:cronJobId", CronJobView],
+  ["/cron_jobs/:cronJobId/edit", EditCronJobView],
   ["/containers", ContainersView],
   ["/containers/:containerId", ContainerView],
   ["/services", ServicesView],
@@ -35,6 +35,6 @@ const routes = [
   ["/logs", LogsView],
   ["/images", ImagesView],
   ["/images/pull", PullImageView],
-  ["/images/:imageId(sha256:.*)", ImageView],
+  ["/images/:imageId", ImageView],
 ];
 export default routes;

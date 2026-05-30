@@ -1,13 +1,9 @@
 import React from "react";
-import { ApolloProvider } from "@apollo/client";
+import { ApolloProvider } from "@apollo/client/react";
 import { BrowserRouter } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
-import {
-  useMediaQuery,
-  createTheme,
-  MuiThemeProvider,
-  CssBaseline,
-} from "@material-ui/core";
+import { useMediaQuery, CssBaseline } from "@mui/material";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 import FormDialogsProvider from "../providers/FormDialogsProvider";
 import apolloClient from "../services/apolloClient";
@@ -22,12 +18,11 @@ function App() {
     () =>
       createTheme({
         palette: {
-          type: prefersDarkMode ? "dark" : "light",
+          mode: prefersDarkMode ? "dark" : "light",
           primary: { main: "#1976D2" },
           secondary: { main: "#00838F" },
         },
         typography: {
-          useNextVariants: true,
           button: {
             textTransform: "none",
           },
@@ -37,7 +32,7 @@ function App() {
   );
 
   return (
-    <MuiThemeProvider theme={theme}>
+    <ThemeProvider theme={theme}>
       <CssBaseline />
       <SnackbarProvider>
         <ApolloProvider client={apolloClient}>
@@ -50,6 +45,6 @@ function App() {
           </BrowserRouter>
         </ApolloProvider>
       </SnackbarProvider>
-    </MuiThemeProvider>
+    </ThemeProvider>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import { Chip, CardActions, Button } from "@material-ui/core";
+import { Chip, CardActions, Button } from "@mui/material";
 
 export default React.memo(Overview);
 

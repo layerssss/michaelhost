@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from "react";
-import { Terminal } from "xterm";
+import { Terminal } from "@xterm/xterm";
 import { useComponentSize } from "react-use-size";
-import { FitAddon } from "xterm-addon-fit";
-import { WebLinksAddon } from "xterm-addon-web-links";
+import { FitAddon } from "@xterm/addon-fit";
+import { WebLinksAddon } from "@xterm/addon-web-links";
 
 export default React.memo(XTerm);
 function XTerm({
@@ -18,7 +18,7 @@ function XTerm({
   useEffect(() => {
     if (xtermVariablesRef.current) {
       const { terminal } = xtermVariablesRef.current;
-      terminal.setOption("cursorBlink", cursorBlink);
+      terminal.options.cursorBlink = cursorBlink;
     }
   }, [cursorBlink]);
 

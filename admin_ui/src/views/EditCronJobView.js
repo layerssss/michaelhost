@@ -1,6 +1,6 @@
 import React from "react";
 import gql from "graphql-tag";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import useData from "../hooks/useData";
 import useAction from "../hooks/useAction";
@@ -25,7 +25,7 @@ function EditCronJobView({ cronJobId, useTitle }) {
   );
   const title = `edit`;
   useTitle(title);
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const updateCronJob = useAction(
     gql`
@@ -62,7 +62,7 @@ function EditCronJobView({ cronJobId, useTitle }) {
               id: cronJobId,
               ...formData,
             });
-            history.push(`/cron_jobs/${cronJobId}`);
+            navigate(`/cron_jobs/${cronJobId}`);
           }}
           fields={[
             ["String", "name", data.cronJob.name],

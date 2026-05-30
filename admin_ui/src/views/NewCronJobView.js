@@ -1,6 +1,6 @@
 import React from "react";
 import gql from "graphql-tag";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 import useAction from "../hooks/useAction";
 import Widget from "../controls/Widget";
@@ -9,7 +9,7 @@ import Form from "../controls/Form";
 export default React.memo(NewCronJobView);
 function NewCronJobView({ useTitle }) {
   useTitle("new host");
-  const history = useHistory();
+  const navigate = useNavigate();
 
   const createCronJob = useAction(
     gql`
@@ -56,7 +56,7 @@ function NewCronJobView({ useTitle }) {
             await createCronJob({
               ...formData,
             });
-            history.push("/cron_jobs");
+            navigate("/cron_jobs");
           }}
           fields={[
             ["String", "name", ""],

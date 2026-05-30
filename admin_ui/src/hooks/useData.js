@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import _ from "lodash";
-import { useQuery } from "@apollo/client";
+import { useQuery } from "@apollo/client/react";
 
 import useProgressBar from "./useProgressBar";
 

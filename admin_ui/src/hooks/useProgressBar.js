@@ -1,14 +1,30 @@
-import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import { LinearProgress } from "@material-ui/core";
+import React, { useEffect, useRef, useState } from "react";
+import { createRoot } from "react-dom/client";
+import { LinearProgress } from "@mui/material";
 
 export default function useProgressBar() {
   const [loading, loadingSet] = useState(false);
+  const progressRootRef = useRef(null);
 
   useEffect(() => {
     const element = document.createElement("div");
     document.body.appendChild(element);
-    ReactDOM.render(
+    const root = createRoot(element);
+    progressRootRef.current = root;
+
+    return () => {
+      progressRootRef.current = null;
+      setTimeout(() => {
+        root.unmount();
+        document.body.removeChild(element);
+      }, 0);
+    };
+  }, []);
+
+  useEffect(() => {
+    const root = progressRootRef.current;
+    if (!root) return;
+    root.render(
       <div
         style={{
           position: "fixed",
@@ -22,12 +38,7 @@ export default function useProgressBar() {
       >
         <LinearProgress />
       </div>,
-      element,
     );
-    return () => {
-      ReactDOM.unmountComponentAtNode(element);
-      document.body.removeChild(element);
-    };
   }, [loading]);
 
   const progressBarSet = (progress) => loadingSet(!!progress);

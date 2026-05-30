@@ -1,9 +1,9 @@
 import React, { useEffect } from "react";
-import { useHistory } from "react-router";
+import { useNavigate } from "react-router";
 
 export default React.memo(RouteEventListener);
 function RouteEventListener() {
-  const history = useHistory();
+  const navigate = useNavigate();
   useEffect(() => {
     const handleClick = function (event) {
       let element = event.target;
@@ -15,7 +15,7 @@ function RouteEventListener() {
       if (event.ctrlKey || event.shiftKey || event.metaKey || event.altKey)
         return;
       event.preventDefault();
-      history.push(element.getAttribute("href"));
+      navigate(element.getAttribute("href"));
     };
 
     document.addEventListener("click", handleClick);
