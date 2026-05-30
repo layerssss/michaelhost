@@ -15,7 +15,7 @@ import {
   Tooltip,
   AppBar,
 } from "@material-ui/core";
-import { useApolloClient } from "@apollo/react-common";
+import { useApolloClient } from "@apollo/client";
 import { ChevronRight } from "mdi-material-ui";
 
 import useBreadcrumb from "../hooks/useBreadcrumb";

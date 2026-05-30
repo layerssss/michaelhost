@@ -1,14 +1,21 @@
 module.exports = {
   extends: [
-    "react-app",
     "eslint:recommended",
     "plugin:import/errors",
     "prettier",
     "plugin:prettier/recommended",
   ],
   plugins: ["import"],
+  parserOptions: {
+    ecmaVersion: 2021,
+    sourceType: "script",
+  },
+  env: {
+    node: true,
+    es2021: true,
+  },
   rules: {
-    "react-hooks/exhaustive-deps": [0],
     "no-console": [1],
+    "no-unused-vars": ["error", { args: "none", varsIgnorePattern: "^_" }],
   },
 };

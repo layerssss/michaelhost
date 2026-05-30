@@ -1,5 +1,5 @@
 import React from "react";
-import { ApolloProvider } from "@apollo/react-common";
+import { ApolloProvider } from "@apollo/client";
 import { BrowserRouter } from "react-router-dom";
 import { SnackbarProvider } from "notistack";
 import {

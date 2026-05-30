@@ -1,6 +1,3 @@
-import "react-app-polyfill/ie9";
-import "react-app-polyfill/stable";
-// This must be loaded before react
 import React from "react";
 import ReactDOM from "react-dom";
 import "typeface-roboto";
