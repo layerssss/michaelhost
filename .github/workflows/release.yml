@@ -24,10 +24,3 @@ jobs:
         working-directory: admin_ui
       - run: npm run build
       - run: npm publish --provenance
-      - uses: rollbar/github-deploy-action@1.1.0
-        with:
-          environment: 'production'
-          version: ${{ github.sha }}
-        env:
-          ROLLBAR_ACCESS_TOKEN: ${{ secrets.ROLLBAR_ACCESS_TOKEN }}
-          ROLLBAR_USERNAME: ${{ github.actor }}
